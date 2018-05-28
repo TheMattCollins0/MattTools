@@ -29,11 +29,12 @@ $ErrorActionPreference = 'stop'
 Install-PackageProvider -Name Nuget -Scope CurrentUser -Force -Confirm:$false
 Install-Module -Name Pester -Scope CurrentUser -Force -Confirm:$false
 Install-Module -Name PSScriptAnalyzer -Scope CurrentUser -Force -Confirm:$false
+Install-Module -Name PlatyPS -Scope CurrentUser -Force -Confirm:$false
 
 # Install third party modules required for the module 
 # Install-Module -Name <MODULENAME> -Scope CurrentUser -Force -Confirm:$false
 
-# Import the Pester and PSScriptAnalyzer
+# Import the Pester, PSScriptAnalyzer and PlatyPS
 Import-Module Pester
 Import-Module PSScriptAnalyzer
 
@@ -63,3 +64,32 @@ $CoveragePercent = [math]::floor(100 - (($Script:TestResults.CodeCoverage.Number
 # Update the code coverage badge in the README.md file
 Update-CodeCoveragePercent -CodeCoverage $CoveragePercent
 
+# Creation of docs path variable
+$Docs = .\Docs
+
+# Creation of the output path variable
+$Output = $Docs + "\en-US\"
+
+# Module file path variable
+$ModuleFile = $ModulePath + "\" + $ModulePath + ".psm1"
+
+# Creation and update of PlatyPS help if docs path does not exist
+if (!$Docs) {
+    # Import the module
+    Import-Module $ModuleFile
+
+    # Create the new markdown help
+    New-MarkdownHelp -Module MyAwesomeModule -OutputFolder .\docs
+
+    # Create the external help
+    New-ExternalHelp $Docs -OutputPath $Output
+}
+
+# Update of PlatyPS help of the docs path does exist
+if ($Docs) {
+    # Import the PowerShell module
+    Import-Module MyAwesomeModule -Force
+
+    # Update the help files
+    Update-MarkdownHelp $Docs
+}
