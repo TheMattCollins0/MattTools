@@ -35,15 +35,13 @@ function Invoke-MattPlaster {
         [string]
         $GitHubPath = "C:\GitHub",
 
-        [Parameter(Mandatory = $true, HelpMessage = "Please enter the name of the new module",
-            ValueFromPipeline = $true)]
+        [Parameter(Mandatory = $true, HelpMessage = "Please enter the name of the new module", ValueFromPipeline = $true)]
         [ValidateNotNullOrEmpty()]
         [Alias('Name')]
         [string]
         $ModuleName,
 
-        [Parameter(Mandatory = $true, HelpMessage = "Please provide a description for the module",
-            ValueFromPipeline = $true)]
+        [Parameter(Mandatory = $true, HelpMessage = "Please provide a description for the module", ValueFromPipeline = $true)]
         [ValidateNotNullOrEmpty()]
         [Alias('Description')]
         [string]
@@ -91,7 +89,7 @@ function Invoke-MattPlaster {
     $Private = new-Object System.Management.Automation.Host.ChoiceDescription "p&Rivate", "Private"
     $RepositoryVisibilityChoices = [System.Management.Automation.Host.ChoiceDescription[]]($Public, $Private)
     $RepositoryVisibility = $host.ui.PromptForChoice( $RepositoryVisibilityCaption, $RepositoryVisibilityMessage, $RepositoryVisibilityChoices, 1 )
-    Write-Output ""
+
     switch ( $RepositoryVisibility ) {
         0 { "You entered Public"; break }
         1 { "You entered Private"; break }
@@ -104,7 +102,7 @@ function Invoke-MattPlaster {
     $No = new-Object System.Management.Automation.Host.ChoiceDescription "&No", "No"
     $DevelopmentBranchChoices = [System.Management.Automation.Host.ChoiceDescription[]]($Yes, $No)
     $DevelopmentBranch = $host.ui.PromptForChoice( $DevelopmentBranchCaption, $DevelopmentBranchMessage, $DevelopmentBranchChoices, 0 )
-    Write-Output ""
+
     switch ( $DevelopmentBranch ) {
         0 { "A development branch is required"; break }
         1 { "A development branch is not required"; break }
@@ -129,16 +127,12 @@ function Invoke-MattPlaster {
     # If statement to check if a Public repository was requested
     if ( $RepositoryVisibility -eq "0" ) {
         # Create the new public repository on GitHub
-        Write-Output "Creating the $ModuleName GitHub repository and marking it as public"
-        Write-Output "This will not take long"
         New-GitHubRepository -Name $ModuleName -Description $ModuleDescription
     }
 
     # If statement to check if a Private repository was requested
     if ( $RepositoryVisibility -eq "1" ) {
         # Create a new private repository on GitHub
-        Write-Output "Creating the $ModuleName GitHub repository and marking it as private"
-        Write-Output "This will not take long"
         New-GitHubRepository -Name $ModuleName -Description $ModuleDescription -Private $True
     }
 
@@ -155,8 +149,6 @@ function Invoke-MattPlaster {
     git remote add origin $GitHubRepository
 
     # Invoke Plaster using the supplied splat
-    Write-Output "Creating the new module file structure using Plaster"
-    Write-Output "This will not take long"
     Invoke-Plaster @PlasterSplat
 
     # Change location to the newly created module directory
@@ -172,12 +164,8 @@ function Invoke-MattPlaster {
     git push origin HEAD:master
 
     # If statement to check if a development branch of the repository was requested
-    if ( $DevelopmentBranch -eq "0" ) {
-        # Create a development brach of the GitHub repository then check it out
-        Write-Output "Creating a development branch of the $ModuleName repository"
-        Write-Output "This will not take long"
-    
-        # Create the development branch
+    if ( $DevelopmentBranch -eq "0" ) {    
+        # Create a development branch
         git branch development
 
         # Checkout the development branch
