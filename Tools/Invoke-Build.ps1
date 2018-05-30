@@ -36,14 +36,23 @@ Install-Module -Name PSGitHub -Scope CurrentUser -Force -Confirm:$false
 Install-Module -Name Plaster -Scope CurrentUser -Force -Confirm:$false
 
 # Import the Pester, PSScriptAnalyzer and PlatyPS
-Import-Module Pester
-Import-Module PSScriptAnalyzer
+Import-Module Pester -Force
+Import-Module PSScriptAnalyzer -Force
+Import-Module PlatyPS -Force
+Import-Module PSGitHub -Force
+Import-Module Plaster -Force
 
 # Creation of module path variable
 $ModulePath = $env:BUILD_DEFINITIONNAME
 
 # Populate the $CodeFiles variable with the FullName of all script files within the module path
 $CodeFiles = (Get-ChildItem $ModulePath -Recurse -Include "*.psm1", "*.ps1").FullName
+
+# Create the results folder to contain the Pester test results
+$Folder = ".\Results"
+if (-not(Test-Path -Path $Folder -PathType Container)) {
+    New-Item -Path $Folder -ItemType Directory | Out-Null
+}
 
 # Creation of result output file variables
 $PesterResultsPath = ".\" + "Results" + "\" + "PesterResults" + ".xml"
