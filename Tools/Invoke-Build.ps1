@@ -86,6 +86,9 @@ $ModuleFile = $ModulePath + "\" + $ModulePath + ".psm1"
 # Creation of $ModuleName variable
 $ModuleName = $env:BUILD_DEFINITIONNAME
 
+# Creation of PSScriptRoot variable
+$PSScriptRoot = $env:BUILD_DEFINITIONNAME
+
 # Creation and update of PlatyPS help if docs path does not exist
 if (!$Docs) {
     # Import the module
