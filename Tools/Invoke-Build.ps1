@@ -32,7 +32,8 @@ Install-Module -Name PSScriptAnalyzer -Scope CurrentUser -Force -Confirm:$false
 Install-Module -Name PlatyPS -Scope CurrentUser -Force -Confirm:$false
 
 # Install third party modules required for the module 
-# Install-Module -Name <MODULENAME> -Scope CurrentUser -Force -Confirm:$false
+Install-Module -Name PSGitHub -Scope CurrentUser -Force -Confirm:$false
+Install-Module -Name Plaster -Scope CurrentUser -Force -Confirm:$false
 
 # Import the Pester, PSScriptAnalyzer and PlatyPS
 Import-Module Pester
@@ -56,7 +57,7 @@ Invoke-Pester -OutputFile $PSSAResultsPath -OutputFormat 'NUnitXml' -Script '.\T
 $Path = ".\Tests"
 
 # Run the code coverage test
-$Script:TestResults = Invoke-Pester -Path $Path -CodeCoverage $CodeFiles -PassThru -OutputFormat 'NUnitXml' -OutputFile "CodeCoverageResults.xml"
+$Script:TestResults = Invoke-Pester -Path $Path -CodeCoverage $CodeFiles -PassThru -OutputFormat 'NUnitXml' -OutputFile ".\Results\CodeCoverageResults.xml"
 
 # Calculate the code coverage percentage
 $CoveragePercent = [math]::floor(100 - (($Script:TestResults.CodeCoverage.NumberOfCommandsMissed / $Script:TestResults.CodeCoverage.NumberOfCommandsAnalyzed) * 100))
@@ -73,13 +74,16 @@ $Output = $Docs + "\en-US\"
 # Module file path variable
 $ModuleFile = $ModulePath + "\" + $ModulePath + ".psm1"
 
+# Creation of $ModuleName variable
+$ModuleName = $env:BUILD_DEFINITIONNAME
+
 # Creation and update of PlatyPS help if docs path does not exist
 if (!$Docs) {
     # Import the module
     Import-Module $ModuleFile
 
     # Create the new markdown help
-    New-MarkdownHelp -Module MyAwesomeModule -OutputFolder .\docs
+    New-MarkdownHelp -Module $ModuleName -OutputFolder .\docs
 
     # Create the external help
     New-ExternalHelp $Docs -OutputPath $Output
@@ -88,7 +92,7 @@ if (!$Docs) {
 # Update of PlatyPS help of the docs path does exist
 if ($Docs) {
     # Import the PowerShell module
-    Import-Module MyAwesomeModule -Force
+    Import-Module $ModuleName -Force
 
     # Update the help files
     Update-MarkdownHelp $Docs
