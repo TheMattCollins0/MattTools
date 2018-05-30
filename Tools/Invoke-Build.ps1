@@ -75,7 +75,7 @@ $CoveragePercent = [math]::floor(100 - (($Script:TestResults.CodeCoverage.Number
 Update-CodeCoveragePercent -CodeCoverage $CoveragePercent
 
 # Creation of docs path variable
-$Docs = .\Docs
+$Docs = ".\Docs"
 
 # Creation of the output path variable
 $Output = $Docs + "\en-US\"
