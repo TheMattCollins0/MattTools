@@ -1,9 +1,9 @@
 # Variables for the version number change commit back to GitHub
 $ModuleName = $env:BUILD_DEFINITIONNAME
 $ModulePath = ".\" + $ModuleName + "\" + $ModuleName + ".psd1"
-$PesterResultsPath = ".\Tests\" + "PesterResults" + ".xml"
-$PSSAResultsPath = ".\Tests\" + "PSSAResults" + ".xml"
-$CodeCoverageResultsPath = ".\Tests\" + "CodeCoverageResults" + ".xml"
+$PesterResultsPath = ".\Results\" + "PesterResults" + ".xml"
+$PSSAResultsPath = ".\Results\" + "PSSAResults" + ".xml"
+$CodeCoverageResultsPath = ".\Results\" + "CodeCoverageResults" + ".xml"
 $ReadMeUpdatePath = ".\" + "ReadMe" + ".md"
 
 # Git for the version number change commit back to GitHub
