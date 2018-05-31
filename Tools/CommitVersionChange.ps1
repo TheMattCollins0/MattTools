@@ -4,7 +4,7 @@ $ModulePath = ".\" + $ModuleName + "\" + $ModuleName + ".psd1"
 $PesterResultsPath = ".\Tests\" + "PesterResults" + ".xml"
 $PSSAResultsPath = ".\Tests\" + "PSSAResults" + ".xml"
 $CodeCoverageResultsPath = ".\Tests\" + "CodeCoverageResults" + ".xml"
-$ReadMeUpdatePath = ".\Tests\" + "ReadMe" + ".md"
+$ReadMeUpdatePath = ".\" + "ReadMe" + ".md"
 
 # Git for the version number change commit back to GitHub
 git config user.email "matt.collins@node-it.com"
