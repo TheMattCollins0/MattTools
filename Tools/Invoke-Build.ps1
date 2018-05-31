@@ -74,6 +74,7 @@ $CoveragePercent = [math]::floor(100 - (($Script:TestResults.CodeCoverage.Number
 # Update the code coverage badge in the README.md file
 Update-CodeCoveragePercent -CodeCoverage $CoveragePercent
 
+<#
 # Creation of docs path variable
 $Docs = ".\Docs"
 
@@ -109,3 +110,4 @@ if ($Docs) {
     # Update the help files
     Update-MarkdownHelp $Docs
 }
+#>
