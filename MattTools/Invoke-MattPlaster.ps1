@@ -122,6 +122,7 @@ function Invoke-MattPlaster {
         Version         = "0.0.1"
         ModuleName      = $ModuleName
         ModuleDesc      = $ModuleDescription
+        CompanyName     = "Node IT Solutions Ltd."
     }
 
     # If statement to check if a Public repository was requested
