@@ -4,13 +4,15 @@ function Set-LocationPowerShell {
     .SYNOPSIS
     Set location to my PowerShell Path
     .DESCRIPTION
-    Function to check if my PowerShell path exists then create a PSDrive to the PowerShell and set the location to PS:. Function can also be called by typing PS:
+    Function to check if my PowerShell path exists then create a PSDrive to the PowerShell and set the location to PSH:. Function can also be called by typing PSH or PSH:
     .PARAMETER PowerShell
     The -PowerShell parameter allows you to supply the path to your PowerShell folder. If the folder does not exist, you will see an error
     .EXAMPLE
     Set-LocationPowerShell
     .EXAMPLE
-    PS:
+    PSH:
+    .EXAMPLE
+    PSH
     #>
 
     [CmdletBinding()]
@@ -33,11 +35,18 @@ function Set-LocationPowerShell {
         throw "The supplied PowerShell path does not appear to exist"
     }
 
+    # Test if the $PowerShell path is valid
     if (Test-Path "$PowerShell") {
-        New-PSDrive -Name PS -PSProvider FileSystem -Root "$PowerShell" -Description "PS" | Out-Null
-        Set-Location PS:
+
+        # Create the PSH PSDrive
+        New-PSDrive -Name PSH -PSProvider FileSystem -Root "$PowerShell" -Description "PSH" | Out-Null
+        
+        # Set the location to the PSH drive
+        Set-Location PSH:
+    
     }
 
 }
 
-New-Alias -Name PS: -Value Set-LocationPowerShell
+New-Alias -Name PSH: -Value Set-LocationPowerShell
+New-Alias -Name PSH -Value Set-LocationPowerShell
