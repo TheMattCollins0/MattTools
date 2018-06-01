@@ -79,7 +79,7 @@ Update-CodeCoveragePercent -CodeCoverage $CoveragePercent
 $Docs = ".\Docs"
 
 # Creation of the output path variable
-$Output = $Docs + "\en-US\"
+$Output = .\en-US"
 
 # Module file path variable
 $ModuleFile = $ModulePath + "\" + $ModulePath + ".psm1"
@@ -92,11 +92,22 @@ $PSScriptRoot = $env:BUILD_DEFINITIONNAME
 
 # Creation and update of PlatyPS help if docs path does not exist
 if (!$Docs) {
+
+    # Creation of the Docs path
+    if (-not(Test-Path -Path $Docs -PathType Container)) {
+    New-Item -Path $Docs -ItemType Directory | Out-Null
+    }
+
     # Import the module
     Import-Module $ModuleFile
 
     # Create the new markdown help
     New-MarkdownHelp -Module $ModuleName -OutputFolder .\docs
+
+    # Creation of the en-US External help path 
+    if (-not(Test-Path -Path $Output -PathType Container)) {
+    New-Item -Path $Output -ItemType Directory | Out-Null
+    }
 
     # Create the external help
     New-ExternalHelp $Docs -OutputPath $Output
