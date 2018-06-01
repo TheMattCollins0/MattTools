@@ -2,7 +2,7 @@
 param()
 
 # Get all the functions within the module path
-$Scripts = @( Get-ChildItem -Path "$PSScriptRoot\*.ps1" -ErrorAction SilentlyContinue )
+$Scripts = @( Get-ChildItem -Path $PSScriptRoot\*.ps1 -ErrorAction SilentlyContinue )
 
 # Dot source the files
 Foreach ($Script in @( $Scripts )) {
@@ -15,4 +15,4 @@ Foreach ($Script in @( $Scripts )) {
 }
 
 # Export the module members
-Export-ModuleMember -function (Get-ChildItem -Path "$PSScriptRoot\*.ps1").basename
+Export-ModuleMember -function (Get-ChildItem -Path $PSScriptRoot\*.ps1).basename
