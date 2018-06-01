@@ -5,5 +5,4 @@ $Manifest = Import-PowerShellDataFile $ModulePath
 # Add one to the build of the version number
 [version]$NewVersion = "{0}.{1}.{2}" -f $Version.Major, $Version.Minor, ($Version.Build + 1) 
 # Update the manifest file with the new version number
-Update-ModuleManifest -Path $ModulePath -ModuleVersion $NewVersion
-
+Update-ModuleManifest -Path $ModulePath -ModuleVersion $NewVersion -FunctionsToExport 'Invoke-MattPlaster' -VariablesToExport "*" -AliasesToExport "*"
