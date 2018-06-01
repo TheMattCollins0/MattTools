@@ -21,14 +21,14 @@ function Set-LocationInput {
         [Parameter(Mandatory = $false)]
         [Alias('Path')]
         [string]
-        $Input = "C:\Scripts\Input"
+        $InputPath = "C:\Scripts\Input"
 
     )
 
     # Validation of the Input variable
     try {
         # Validate if the Input location is valid
-        Test-Path -Path $Input -ErrorAction Stop | Out-Null
+        Test-Path -Path $InputPath -ErrorAction Stop | Out-Null
     }
     catch {
         # Throws the script if the supplied Input location is not valid
@@ -36,10 +36,10 @@ function Set-LocationInput {
     }
 
     # Test if the $Input path is valid
-    if (Test-Path "$Input") {
+    if (Test-Path "$InputPath") {
         
         # Create the Input PSDrive
-        New-PSDrive -Name Input -PSProvider FileSystem -Root "$Input" -Description "Input" | Out-Null
+        New-PSDrive -Name Input -PSProvider FileSystem -Root "$InputPath" -Description "Input" | Out-Null
         
         # Set the location to the Input drive
         Set-Location Input:
