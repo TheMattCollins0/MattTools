@@ -28,7 +28,7 @@ $ErrorActionPreference = 'stop'
 # Install the Nuget package provider, Pester and PSScriptAnalyzer packages for testing
 Install-PackageProvider -Name Nuget -Scope CurrentUser -Force -Confirm:$false
 Install-Module -Name Pester -Scope CurrentUser -Force -SkipPublisherCheck -Confirm:$false
-Install-Module -Name PSScriptAnalyzer -Scope CurrentUser -Force -Confirm:$false
+# Install-Module -Name PSScriptAnalyzer -Scope CurrentUser -Force -Confirm:$false
 Install-Module -Name PlatyPS -Scope CurrentUser -Force -Confirm:$false
 
 # Install third party modules required for the module 
