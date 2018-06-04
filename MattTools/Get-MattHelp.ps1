@@ -1,5 +1,17 @@
 function Get-MattHelp {
 
+    <#
+    .SYNOPSIS
+    Help function
+    .DESCRIPTION
+    This function is purely used to write general help information to the PowerShell console
+    .EXAMPLE
+    Get-MattHelp
+    #>
+
+    [CmdletBinding()]
+    param ()
+
     Write-Host ""
     Write-Host "Type Connect-EOnline to connect to a clients Office 365 or Azure AD"
     Write-Host "You need to supply Office 365 Global Admin credentials for each client you want to connect to"
