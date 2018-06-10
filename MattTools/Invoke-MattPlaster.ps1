@@ -13,24 +13,22 @@ function Invoke-MattPlaster {
     The -ModuleDescription parameter supplies the name of your new PowerShell module and GitHub repository
     .PARAMETER ModuleDescription
     The -ModuleDescription parameter supplies the description of your new PowerShell module and GitHub repository
-    .PARAMETER TemplatePath
-    The -TemplatePath parameter allows an alternate path to be specified for the template path
     .EXAMPLE
     Invoke-MattPlaster -ModuleName "NameHere" -ModuleDescription "This is a module description"
     .EXAMPLE
     Invoke-MattPlaster -Name "NameHere" -Description "This is a module description"
     .EXAMPLE
-    Invoke-MattPlaster -ModuleName "NameHere" -ModuleDescription "This is a module description" -TemplatePath "TemplatePathHere"
+    Invoke-MattPlaster -ModuleName "NameHere" -ModuleDescription "This is a module description"
     .EXAMPLE
-    Invoke-MattPlaster -Name "NameHere" -Description "This is a module description" -TemplatePath "TemplatePathHere"
+    Invoke-MattPlaster -Name "NameHere" -Description "This is a module description"
     .EXAMPLE
     Invoke-MattPlaster -GitHubUserName YourUserNameHere -GitHubPath "C:\GitHubScripts" -ModuleName "NameHere" -ModuleDescription "This is a module description"
     .EXAMPLE
     Invoke-MattPlaster -UserName YourUserNameHere -Path "C:\GitHubScripts" -Name "NameHere" -Description "This is a module description"
     .EXAMPLE
-    Invoke-MattPlaster -GitHubUserName YourUserNameHere -GitHubPath "C:\GitHubScripts" -ModuleName "NameHere" -ModuleDescription "This is a module description" -TemplatePath "TemplatePathHere"
+    Invoke-MattPlaster -GitHubUserName YourUserNameHere -GitHubPath "C:\GitHubScripts" -ModuleName "NameHere" -ModuleDescription "This is a module description"
     .EXAMPLE
-    Invoke-MattPlaster -UserName YourUserNameHere -Path "C:\GitHubScripts" -Name "NameHere" -Description "This is a module description" -TemplatePath "TemplatePathHere"
+    Invoke-MattPlaster -UserName YourUserNameHere -Path "C:\GitHubScripts" -Name "NameHere" -Description "This is a module description"
     #>
 
     [CmdletBinding()]
@@ -44,11 +42,6 @@ function Invoke-MattPlaster {
         [Alias('Path')]
         [string]
         $GitHubPath = "C:\GitHub",
-
-        [Parameter(Mandatory = $false)]
-        [Alias('Template')]
-        [string]
-        $TemplatePath = "C:\GitHub\PlasterTemplate",
 
         [Parameter(Mandatory = $true, HelpMessage = "Please enter the name of the new module", ValueFromPipeline = $true)]
         [ValidateNotNullOrEmpty()]
@@ -131,7 +124,7 @@ function Invoke-MattPlaster {
 
     # Creation of the $PlasterSplat splat
     $PlasterSplat = @{
-        TemplatePath    = $TemplatePath
+        TemplatePath    = "C:\GitHub\PlasterTemplate"
         FullName        = "Matt Collins"
         DestinationPath = $Destination
         Version         = "0.0.1"
