@@ -125,13 +125,12 @@ function Invoke-MattPlaster {
     # Creation of the $PlasterSplat splat
     $PlasterSplat = @{
         TemplatePath    = "C:\GitHub\PlasterTemplate"
-        FullName        = "Matt Collins"
         DestinationPath = $Destination
-
         ModuleName      = $ModuleName
         ModuleDesc      = $ModuleDescription
         CompanyName     = "Node IT Solutions Ltd."
     }
+        # FullName        = "Matt Collins"
         # Version         = "0.0.1"
 
     # If statement to check if a Public repository was requested
