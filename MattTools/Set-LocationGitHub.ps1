@@ -49,4 +49,4 @@ function Set-LocationGitHub {
 }
 
 New-Alias -Name Git: -Value Set-LocationGitHub
-New-Alias -Name Git -Value Set-LocationGitHub
+# New-Alias -Name Git -Value Set-LocationGitHub

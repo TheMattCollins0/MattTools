@@ -158,7 +158,7 @@ function Invoke-MattPlaster {
     git remote add origin $GitHubRepository
 
     # Invoke Plaster using the supplied splat
-    Invoke-Plaster @PlasterSplat
+    Invoke-Plaster @PlasterSplat -Verbose
 
     # Change location to the newly created module directory
     Set-Location $Destination | Out-Null
