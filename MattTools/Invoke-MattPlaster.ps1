@@ -127,11 +127,12 @@ function Invoke-MattPlaster {
         TemplatePath    = "C:\GitHub\PlasterTemplate"
         FullName        = "Matt Collins"
         DestinationPath = $Destination
-        Version         = "0.0.1"
+
         ModuleName      = $ModuleName
         ModuleDesc      = $ModuleDescription
         CompanyName     = "Node IT Solutions Ltd."
     }
+        # Version         = "0.0.1"
 
     # If statement to check if a Public repository was requested
     if ( $RepositoryVisibility -eq "0" ) {
