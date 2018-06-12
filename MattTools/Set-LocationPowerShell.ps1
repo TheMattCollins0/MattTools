@@ -15,7 +15,7 @@ function Set-LocationPowerShell {
     PSH
     #>
 
-    [CmdletBinding()]
+    [CmdletBinding(SupportsShouldProcess=$True)]
     param (
 
         [Parameter(Mandatory = $false)]
@@ -25,25 +25,28 @@ function Set-LocationPowerShell {
 
     )
 
-    # Validation of the PowerShell variable
-    try {
-        # Validate if the PowerShell location is valid
-        Test-Path -Path $PowerShell -ErrorAction Stop | Out-Null
-    }
-    catch {
-        # Throws the script if the supplied PowerShell location is not valid
-        throw "The supplied PowerShell path does not appear to exist"
-    }
+    if ($PSCmdlet.ShouldProcess("Creation of PSDrive pointing to $PowerShell successful")) {     
+        # Validation of the PowerShell variable
+        try {
+            # Validate if the PowerShell location is valid
+            Test-Path -Path $PowerShell -ErrorAction Stop | Out-Null
+        }
+        catch {
+            # Throws the script if the supplied PowerShell location is not valid
+            throw "The supplied PowerShell path does not appear to exist"
+        }
 
-    # Test if the $PowerShell path is valid
-    if (Test-Path "$PowerShell") {
+        # Test if the $PowerShell path is valid
+        if (Test-Path "$PowerShell") {
 
-        # Create the PSH PSDrive
-        New-PSDrive -Name PSH -PSProvider FileSystem -Root "$PowerShell" -Description "PSH" | Out-Null
-        
-        # Set the location to the PSH drive
-        Set-Location PSH:
-    
+            # Create the PSH PSDrive
+            New-PSDrive -Name PSH -PSProvider FileSystem -Root "$PowerShell" -Description "PSH" | Out-Null
+            
+            # Set the location to the PSH drive
+            Set-Location PSH:
+            
+        }
+
     }
 
 }
