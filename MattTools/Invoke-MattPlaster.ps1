@@ -112,8 +112,8 @@ function Invoke-MattPlaster {
     $DevelopmentBranch = $host.ui.PromptForChoice( $DevelopmentBranchCaption, $DevelopmentBranchMessage, $DevelopmentBranchChoices, 0 )
 
     switch ( $DevelopmentBranch ) {
-        0 { "A development branch is required"; break }
-        1 { "A development branch is not required"; break }
+        0 { Write-Information "A development branch is required"; break }
+        1 { Write-Information "A development branch is not required"; break }
     }
 
     # Set current location to the path supplied in $GitHubPath
