@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
-<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="2" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2018-06-12" time="09:38:25">
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="2" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2018-06-12" time="10:51:24">
   <environment user="NDBHSV-DA-01$" machine-name="NDBHSV-DA-01" cwd="C:\agent\_work\1\s" user-domain="NODEIT" platform="Microsoft Windows Server 2016 Standard|C:\Windows|\Device\Harddisk0\Partition2" nunit-version="2.5.8.0" os-version="10.0.14393" clr-version="4.0.30319.42000" />
   <culture-info current-culture="en-GB" current-uiculture="en-US" />
-  <test-suite type="TestFixture" name="Pester" executed="True" result="Success" success="True" time="1.3286" asserts="0" description="Pester">
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Success" success="True" time="1.1494" asserts="0" description="Pester">
     <results>
-      <test-suite type="TestFixture" name=".\Tests\ModuleImport.tests.ps1" executed="True" result="Success" success="True" time="1.3286" asserts="0" description=".\Tests\ModuleImport.tests.ps1">
+      <test-suite type="TestFixture" name=".\Tests\ModuleImport.tests.ps1" executed="True" result="Success" success="True" time="1.1494" asserts="0" description=".\Tests\ModuleImport.tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="PowerShell Module Import Test" executed="True" result="Success" success="True" time="1.3286" asserts="0" description="PowerShell Module Import Test">
+          <test-suite type="TestFixture" name="PowerShell Module Import Test" executed="True" result="Success" success="True" time="1.1494" asserts="0" description="PowerShell Module Import Test">
             <results>
-              <test-case description="Module Path should exist" name="PowerShell Module Import Test.Module Path should exist" time="0.8184" asserts="0" success="True" result="Success" executed="True" />
-              <test-case description="Should be imported successfully" name="PowerShell Module Import Test.Should be imported successfully" time="0.5102" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Module Path should exist" name="PowerShell Module Import Test.Module Path should exist" time="0.79" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should be imported successfully" name="PowerShell Module Import Test.Should be imported successfully" time="0.3594" asserts="0" success="True" result="Success" executed="True" />
             </results>
           </test-suite>
         </results>
