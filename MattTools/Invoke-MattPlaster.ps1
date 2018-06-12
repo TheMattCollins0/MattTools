@@ -99,8 +99,8 @@ function Invoke-MattPlaster {
     $RepositoryVisibility = $host.ui.PromptForChoice( $RepositoryVisibilityCaption, $RepositoryVisibilityMessage, $RepositoryVisibilityChoices, 1 )
 
     switch ( $RepositoryVisibility ) {
-        0 { "You entered Public"; break }
-        1 { "You entered Private"; break }
+        0 { Write-Information "You entered Public"; break }
+        1 { Write-Information "You entered Private"; break }
     }
 
     # Prompt for the user to confirm if they require a development branch creating on the GitHub repository
