@@ -85,7 +85,7 @@ function Invoke-MattPlaster {
     }
     Catch {
         # Launch a web browser that opens at the git-scm.com website
-        Invoke-Expression -Command 'explorer https://git-scm.com/download'
+        Start 'https://git-scm.com/download'
         # Throw the script Git cannot be found in either Program Files or Program Files x86
         throw "Please ensure that both the PSGitHub and Plaster modules are installed and configured"
     }
