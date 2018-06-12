@@ -15,7 +15,7 @@ function Set-LocationInput {
     Input
     #>
 
-    [CmdletBinding()]
+    [CmdletBinding(SupportsShouldProcess=$True)]
     param (
 
         [Parameter(Mandatory = $false)]
@@ -25,27 +25,27 @@ function Set-LocationInput {
 
     )
 
-    # Validation of the Input variable
-    try {
-        # Validate if the Input location is valid
-        Test-Path -Path $InputPath -ErrorAction Stop | Out-Null
-    }
-    catch {
-        # Throws the script if the supplied Input location is not valid
-        throw "The supplied Input path does not appear to exist"
-    }
+    if ($PSCmdlet.ShouldProcess("Creation of PSDrive pointing to $InputPath successful")) {         # Validation of the Input variable
+        try {
+            # Validate if the Input location is valid
+            Test-Path -Path $InputPath -ErrorAction Stop | Out-Null
+        }
+        catch {
+            # Throws the script if the supplied Input location is not valid
+            throw "The supplied Input path does not appear to exist"
+        }
 
-    # Test if the $Input path is valid
-    if (Test-Path "$InputPath") {
-        
-        # Create the Input PSDrive
-        New-PSDrive -Name Input -PSProvider FileSystem -Root "$InputPath" -Description "Input" | Out-Null
-        
-        # Set the location to the Input drive
-        Set-Location Input:
+        # Test if the $Input path is valid
+        if (Test-Path "$InputPath") {
+            
+            # Create the Input PSDrive
+           New-PSDrive -Name Input -PSProvider FileSystem -Root "$InputPath" -Description "Input" | Out-Null
+            
+           # Set the location to the Input drive
+           Set-Location Input:
 
+        }
     }
-
 }
 
 New-Alias -Name Input: -Value Set-LocationInput

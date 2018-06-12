@@ -46,9 +46,7 @@ function Set-LocationPowerShell {
             Set-Location PSH:
             
         }
-
     }
-
 }
 
 New-Alias -Name PSH: -Value Set-LocationPowerShell

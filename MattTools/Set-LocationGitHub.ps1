@@ -15,7 +15,7 @@ function Set-LocationGitHub {
     Git
     #>
 
-    [CmdletBinding()]
+    [CmdletBinding(SupportsShouldProcess=$True)]
     param (
 
         [Parameter(Mandatory = $false)]
@@ -25,27 +25,28 @@ function Set-LocationGitHub {
 
     )
 
-    # Validation of the GitHub variable
-    try {
-        # Validate if the GitHub location is valid
-        Test-Path -Path $GitHub -ErrorAction Stop | Out-Null
-    }
-    catch {
-        # Throws the script if the supplied GitHub location is not valid
-        throw "The supplied GitHub path does not appear to exist"
-    }
+    if ($PSCmdlet.ShouldProcess("Creation of PSDrive pointing to $GitHub successful")) {     
+        # Validation of the GitHub variable
+        try {
+            # Validate if the GitHub location is valid
+            Test-Path -Path $GitHub -ErrorAction Stop | Out-Null
+        }
+        catch {
+            # Throws the script if the supplied GitHub location is not valid
+            throw "The supplied GitHub path does not appear to exist"
+        }
 
-    # Test if the $GitHub path is valid
-    if (Test-Path "$GitHub") {
+        # Test if the $GitHub path is valid
+        if (Test-Path "$GitHub") {
         
-        # Create the Git PSDrive
-        New-PSDrive -Name Git -PSProvider FileSystem -Root "$GitHub" -Description "Git" | Out-Null
-        
-        # Set the location to the Git drive
-        Set-Location Git:
+            # Create the Git PSDrive
+            New-PSDrive -Name Git -PSProvider FileSystem -Root "$GitHub" -Description "Git" | Out-Null
+            
+            # Set the location to the Git drive
+            Set-Location Git:
 
+        }
     }
-
 }
 
 New-Alias -Name Git: -Value Set-LocationGitHub

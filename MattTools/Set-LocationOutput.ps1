@@ -15,7 +15,7 @@ function Set-LocationOutput {
     Output
     #>
 
-    [CmdletBinding()]
+    [CmdletBinding(SupportsShouldProcess=$True)]
     param (
 
         [Parameter(Mandatory = $false)]
@@ -25,27 +25,28 @@ function Set-LocationOutput {
 
     )
 
-    # Validation of the Output variable
-    try {
-        # Validate if the Output location is valid
-        Test-Path -Path $Output -ErrorAction Stop | Out-Null
-    }
-    catch {
-        # Throws the script if the supplied Output location is not valid
-        throw "The supplied Output path does not appear to exist"
-    }
+    if ($PSCmdlet.ShouldProcess("Creation of PSDrive pointing to $Output successful")) {     
+        # Validation of the Output variable
+        try {
+            # Validate if the Output location is valid
+            Test-Path -Path $Output -ErrorAction Stop | Out-Null
+        }
+        catch {
+            # Throws the script if the supplied Output location is not valid
+            throw "The supplied Output path does not appear to exist"
+        }
 
-    # Test if the $Output path is valid
-    if (Test-Path "$Output") {
+        # Test if the $Output path is valid
+        if (Test-Path "$Output") {
         
-        # Create the Output PSDrive
-        New-PSDrive -Name Output -PSProvider FileSystem -Root "$Output" -Description "Output" | Out-Null
+            # Create the Output PSDrive
+            New-PSDrive -Name Output -PSProvider FileSystem -Root "$Output" -Description "Output" | Out-Null
         
-        # Set the location to the Output drive
-        Set-Location Output:
+            # Set the location to the Output drive
+            Set-Location Output:
 
+        }
     }
-
 }
 
 New-Alias -Name Output: -Value Set-LocationOutput
