@@ -40,7 +40,7 @@ function Set-LocationGitHub {
         if (Test-Path "$GitHub") {
         
             # Create the Git PSDrive
-            New-PSDrive -Name Git -PSProvider FileSystem -Root "$GitHub" -Description "Git" | Out-Null
+            New-PSDrive -Name Git -PSProvider FileSystem -Root "$GitHub" -Description "Git" -Scope Global | Out-Null
             
             # Set the location to the Git drive
             Set-Location Git:
