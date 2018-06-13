@@ -4,15 +4,13 @@ function Set-LocationPowerShell {
     .SYNOPSIS
     Set location to my PowerShell Path
     .DESCRIPTION
-    Function to check if my PowerShell path exists then create a PSDrive to the PowerShell and set the location to PSH:. Function can also be called by typing PSH or PSH:
+    Function to check if my PowerShell path exists then create a PSDrive to the PowerShell and set the location to PSH:. Function can also be called by typing PH
     .PARAMETER PowerShell
     The -PowerShell parameter allows you to supply the path to your PowerShell folder. If the folder does not exist, you will see an error
     .EXAMPLE
     Set-LocationPowerShell
     .EXAMPLE
-    PSH:
-    .EXAMPLE
-    PSH
+    PH
     #>
 
     [CmdletBinding(SupportsShouldProcess=$True)]
@@ -25,29 +23,17 @@ function Set-LocationPowerShell {
 
     )
 
-    if ($PSCmdlet.ShouldProcess("Creation of PSDrive pointing to $PowerShell successful")) {     
-        # Validation of the PowerShell variable
-        try {
-            # Validate if the PowerShell location is valid
-            Test-Path -Path $PowerShell -ErrorAction Stop | Out-Null
-        }
-        catch {
-            # Throws the script if the supplied PowerShell location is not valid
-            throw "The supplied PowerShell path does not appear to exist"
-        }
-
+    if ($PSCmdlet.ShouldProcess("Change of location to the $PowerShell path successful")) {     
         # Test if the $PowerShell path is valid
         if (Test-Path "$PowerShell") {
-
-            # Create the PSH PSDrive
-            New-PSDrive -Name PSH -PSProvider FileSystem -Root "$PowerShell" -Description "PSH" | Out-Null
-            
-            # Set the location to the PSH drive
-            Set-Location PSH:
-            
+            # Set console location to the PowerShell drive
+            Set-Location $PowerShell
+        }
+        else {
+            # Show error if the $PowerShell path variable is either invalid or not accessible
+            throw "Unable to move to the PowerShell path, check that it exists and is accessible"
         }
     }
 }
 
-New-Alias -Name PSH: -Value Set-LocationPowerShell
-New-Alias -Name PSH -Value Set-LocationPowerShell
+New-Alias -Name PH -Value Set-LocationPowerShell
