@@ -2,9 +2,9 @@ function Set-LocationRoot {
 
     <#
     .SYNOPSIS
-    Set location to my Root Path
+    Set location to the root path
     .DESCRIPTION
-    Function to check if my Root path exists then create a PSDrive to the root folder and set the location to C:\. Function can also be called by typing C
+    Function to check if the root path exists and sets the location to the root folder  Function can also be called by typing C
     .PARAMETER Root
     The -Root parameter allows you to supply the path to your root folder. If the folder does not exist, you will see an error
     .EXAMPLE
