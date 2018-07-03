@@ -20,9 +20,9 @@ function Invoke-ProfileBanner {
     Write-Host " *                                                                                                                                                  * "
     Write-Host " *                          Install-Module -Repository NodePowerShellRepository -Name ModuleName -Scope CurrentUser -Force                          * "
     Write-Host " *                                                                                                                                                  * "
-    Write-Host " *                                                             "
+    Write-Host ' *                                                             '
     Write-Host "Session started at $Time" -NoNewLine -ForegroundColor Red
-    Write-Host "                                                          * " -NoNewLine
+    Write-Host '                                                          * ' -NoNewLine
     Write-Host " *                                                                                                                                                  * "
     Write-Host " **************************************************************************************************************************************************** "
 
