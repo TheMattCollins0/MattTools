@@ -11,7 +11,7 @@ function Invoke-ProfileBanner {
 
     Write-Host " **************************************************************************************************************************************************** "
     Write-Host " *                                                                                                                                                  * "
-    Write-Host " *                                                    Type Get-MattHelp to view help Host                                                    * "
+    Write-Host " *                                                    Type Get-MattHelp to view help information                                                    * "
     Write-Host " *                                                                                                                                                  * "
     Write-Host ' *                                                     Type "Gh" to change to the GitHub folder                                                     * '
     Write-Host ' *                                                   Type "Ph" to change to the PowerShell folder                                                   * '
