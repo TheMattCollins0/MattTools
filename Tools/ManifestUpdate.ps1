@@ -9,7 +9,7 @@ $Functions = @( Get-ChildItem -Path $FunctionPath\*.ps1 -ErrorAction SilentlyCon
 $ExportedFunctions = @()
 
 # Loop through all the functions and export them to a string split by commas
-Foreach ($Function in @( $Functions )) {
+foreach ($Function in @( $Functions )) {
     $FunctionString = $($Function.BaseName)
     $ExportedFunctions += $FunctionString
 }
