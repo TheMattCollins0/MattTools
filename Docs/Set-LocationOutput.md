@@ -13,12 +13,12 @@ Set location to Output
 ## SYNTAX
 
 ```
-Set-LocationOutput [[-Output] <String>] [<CommonParameters>]
+Set-LocationOutput [[-Output] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 Function to check if my Output path exists then create a PSDrive to the Output and set the location to Output:.
-Function can also be called by typing Output or Output:
+Function can also be called by typing Output or Out
 
 ## EXAMPLES
 
@@ -29,12 +29,12 @@ Set-LocationOutput
 
 ### EXAMPLE 2
 ```
-Output:
+Output
 ```
 
 ### EXAMPLE 3
 ```
-Output
+Out
 ```
 
 ## PARAMETERS
@@ -51,6 +51,37 @@ Aliases: Path
 Required: False
 Position: 1
 Default value: C:\Scripts\Output
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

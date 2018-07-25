@@ -36,10 +36,30 @@ Invoke-MattPlaster -Name "NameHere" -Description "This is a module description"
 
 ### EXAMPLE 3
 ```
-Invoke-MattPlaster -GitHubUserName YourUserNameHere -GitHubPath "C:\GitHubScripts" -ModuleName "NameHere" -ModuleDescription "This is a module description"
+Invoke-MattPlaster -ModuleName "NameHere" -ModuleDescription "This is a module description"
 ```
 
 ### EXAMPLE 4
+```
+Invoke-MattPlaster -Name "NameHere" -Description "This is a module description"
+```
+
+### EXAMPLE 5
+```
+Invoke-MattPlaster -GitHubUserName YourUserNameHere -GitHubPath "C:\GitHubScripts" -ModuleName "NameHere" -ModuleDescription "This is a module description"
+```
+
+### EXAMPLE 6
+```
+Invoke-MattPlaster -UserName YourUserNameHere -Path "C:\GitHubScripts" -Name "NameHere" -Description "This is a module description"
+```
+
+### EXAMPLE 7
+```
+Invoke-MattPlaster -GitHubUserName YourUserNameHere -GitHubPath "C:\GitHubScripts" -ModuleName "NameHere" -ModuleDescription "This is a module description"
+```
+
+### EXAMPLE 8
 ```
 Invoke-MattPlaster -UserName YourUserNameHere -Path "C:\GitHubScripts" -Name "NameHere" -Description "This is a module description"
 ```

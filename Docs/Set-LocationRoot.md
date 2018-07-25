@@ -5,37 +5,36 @@ online version:
 schema: 2.0.0
 ---
 
-# Set-LocationPowerShell
+# Set-LocationRoot
 
 ## SYNOPSIS
-Set location to my PowerShell Path
+Set location to the root path
 
 ## SYNTAX
 
 ```
-Set-LocationPowerShell [[-PowerShell] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-LocationRoot [[-Root] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Function to check if my PowerShell path exists then create a PSDrive to the PowerShell and set the location to PSH:.
-Function can also be called by typing PH
+Function to check if the root path exists and sets the location to the root folder  Function can also be called by typing C
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Set-LocationPowerShell
+Set-LocationRoot
 ```
 
 ### EXAMPLE 2
 ```
-PH
+C
 ```
 
 ## PARAMETERS
 
-### -PowerShell
-The -PowerShell parameter allows you to supply the path to your PowerShell folder.
+### -Root
+The -Root parameter allows you to supply the path to your root folder.
 If the folder does not exist, you will see an error
 
 ```yaml
@@ -45,7 +44,7 @@ Aliases: Path
 
 Required: False
 Position: 1
-Default value: C:\GitHub\PowerShell
+Default value: C:\
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

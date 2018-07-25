@@ -13,12 +13,12 @@ Set location to GitHub
 ## SYNTAX
 
 ```
-Set-LocationGitHub [[-GitHub] <String>] [<CommonParameters>]
+Set-LocationGitHub [[-GitHub] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Function to check if my GitHub path exists then create a PSDrive to the GitHub and set the location to Git:.
-Function can also be called by typing Git or Git:
+Function to check if my GitHub path exists then set the prompts location to the path.
+Function can also be called by typing GitHub or Gh
 
 ## EXAMPLES
 
@@ -29,12 +29,12 @@ Set-LocationGitHub
 
 ### EXAMPLE 2
 ```
-Git:
+Gh
 ```
 
 ### EXAMPLE 3
 ```
-Git
+GitHub
 ```
 
 ## PARAMETERS
@@ -51,6 +51,37 @@ Aliases: Path
 Required: False
 Position: 1
 Default value: C:\GitHub
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
