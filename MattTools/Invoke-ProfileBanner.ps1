@@ -28,6 +28,8 @@ function Invoke-ProfileBanner {
     Write-Host " *                                                                                                                                                  * "
     Write-Host " *                          Install-Module -Repository NodePowerShellRepository -Name ModuleName -Scope CurrentUser -Force                          * "
     Write-Host " *                                                                                                                                                  * "
+    Write-Host " *                                                 Type Update-MattModules to update all my modules                                                 * "
+    Write-Host " *                                                                                                                                                  * "
     & $SessionStartTimeScriptBlock
     Write-Host " *                                                                                                                                                  * "
     Write-Host " **************************************************************************************************************************************************** "
