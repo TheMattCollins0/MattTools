@@ -11,10 +11,13 @@ function Select-AllObjects {
     Sel
     #>
 
-    Param ()
+    Param (
 
-        Select-Object *
+        [Parameter(ValueFromPipeline)]
+        $InputObject
+    )
 
+    $InputObject | Select-Object *
 
 }
 
