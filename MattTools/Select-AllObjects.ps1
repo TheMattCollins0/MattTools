@@ -13,9 +13,8 @@ function Select-AllObjects {
 
     Param ()
 
-    process {
         Select-Object *
-    }
+
 
 }
 
