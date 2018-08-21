@@ -54,6 +54,7 @@ function Update-MattModules {
                 ForEach ( $Update in $Updates) {
                     Write-Host "Currently updating $Update to the latest version"
                     Install-Module -Name $Update -Repository NodePowerShellRepository -Scope CurrentUser -Force
+                    Write-Host "Completed updating the $Update module"
                 }
             }
             else {
