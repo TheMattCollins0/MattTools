@@ -30,7 +30,7 @@ function Invoke-ProfileBanner {
     Write-Host " *                                                                                                                                                  * "
     Write-Host " *                                                 Type Update-MattModules to update all my modules                                                 * "
     Write-Host " *                                                                                                                                                  * "
-    Write-Host ""
+    Write-Host
     & $SessionStartTimeScriptBlock
     Write-Host " *                                                                                                                                                  * "
     Write-Host " **************************************************************************************************************************************************** "
