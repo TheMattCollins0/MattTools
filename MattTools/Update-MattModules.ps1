@@ -30,7 +30,7 @@ function Update-MattModules {
             Write-Verbose "There are $($Modules.count) modules installed"
 
             # Create an empty collection to store the modules that need updating
-            $ModulesToUpdate = @()
+            $Updates = @()
 
             ForEach ( $Module in @( $Modules )) {
                 Write-Verbose "Currently selected module is - $($Module.Name)"
@@ -38,26 +38,26 @@ function Update-MattModules {
                 Write-Verbose "$($SelectModule.Name) module has been found in the NodePowerShellRepository"
                 $ObjectComparison = Compare-Object -ReferenceObject $SelectModule $Module -Property Name, Version | Where-Object { $_.SideIndicator -eq "=>" } | Select-Object -Property Name, Version
                 if ( $ObjectComparison ) {
-                    Write-Information "    An update for $($ObjectComparison.Name) has been found"
+                    Write-Host "    An update for $($ObjectComparison.Name) has been found"
                     $ModuleString = $($ObjectComparison.Name)
-                    $ModulesToUpdate += $ModuleString
+                    $Updates += $ModuleString
                 }
                 else {
-                    Write-Information "    An update for $($Module.Name) has not been found"
+                    Write-Host "    An update for $($Module.Name) has not been found"
                 }
             }
 
-            if ( $ModulesToUpdate.count -ge 1 ) {
-                Write-Verbose "There are $($ModulesToUpdate.count) modules to be updated"
+            if ( $Updates.count -ge 1 ) {
+                Write-Verbose "There are $($Updates.count) modules to be updated"
 
                 # Loop through all modules with updates available and install the latest version
-                ForEach ( $Module in $ModulesToUpdate) {
-                    Write-Information "Currently updating $ModuleName to the latest version"
-                    Install-Module -Name $($Module.Name) -Repository NodePowerShellRepository -Scope CurrentUser -Force
+                ForEach ( $Update in $Updates) {
+                    Write-Host "Currently updating $($Update.Name) to the latest version"
+                    Install-Module -Name $($Update.Name) -Repository NodePowerShellRepository -Scope CurrentUser -Force
                 }
             }
             else {
-                Write-Information "There are no modules that require updates"
+                Write-Host "There are no modules that require updates"
             }
         }
     }
@@ -80,12 +80,12 @@ function Update-MattModules {
                 Write-Verbose "$($SelectModule.Name) module has been found in the PSGallery"
                 $ObjectComparison = Compare-Object -ReferenceObject $SelectModule $Module -Property Name, Version | Where-Object { $_.SideIndicator -eq "=>" } | Select-Object -Property Name, Version
                 if ( $ObjectComparison ) {
-                    Write-Information "    An update for $($ObjectComparison.Name) has been found"
+                    Write-Host "    An update for $($ObjectComparison.Name) has been found"
                     $ModuleString = $($ObjectComparison.Name)
                     $ModulesToUpdate += $ModuleString
                 }
                 else {
-                    Write-Information "    An update for $($Module.Name) has not been found"
+                    Write-Host "    An update for $($Module.Name) has not been found"
                 }
             }
 
@@ -94,12 +94,12 @@ function Update-MattModules {
 
                 # Loop through all modules with updates available and install the latest version
                 ForEach ( $Module in $ModulesToUpdate) {
-                    Write-Information "Currently updating $ModuleName to the latest version"
+                    Write-Host "Currently updating $ModuleName to the latest version"
                     Install-Module -Name $($Module.Name) -Repository PSGallery -Scope CurrentUser -Force
                 }
             }
             else {
-                Write-Information "There are no modules that require updates"
+                Write-Host "There are no modules that require updates"
             }
         }
 
