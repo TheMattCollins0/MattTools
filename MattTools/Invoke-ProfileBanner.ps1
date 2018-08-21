@@ -11,7 +11,7 @@ function Invoke-ProfileBanner {
 
     $SessionStartTimeScriptBlock = {
 
-        Write-Host " *                                                             "
+        Write-Host " *                                                             " -NoNewLine
         Write-Host "Session started at $Time" -ForegroundColor Red -NoNewLine
         Write-Host "                                                          * " -NoNewLine
 
@@ -30,6 +30,7 @@ function Invoke-ProfileBanner {
     Write-Host " *                                                                                                                                                  * "
     Write-Host " *                                                 Type Update-MattModules to update all my modules                                                 * "
     Write-Host " *                                                                                                                                                  * "
+    Write-Host ""
     & $SessionStartTimeScriptBlock
     Write-Host " *                                                                                                                                                  * "
     Write-Host " **************************************************************************************************************************************************** "
