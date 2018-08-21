@@ -11,7 +11,7 @@ function Invoke-ProfileBanner {
 
     $SessionStartTimeScriptBlock = {
 
-        Write-Host " *                                                             " -NoNewLine
+        Write-Host " *                                                             "
         Write-Host "Session started at $Time" -ForegroundColor Red -NoNewLine
         Write-Host "                                                          * " -NoNewLine
 
