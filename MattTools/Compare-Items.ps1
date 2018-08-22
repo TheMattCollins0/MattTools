@@ -38,14 +38,14 @@ function Compare-Items {
         $FileExtensionComparison = Compare-Object $OriginalFileCheck.Extension $CompareFileCheck.Extension
 
         if ( $Null -ne $FileExtensionComparison) {
-            throw "The file extensions did not match, ensure the file extensions match"
+            throw "The file extensions do not match, ensure the file extensions match before attempting again"
         }
         else {
             Write-Verbose "Both file extensions match, continuing the file checks"
         }
 
         if ( $OriginalFileCheck.Extension -ne ".txt" -or $CompareFileCheck.Extension -ne ".txt" ) {
-            throw "One or both of the file extensions are not txt, change this and try again"
+            throw "Supplied file extensions are not .txt, change to .txt and try the comparison again"
         }
         else {
             Write-Verbose "Both file extensions are .txt, continuing with the script now. Running the comparison now"
