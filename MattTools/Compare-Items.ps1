@@ -68,7 +68,7 @@ function Compare-Items {
 
         # Write message to console if there are no differences, or show found differences
         if ( $Null -eq $Comparison ) {
-            Write-Information "The supplied txt files do not have any differences"
+            Write-Host "The supplied txt files do not have any differences"
         }
         elseif ( $Comparison ) {
             $Comparison
