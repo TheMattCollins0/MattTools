@@ -43,7 +43,7 @@ function Update-MattModules {
                     $Updates += $ModuleString
                 }
                 else {
-                    Write-Host "    An update for $($Module.Name) has not been found" -ForegroundColor Red
+                    Write-Host "An update for $($Module.Name) has not been found" -ForegroundColor Red
                 }
             }
 
@@ -54,7 +54,7 @@ function Update-MattModules {
                 ForEach ( $Update in $Updates) {
                     Write-Host "Currently updating $Update to the latest version" -ForegroundColor DarkBlue
                     Install-Module -Name $Update -Repository NodePowerShellRepository -Scope CurrentUser -Force
-                    Write-Host "Completed updating the $Update module" -ForegroundColor DarkBlue
+                    Write-Host "    Completed updating the $Update module" -ForegroundColor DarkBlue
                 }
             }
             else {
@@ -86,7 +86,7 @@ function Update-MattModules {
                     $Updates += $ModuleString
                 }
                 else {
-                    Write-Host "    An update for $($Module.Name) has not been found" -ForegroundColor Red
+                    Write-Host "An update for $($Module.Name) has not been found" -ForegroundColor Red
                 }
             }
 
@@ -97,7 +97,7 @@ function Update-MattModules {
                 ForEach ( $Update in $Updates) {
                     Write-Host "Currently updating $Update to the latest version" -ForegroundColor DarkBlue
                     Install-Module -Name $Update -Repository PSGallery -Scope CurrentUser -Force
-                    Write-Host "Completed updating the $Update module" -ForegroundColor DarkBlue
+                    Write-Host "    Completed updating the $Update module" -ForegroundColor DarkBlue
                 }
             }
             else {
