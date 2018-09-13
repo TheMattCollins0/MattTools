@@ -9,14 +9,6 @@ function Invoke-ProfileBanner {
     Invoke-ProfileBanner
     #>
 
-    $SessionStartTimeScriptBlock = {
-
-        Write-Host " *                                                             " -NoNewLine
-        Write-Host "Session started at $Time" -ForegroundColor Red -NoNewLine
-        Write-Host "                                                          * " -NoNewLine
-
-    }
-
     Write-Host " **************************************************************************************************************************************************** "
     Write-Host " *                                                                                                                                                  * "
     Write-Host " *                                                    Type Get-MattHelp to view help information                                                    * "
@@ -30,7 +22,9 @@ function Invoke-ProfileBanner {
     Write-Host " *                                                                                                                                                  * "
     Write-Host " *                                                 Type Update-MattModules to update all my modules                                                 * "
     Write-Host " *                                                                                                                                                  * "
-    & $SessionStartTimeScriptBlock
+    Write-Host " *"
+    Write-Host "                                                             Session started at $Time                                                          " -NoNewLine -ForegroundColor Red
+    Write-Host "* " -NoNewLine
     Write-Host " *                                                                                                                                                  * "
     Write-Host " **************************************************************************************************************************************************** "
 
