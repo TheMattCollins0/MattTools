@@ -58,11 +58,11 @@ if (-not(Test-Path -Path $Folder -PathType Container)) {
 
 # Creation of result output file variables
 $PesterResultsPath = ".\" + "Results" + "\" + "PesterResults" + ".xml"
-$PSSAResultsPath = ".\" + "Results" + "\" + "PSSAResults" + ".xml"
+# $PSSAResultsPath = ".\" + "Results" + "\" + "PSSAResults" + ".xml"
 
 # Run the Pester and PSScriptAnalyzer tests
-Invoke-Pester -OutputFile $PesterResultsPath -OutputFormat 'NUnitXml' -Script '.\Tests\ModuleImport.tests.ps1'
-Invoke-Pester -OutputFile $PSSAResultsPath -OutputFormat 'NUnitXml' -Script '.\Tests\PSSA.tests.ps1'
+Invoke-Pester -OutputFile $PesterResultsPath -OutputFormat 'NUnitXml' -Script '.\Tests*'
+# Invoke-Pester -OutputFile $PSSAResultsPath -OutputFormat 'NUnitXml' -Script '.\Tests\PSSA.tests.ps1'
 
 <#
 # Creation of path variable
