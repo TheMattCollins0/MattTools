@@ -1,4 +1,5 @@
-function Update-CodeCoveragePercent {  
+<#
+function Update-CodeCoveragePercent {
     [cmdletbinding(supportsshouldprocess)]
     param(
         [int]
@@ -17,10 +18,11 @@ function Update-CodeCoveragePercent {
 
     if ($PSCmdlet.ShouldProcess($TextFilePath)) {
         $ReadmeContent = (Get-Content $TextFilePath)
-        $ReadmeContent = $ReadmeContent -replace "!\[Test Coverage\].+\)", "![Test Coverage](https://img.shields.io/badge/coverage-$CodeCoverage%25-$BadgeColor.svg?maxAge=60)" 
+        $ReadmeContent = $ReadmeContent -replace "!\[Test Coverage\].+\)", "![Test Coverage](https://img.shields.io/badge/coverage-$CodeCoverage%25-$BadgeColor.svg?maxAge=60)"
         $ReadmeContent | Set-Content -Path $TextFilePath
     }
 }
+#>
 
 # Set the global Error action preference to stop
 $ErrorActionPreference = 'stop'
@@ -31,7 +33,7 @@ Install-Module -Name Pester -Scope CurrentUser -Force -SkipPublisherCheck -Confi
 # Install-Module -Name PSScriptAnalyzer -Scope CurrentUser -Force -Confirm:$false
 Install-Module -Name PlatyPS -Scope CurrentUser -Force -Confirm:$false
 
-# Install third party modules required for the module 
+# Install third party modules required for the module
 Install-Module -Name PSGitHub -Scope CurrentUser -Force -Confirm:$false
 Install-Module -Name Plaster -Scope CurrentUser -Force -Confirm:$false
 
@@ -43,10 +45,10 @@ Import-Module PSGitHub -Force
 Import-Module Plaster -Force
 
 # Creation of module path variable
-$ModulePath = $env:BUILD_DEFINITIONNAME
+# $ModulePath = $env:BUILD_DEFINITIONNAME
 
 # Populate the $CodeFiles variable with the FullName of all script files within the module path
-$CodeFiles = (Get-ChildItem $ModulePath -Recurse -Include "*.psm1", "*.ps1").FullName
+# $CodeFiles = (Get-ChildItem $ModulePath -Recurse -Include "*.psm1", "*.ps1").FullName
 
 # Create the results folder to contain the Pester test results
 $Folder = ".\Results"
@@ -62,6 +64,7 @@ $PSSAResultsPath = ".\" + "Results" + "\" + "PSSAResults" + ".xml"
 Invoke-Pester -OutputFile $PesterResultsPath -OutputFormat 'NUnitXml' -Script '.\Tests\ModuleImport.tests.ps1'
 Invoke-Pester -OutputFile $PSSAResultsPath -OutputFormat 'NUnitXml' -Script '.\Tests\PSSA.tests.ps1'
 
+<#
 # Creation of path variable
 $Path = ".\Tests"
 
@@ -73,7 +76,7 @@ $CoveragePercent = [math]::floor(100 - (($Script:TestResults.CodeCoverage.Number
 
 # Update the code coverage badge in the README.md file
 Update-CodeCoveragePercent -CodeCoverage $CoveragePercent
-
+#>
 <#
 # Creation of docs path variable
 $Docs = ".\Docs"
@@ -104,7 +107,7 @@ if (!$Docs) {
     # Create the new markdown help
     New-MarkdownHelp -Module $ModuleName -OutputFolder .\docs
 
-    # Creation of the en-US External help path 
+    # Creation of the en-US External help path
     if (-not(Test-Path -Path $Output -PathType Container)) {
     New-Item -Path $Output -ItemType Directory | Out-Null
     }
