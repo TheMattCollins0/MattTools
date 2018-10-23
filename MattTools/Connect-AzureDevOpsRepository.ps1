@@ -1,13 +1,27 @@
-function New-AzureDevOpsRepository {
+function Connect-AzureDevOpsRepository {
 
-    
+    [cmdletbinding()]
+    param (
+        [Parameter(Mandatory = $false)]
+        $ModuleFolderPath = $env:AGENT_RELEASEDIRECTORY + "\output\s\Output",
+
+        [Parameter(Mandatory = $false)]
+        $RepositoryName,
+
+        [Parameter(Mandatory = $false)]
+        $FeedUsername,
+
+        [Parameter(Mandatory = $false)]
+        $PAT
+    )
+
+
     # Variables
-    $powershellGetVersion = '1.5.0.0' # DO NOT use the latest 1.6.0 version as there is issues with this process
-    $moduleFolderPath = 'C:\path\to\PowerShell\Module\FOLDER' # only target folder, NOT the .psm1 or .psd1
-    $repositoryName = 'psmodules'
-    $feedUsername = 'NotChecked'
-    $PAT = 'abcdefghijklmnopqrstuv1234567890' # Enter your Personal Access Token
-    $packageSourceUrl = "https://ACCOUNTNAME.pkgs.visualstudio.com/_packaging/$repositoryName/nuget/v2" # Enter your VSTS AccountName (note: v2 Feed)
+    # $ModuleFolderPath = 'C:\path\to\PowerShell\Module\FOLDER' # only target folder, NOT the .psm1 or .psd1
+    # $repositoryName = 'psmodules'
+    # $feedUsername = 'NotChecked'
+    # $PAT = 'abcdefghijklmnopqrstuv1234567890' # Enter your Personal Access Token
+    $packageSourceUrl = "https://ACCOUNTNAME.pkgs.visualstudio.com/_packaging/$RepositoryName/nuget/v2" # Enter your VSTS AccountName (note: v2 Feed)
 
     # This is downloaded during Step 3, but could also be "C:\Users\USERNAME\AppData\Local\Microsoft\Windows\PowerShell\PowerShellGet\NuGet.exe"
     # if not running script as Administrator.
@@ -66,8 +80,4 @@ function New-AzureDevOpsRepository {
     # Check new PowerShell Repository is registered
     Get-PSRepository -Name $repositoryName
 
-
-    # Step 6
-    # Publish PowerShell module (2nd time lucky!)
-    Publish-Module @publishParams
 }
