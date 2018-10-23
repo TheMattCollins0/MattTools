@@ -12,7 +12,7 @@
 RootModule = 'MattTools.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.3.83'
+ModuleVersion = '0.3.84'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -112,9 +112,6 @@ PrivateData = @{
 
         # ReleaseNotes of this module
         # ReleaseNotes = ''
-
-        # Prerelease string of this module
-        # Prerelease = ''
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
         # RequireLicenseAcceptance = False
