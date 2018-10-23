@@ -21,7 +21,7 @@ function Connect-AzureDevOpsRepository {
     # $repositoryName = 'psmodules'
     # $feedUsername = 'NotChecked'
     # $PAT = 'abcdefghijklmnopqrstuv1234567890' # Enter your Personal Access Token
-    $packageSourceUrl = "https://ACCOUNTNAME.pkgs.visualstudio.com/_packaging/$RepositoryName/nuget/v2" # Enter your VSTS AccountName (note: v2 Feed)
+    $packageSourceUrl = "https://pkgs.dev.azure.com/MattNodeIT/_packaging/$RepositoryName/nuget/v2" # Enter your VSTS AccountName (note: v2 Feed)
 
     # This is downloaded during Step 3, but could also be "C:\Users\USERNAME\AppData\Local\Microsoft\Windows\PowerShell\PowerShellGet\NuGet.exe"
     # if not running script as Administrator.
