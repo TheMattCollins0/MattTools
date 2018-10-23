@@ -53,6 +53,7 @@ function Connect-AzureDevOpsRepository {
         NugetApiKey = 'VSTS'
         Verbose     = $true
         Confirm     = $false
+        Force       = $true
     }
     Publish-Module @publishParams
 
