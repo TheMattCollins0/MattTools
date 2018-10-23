@@ -30,8 +30,8 @@ function Connect-AzureDevOpsRepository {
 
     # Step 1
     # Upgrade PowerShellGet
-    Install-Module PowerShellGet -Force
-    Remove-Module PowerShellGet -Force
+    # Install-Module PowerShellGet -Force
+    # Remove-Module PowerShellGet -Force
     Import-Module PowerShellGet -Force
 
 
