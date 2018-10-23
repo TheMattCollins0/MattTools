@@ -50,6 +50,7 @@ function Connect-AzureDevOpsRepository {
         Verbose     = $true
         Confirm     = $false
         Force       = $true
+        ErrorAction = 'SilentlyContinue'
     }
     Publish-Module @publishParams | Out-Null
 
