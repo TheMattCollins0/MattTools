@@ -51,7 +51,7 @@ function Connect-AzureDevOpsRepository {
         Confirm     = $false
         Force       = $true
     }
-    $null = Publish-Module @publishParams
+    Publish-Module @publishParams | Out-Null
 
 
     # Step 4
