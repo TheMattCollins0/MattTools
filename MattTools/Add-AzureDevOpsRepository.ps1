@@ -33,7 +33,7 @@ function Add-AzureDevOpsRepository {
         Write-Verbose -Message 'The credentials appear to have been created successfully in the $Credentials variable. Checking for repository existence now'
 
         # Check to see if there is a repository already registered with the same name
-        $RepositoryCheck = Get-PSRepository -Name $RepositoryName
+        $RepositoryCheck = Get-PSRepository -Name $RepositoryName -ErrorAction SilentlyContinue
         if (!$RepositoryCheck) {
             Write-Verbose -Message "There is not another repository with the same name, proceeding to the creation now"
         }
