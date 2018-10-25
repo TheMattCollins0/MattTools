@@ -30,7 +30,7 @@ function Add-AzureDevOpsRepository {
         catch {
             throw "Unable to retrive the credentials, please check they were stored successfully. Try running BetterCredentials\Get-Credential again manually"
         }
-        Write-Verbose -Message "The credentials appear to have been created successfully in the $Credentials variable. Checking for repository existence now"
+        Write-Verbose -Message 'The credentials appear to have been created successfully in the $Credentials variable. Checking for repository existence now'
 
         # Check to see if there is a repository already registered with the same name
         $RepositoryCheck = Get-PSRepository -Name $RepositoryName
