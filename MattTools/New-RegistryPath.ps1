@@ -16,7 +16,7 @@ function New-RegistryPath {
     [cmdletbinding()]
     param (
         [Parameter(Mandatory = $false, ValueFromPipeline = $true)]
-        [string[]]$Path
+        $Path
     )
 
     begin {

@@ -21,17 +21,17 @@ function New-RegistryProperty {
     [cmdletbinding()]
     param (
         [Parameter(Mandatory = $false, ValueFromPipeline = $true)]
-        [string[]]$Path,
+        $Path,
 
         [Parameter(Mandatory = $false, ValueFromPipeline = $true)]
-        [string[]]$Name,
+        $Name,
 
         [Parameter(Mandatory = $false, ValueFromPipeline = $true)]
-        [string[]]$Value,
+        $Value,
 
         [Parameter(Mandatory = $true, ValueFromPipeline = $true)]
         [ValidateSet("String", "ExpandString", "Binary", "DWord", "MultiString", "Qword")]
-        [string[]]$PropertyType
+        $PropertyType
     )
 
     begin {
