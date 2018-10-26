@@ -50,9 +50,12 @@ function New-RegistryProperty {
             throw "Please supply a path that begins with either HKLM:\ or HKCU:\ and try again"
         }
 
-        # Check if the path already exists
+        # Check if the path exists, if it does not the function will create it
         if ( !( Test-Path $Path ) ) {
-            throw "The specified path does not exist, please run New-RegistryPath to create it first"
+            Write-Verbose -Message "The specified path does not exist, running New-RegistryPath to create it first"
+
+            # Running New-RegistryPath to create the path supplied in the $Path variable
+            New-RegistryPath -Path $Path
         }
 
         ## Name parameter checking
