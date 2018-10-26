@@ -12,6 +12,7 @@ function New-RegistryProperty {
     Specifies the value of the new registry property
     .PARAMETER PropertyType
     Specifies the PropertyType of the property the following property types are available for use:
+    
     String: Specifies a null-terminated string. Equivalent to REG_SZ.
     ExpandString: Specifies a null-terminated string that contains unexpanded references to environment variables that are expanded when the value is retrieved. Equivalent to REG_EXPAND_SZ.
     Binary: Specifies binary data in any form. Equivalent to REG_BINARY.
