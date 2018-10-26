@@ -28,7 +28,7 @@ function New-RegistryProperty {
 
         [Parameter(Mandatory = $false, ValueFromPipeline = $true)]
         [string[]]$Value,
-        
+
         [Parameter(Mandatory = $true, ValueFromPipeline = $true)]
         [ValidateSet("String", "ExpandString", "Binary", "DWord", "MultiString", "Qword")]
         [string[]]$PropertyType
@@ -51,8 +51,8 @@ function New-RegistryProperty {
         }
 
         # Check if the path already exists
-        if ((Test-Path $Path)) {
-            throw "The specified path already exists, please supply an alternative path"
+        if ( !( Test-Path $Path ) ) {
+            throw "The specified path does not exist, please run New-RegistryPath to create it first"
         }
 
         ## Name parameter checking
