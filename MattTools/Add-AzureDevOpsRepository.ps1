@@ -41,8 +41,15 @@ function Add-AzureDevOpsRepository {
             throw "A repository with the same name is already registered, please remove the conflict then run this command again"
         }
 
-        # Install the Nuget PowerShell Package Provider
-        Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force -Scope:CurrentUser | Out-Null
+        # Test for then install the Nuget PowerShell Package Provider
+        try {
+            Write-Verbose -Message "Trying to get the Nuget package provider"
+            Get-PackageProvider -Name NuGet -ErrorAction Stop
+        }
+        catch {
+            Write-Verbose -Message "Installing the Nuget package provider in the CurrentUser scope"
+            Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force -Scope:CurrentUser | Out-Null
+        }
 
     }
 
