@@ -2,6 +2,25 @@ function Add-AzureDevOpsRepository {
 
     #Requires -Modules BetterCredentials
 
+    <#
+    .SYNOPSIS
+    Registers Azure Nuget feed as a repository
+    .DESCRIPTION
+    Registers an Azure Package Management nuget feed to PowerShell as a repository. This uses BetterCredentials to store the repository credentials in the Windows Credential Vault to make it easier to interact with the repository
+    .PARAMETER RepositoryName
+    This is the name you want the repository to be registered with
+    .PARAMETER Username
+    The username parameter is not checked when the repository is registered, however the Username is used by BetterCredentials to store the authentication information and when interacting with the repository to install modules
+    .PARAMETER PAT
+    The PAT is generated within Azure DevOps. Is is best to create a new PAT with only read access to Package Management to prevent misuse of the credentials
+    .PARAMETER RepositoryURL
+    This is the URL provided by Azure DevOps for using the repository
+    .EXAMPLE
+    Add-AzureDevOpsRepository -RepositoryName TestRepository -Username UsernameHere -PAT wdadmineig2u5ng8e3s6h7spahkbun3qaaojufgmmi4pip2c7hla -RepositoryURL https://pkgs.dev.azure.com/SiteName/_packaging/FeedName/nuget/v2 -Verbose
+    .NOTES
+    This function also supports the -Verbose parameter to show more detailed console output
+    #>
+
     [cmdletbinding()]
     param (
         [Parameter(Mandatory = $true)]
