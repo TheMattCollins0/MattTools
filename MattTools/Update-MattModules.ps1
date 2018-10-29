@@ -38,12 +38,12 @@ function Update-MattModules {
                 Write-Verbose "$($SelectModule.Name) module has been found in the NodePowerShellRepository"
                 $ObjectComparison = Compare-Object -ReferenceObject $SelectModule $Module -Property Name, Version | Where-Object { $_.SideIndicator -eq "=>" } | Select-Object -Property Name, Version
                 if ( $ObjectComparison ) {
-                    Write-Host "    An update for $($ObjectComparison.Name) has been found" -ForegroundColor White
+                    Write-Host "    An update for $($ObjectComparison.Name) has been found" -ForegroundColor Red
                     $ModuleString = $($ObjectComparison.Name)
                     $Updates += $ModuleString
                 }
                 else {
-                    Write-Host "An update for $($Module.Name) has not been found" -ForegroundColor Yellow
+                    Write-Host "An update for $($Module.Name) has not been found"  -ForegroundColor Yellow
                 }
             }
 
@@ -52,13 +52,13 @@ function Update-MattModules {
 
                 # Loop through all modules with updates available and install the latest version
                 ForEach ( $Update in $Updates) {
-                    Write-Host "Currently updating $Update to the latest version" -ForegroundColor White
+                    Write-Host "    Currently updating $Update to the latest version" -ForegroundColor Red
                     Install-Module -Name $Update -Repository NodePowerShellRepository -Scope CurrentUser -Force
-                    Write-Host "    Completed updating the $Update module" -ForegroundColor White
+                    Write-Host "    Completed updating the $Update module" -ForegroundColor Green
                 }
             }
             else {
-                Write-Host "There are no modules that require updates" -ForegroundColor Yellow
+                Write-Host "There are no modules that require updates" -ForegroundColor Green
             }
         }
     }
@@ -81,7 +81,7 @@ function Update-MattModules {
                 Write-Verbose "$($SelectModule.Name) module has been found in the PSGallery"
                 $ObjectComparison = Compare-Object -ReferenceObject $SelectModule $Module -Property Name, Version | Where-Object { $_.SideIndicator -eq "=>" } | Select-Object -Property Name, Version
                 if ( $ObjectComparison ) {
-                    Write-Host "    An update for $($ObjectComparison.Name) has been found" -ForegroundColor White
+                    Write-Host "    An update for $($ObjectComparison.Name) has been found" -ForegroundColor Red
                     $ModuleString = $($ObjectComparison.Name)
                     $Updates += $ModuleString
                 }
@@ -95,13 +95,13 @@ function Update-MattModules {
 
                 # Loop through all modules with updates available and install the latest version
                 ForEach ( $Update in $Updates) {
-                    Write-Host "Currently updating $Update to the latest version" -ForegroundColor White
+                    Write-Host "    Currently updating $Update to the latest version" -ForegroundColor Red
                     Install-Module -Name $Update -Repository PSGallery -Scope CurrentUser -Force
-                    Write-Host "    Completed updating the $Update module" -ForegroundColor White
+                    Write-Host "    Completed updating the $Update module" -ForegroundColor Green
                 }
             }
             else {
-                Write-Host "There are no modules that require updates" -ForegroundColor Yellow
+                Write-Host "There are no modules that require updates" -ForegroundColor Green
             }
         }
 
