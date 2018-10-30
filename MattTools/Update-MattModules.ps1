@@ -58,7 +58,7 @@ function Update-MattModules {
                 }
             }
             else {
-                Write-Host "There are no modules that require updates" -ForegroundColor Green
+                Write-Host "There are no modules that require updates" -ForegroundColor White
             }
         }
     }
@@ -101,7 +101,7 @@ function Update-MattModules {
                 }
             }
             else {
-                Write-Host "There are no modules that require updates" -ForegroundColor Green
+                Write-Host "There are no modules that require updates" -ForegroundColor White
             }
         }
 
