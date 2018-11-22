@@ -54,7 +54,7 @@ function Update-MattModules {
                 ForEach ( $Update in $Updates) {
                     Write-Host "    Currently updating $Update to the latest version" -ForegroundColor Red
                     Install-Module -Name $Update -Repository NodePowerShellRepository -Scope CurrentUser -Force
-                        Write-Host "    Completed updating the $Update module" -ForegroundColor Green
+                    Write-Host "        Completed updating the $Update module" -ForegroundColor Green
                 }
             }
             else {
@@ -97,7 +97,7 @@ function Update-MattModules {
                 ForEach ( $Update in $Updates) {
                     Write-Host "    Currently updating $Update to the latest version" -ForegroundColor Red
                     Install-Module -Name $Update -Repository PSGallery -Scope CurrentUser -Force
-                        Write-Host "    Completed updating the $Update module" -ForegroundColor Green
+                    Write-Host "        Completed updating the $Update module" -ForegroundColor Green
                 }
             }
             else {
