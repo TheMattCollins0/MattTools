@@ -15,7 +15,6 @@ function Get-LastCmdTime {
     Returns $null if the history buffer is empty.
     Thanks go to - https://gist.github.com/kelleyma49/bd03dfa82c37438a01b1 - for this function
     #>
-    function Get-LastCmdTime {
         $diffPromptTime = $null
 
         $lastCmd = Get-History -Count 1
@@ -30,5 +29,4 @@ function Get-LastCmdTime {
             }
             $diffPromptTime
         }
-    }
 }
