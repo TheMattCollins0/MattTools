@@ -81,7 +81,7 @@ function Update-MattModules {
                 Write-Verbose "$($SelectModule.Name) module has been found in the PSGallery"
                 $ObjectComparison = Compare-Object -ReferenceObject $SelectModule $Module -Property Name, Version | Where-Object { $_.SideIndicator -eq "=>" } | Select-Object -Property Name, Version
                 if ( $ObjectComparison ) {
-                    Write-Host "    An update for $($ObjectComparison.Name) has been found" -ForegroundColor Red
+                    Write-Host "    An update for $($ObjectComparison.Name) has been found" -ForegroundColor White
                     $ModuleString = $($ObjectComparison.Name)
                     $Updates += $ModuleString
                 }
@@ -95,7 +95,7 @@ function Update-MattModules {
 
                 # Loop through all modules with updates available and install the latest version
                 ForEach ( $Update in $Updates) {
-                    Write-Host "    Currently updating $Update to the latest version" -ForegroundColor Red
+                    Write-Host "    Currently updating $Update to the latest version" -ForegroundColor White
                     Install-Module -Name $Update -Repository PSGallery -Scope CurrentUser -Force
                     Write-Host "        Completed updating the $Update module" -ForegroundColor Green
                 }
