@@ -9,16 +9,15 @@ function Invoke-ProfileBanner {
     Invoke-ProfileBanner
     #>
 
+    # Get the current time and populate the $Time variable with it
+    $Time = Get-Date -UFormat "%H:%M:%S"
+
     Write-Host " **************************************************************************************************************************************************** "
     Write-Host " *                                                                                                                                                  * "
     Write-Host " *                                                    Type Get-MattHelp to view help information                                                    * "
     Write-Host " *                                                                                                                                                  * "
     Write-Host ' *                                                     Type "Gh" to change to the GitHub folder                                                     * '
     Write-Host ' *                                                   Type "Ph" to change to the PowerShell folder                                                   * '
-    Write-Host " *                                                                                                                                                  * "
-    Write-Host " *                     Use Invoke-MattPlaster to create a Plaster Template, follow prompts for ModuleName and ModuleDescription                     * "
-    Write-Host " *                                                                                                                                                  * "
-    Write-Host " *                          Install-Module -Repository NodePowerShellRepository -Name ModuleName -Scope CurrentUser -Force                          * "
     Write-Host " *                                                                                                                                                  * "
     Write-Host " *                                                 Type Update-MattModules to update all my modules                                                 * "
     Write-Host " *                                                                                                                                                  * "

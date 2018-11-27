@@ -41,5 +41,10 @@ function Get-MattHelp {
     Write-Host "Update my Node Office365Connect PowerShell module"
     Write-Host 'Install-Module -Repository NodePowerShellRepository Office365Connect -Verbose -Scope CurrentUser -Force'
     Write-Host ""
+    Write-Host ""
+    Write-Host "Commands from MattTools:"
+    Write-Host "Use Invoke-MattPlaster to create a Plaster Template, follow prompts for ModuleName and ModuleDescription"
+    Write-Host ""
+    Write-Host "Install-Module -Repository NodePowerShellRepository -Name ModuleName -Scope CurrentUser -Force"
 
 }
