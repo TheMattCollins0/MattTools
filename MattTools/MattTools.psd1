@@ -12,7 +12,7 @@
 RootModule = 'MattTools.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.3.111'
+ModuleVersion = '0.4.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -69,10 +69,10 @@ Description = 'A collection of tools that speed up my life'
 # NestedModules = @()
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = 'Add-AzureDevOpsRepository', 'Compare-Items', 'Get-LastCmdTime', 
-               'Get-MattHelp', 'Invoke-MattPlaster', 'Invoke-ProfileBanner', 
-               'New-RegistryPath', 'New-RegistryProperty', 'Set-LocationGitHub', 
-               'Set-LocationInput', 'Set-LocationOutput', 'Set-LocationPowerShell', 
+FunctionsToExport = 'Add-AzureDevOpsRepository', 'Compare-Items', 'Get-LastCmdTime',
+               'Get-MattHelp', 'Invoke-MattPlaster', 'Invoke-ProfileBanner',
+               'New-RegistryPath', 'New-RegistryProperty', 'Set-LocationGitHub',
+               'Set-LocationInput', 'Set-LocationOutput', 'Set-LocationPowerShell',
                'Set-LocationRoot', 'Update-MattModules'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
@@ -130,4 +130,3 @@ PrivateData = @{
 # DefaultCommandPrefix = ''
 
 }
-
