@@ -3,13 +3,13 @@ $ErrorActionPreference = 'stop'
 
 # Install the Nuget package provider, Pester and PSScriptAnalyzer packages for testing
 Install-PackageProvider -Name Nuget -Scope CurrentUser -Force -Confirm:$false
-Install-Module -Name Pester -Scope CurrentUser -Force -SkipPublisherCheck -Confirm:$false
-Install-Module -Name PSScriptAnalyzer -Scope CurrentUser -Force -Confirm:$false
-Install-Module -Name PlatyPS -Scope CurrentUser -Force -Confirm:$false
+Install-Module -Name PSDepend -Scope CurrentUser -Force -Confirm:$false
 
-# Install third party modules required for the module
-Install-Module -Name PSGitHub -Scope CurrentUser -Force -Confirm:$false
-Install-Module -Name Plaster -Scope CurrentUser -Force -Confirm:$false
+# Import the PSDepend module
+Import-Module PSDepend -Force
+
+# Run Invoke-PSDepend to install or update the required modules to allow the build to run
+Invoke-PSDepend -Force
 
 # Import the Pester, PSScriptAnalyzer and PlatyPS
 Import-Module Pester -Force
