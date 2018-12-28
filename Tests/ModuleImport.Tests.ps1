@@ -2,7 +2,8 @@
 
 #region variables
 
-$ModulePath = Join-Path $env:BUILD_SOURCESDIRECTORY $env:BUILD_DEFINITIONNAME
+$ModulePath = ".\" + $env:BUILD_DEFINITIONNAME
+# $ModulePath = ".\Output"
 
 #endregion
 Write-output "Module Path: '$ModulePath'"
@@ -18,4 +19,3 @@ Describe "PowerShell Module Import Test" {
         $ImportError | Should Be $Null
     }
 }
-
