@@ -1,17 +1,28 @@
+[cmdletbinding()]
+param ()
+
 # Set the global Error action preference to stop
 $ErrorActionPreference = 'stop'
 
-# Install the Nuget package provider, Pester and PSScriptAnalyzer packages for testing
-Install-PackageProvider -Name Nuget -Scope CurrentUser -Force -Confirm:$false
-Install-Module -Name PSDepend -Scope CurrentUser -Force -Confirm:$false
+# Checking for then installing the Nuget package provider and PSDepend packages for the build environment
+$PSDependCheck = Import-Module PSDepend -ErrorAction Continue
+
+if ( !$PSDependCheck ) {
+    Write-Verbose -Message "Installing Nuget and PSDepend"
+    Install-PackageProvider -Name Nuget -Scope CurrentUser -Force -Confirm:$false
+    Install-Module -Name PSDepend -Scope CurrentUser -Force -Confirm:$false
+}
 
 # Import the PSDepend module
+Write-Verbose -Message "Importing the PSDepend module"
 Import-Module PSDepend -Force
 
 # Run Invoke-PSDepend to install or update the required modules to allow the build to run
+Write-Verbose -Message "Invoking the PSDepend module to install the required modules"
 Invoke-PSDepend -Force
 
 # Import the modules using PSDepend
+Write-Verbose -Message "Import the installed modules using PSDepend"
 Invoke-PSDepend -Import -Force
 
 # Create the results folder to contain the Pester test results
