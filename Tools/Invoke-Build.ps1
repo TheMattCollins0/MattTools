@@ -11,12 +11,8 @@ Import-Module PSDepend -Force
 # Run Invoke-PSDepend to install or update the required modules to allow the build to run
 Invoke-PSDepend -Force
 
-# Import the Pester, PSScriptAnalyzer and PlatyPS
-Import-Module Pester -Force
-Import-Module PSScriptAnalyzer -Force
-Import-Module PlatyPS -Force
-Import-Module PSGitHub -Force
-Import-Module Plaster -Force
+# Import the modules using PSDepend
+Invoke-PSDepend -Import -Force
 
 # Create the results folder to contain the Pester test results
 $Folder = ".\Results"
