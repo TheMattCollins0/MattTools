@@ -21,10 +21,6 @@ Import-Module PSDepend -Force
 Write-Verbose -Message "Invoking the PSDepend module to install the required modules"
 Invoke-PSDepend -Force
 
-# Import the modules using PSDepend
-# Write-Verbose -Message "Import the installed modules using PSDepend"
-# Invoke-PSDepend -Import -Force
-
 # Create the results folder to contain the Pester test results
 $Folder = ".\Results"
 if (-not(Test-Path -Path $Folder -PathType Container)) {
