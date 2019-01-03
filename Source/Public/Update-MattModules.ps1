@@ -51,7 +51,7 @@ function Update-MattModules {
                 Write-Verbose "There are $($Updates.count) modules to be updated"
 
                 # Loop through all modules with updates available and install the latest version
-                ForEach ( $Update in $Updates) {
+                ForEach ( $Update in $Updates ) {
                     Write-Host "    Currently updating $Update to the latest version" -ForegroundColor White
                     Install-Module -Name $Update -Repository NodePowerShellRepository -Scope CurrentUser -Force
                     Write-Host "        Completed updating the $Update module" -ForegroundColor Green
@@ -94,7 +94,7 @@ function Update-MattModules {
                 Write-Verbose "There are $($Updates.count) modules to be updated"
 
                 # Loop through all modules with updates available and install the latest version
-                ForEach ( $Update in $Updates) {
+                ForEach ( $Update in $Updates ) {
                     Write-Host "    Currently updating $Update to the latest version" -ForegroundColor White
                     Install-Module -Name $Update -Repository PSGallery -Scope CurrentUser -Force
                     Write-Host "        Completed updating the $Update module" -ForegroundColor Green
