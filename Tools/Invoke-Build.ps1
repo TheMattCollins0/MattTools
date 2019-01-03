@@ -22,8 +22,8 @@ Write-Verbose -Message "Invoking the PSDepend module to install the required mod
 Invoke-PSDepend -Force
 
 # Import the modules using PSDepend
-Write-Verbose -Message "Import the installed modules using PSDepend"
-Invoke-PSDepend -Import -Force
+# Write-Verbose -Message "Import the installed modules using PSDepend"
+# Invoke-PSDepend -Import -Force
 
 # Create the results folder to contain the Pester test results
 $Folder = ".\Results"
