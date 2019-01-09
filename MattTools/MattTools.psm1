@@ -812,7 +812,6 @@ function Update-MattModules {
     #>
 
     [CmdletBinding(SupportsShouldProcess = $True)]
-    [Alias('Update-NodeModules')]
     Param (
         [Parameter(Mandatory = $False)]
         [switch]$PSGallery)
@@ -906,5 +905,5 @@ function Update-MattModules {
 
 }
 
-# New-Alias -Name Update-NodeModules -Value Update-MattModules
+New-Alias -Name Update-NodeModules -Value Update-MattModules
 Export-ModuleMember -Function Add-AzureDevOpsRepository,Compare-Items,Get-LastCmdTime,Get-MattHelp,Invoke-MattPlaster,Invoke-ProfileBanner,New-RegistryPath,New-RegistryProperty,Set-LocationGitHub,Set-LocationInput,Set-LocationOutput,Set-LocationPowerShell,Set-LocationRoot,Update-MattModules -Alias *
