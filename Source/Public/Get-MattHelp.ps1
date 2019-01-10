@@ -48,3 +48,5 @@ function Get-MattHelp {
     Write-Host "Install-Module -Repository NodePowerShellRepository -Name ModuleName -Scope CurrentUser -Force"
 
 }
+
+New-Alias -Name GMH -Value Get-MattHelp
