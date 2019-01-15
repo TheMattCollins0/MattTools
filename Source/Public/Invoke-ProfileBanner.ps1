@@ -9,9 +9,6 @@ function Invoke-ProfileBanner {
     Invoke-ProfileBanner
     #>
 
-    # Get the current time and populate the $Time variable with it
-    # $Time = Get-Date -UFormat "%H:%M:%S"
-
     Write-Host " **************************************************************************************************************************************************** "
     Write-Host " *                                                                                                                                                  * "
     Write-Host " *                                                    Type Get-MattHelp to view help information                                                    * "
@@ -21,8 +18,6 @@ function Invoke-ProfileBanner {
     Write-Host " *                                                                                                                                                  * "
     Write-Host " *                                                 Type Update-MattModules to update all my modules                                                 * "
     Write-Host " *                                                                                                                                                  * "
-    # Write-Host " *                                                             Session started at $Time                                                          * "
-    # Write-Host " *                                                                                                                                                  * "
     Write-Host " **************************************************************************************************************************************************** "
 
 }
