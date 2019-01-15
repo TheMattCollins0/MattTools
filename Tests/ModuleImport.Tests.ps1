@@ -3,7 +3,6 @@
 #region variables
 
 $ModulePath = ".\" + $env:BUILD_DEFINITIONNAME
-# $ModulePath = ".\Output"
 
 #endregion
 Write-output "Module Path: '$ModulePath'"

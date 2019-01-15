@@ -1,7 +1,6 @@
 Describe 'Testing against PSSA rules' {
     Context 'PSSA Standard Rules' {
         # Creation of module path variable
-        # $ModulePath = ".\Output"
         $ModulePath = ".\" + $env:BUILD_DEFINITIONNAME
 
         # Populate an array containing all of the function names
