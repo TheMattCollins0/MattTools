@@ -33,6 +33,7 @@ $PesterResultsPath = ".\" + "Results" + "\" + "PesterResults" + ".xml"
 # Run the Pester and PSScriptAnalyzer tests
 Invoke-Pester -OutputFile $PesterResultsPath -OutputFormat 'NUnitXml' -Script '.\Tests*'
 
+# Section for documentation updates
 <#
 # Creation of docs path variable
 $Docs = ".\Docs"
