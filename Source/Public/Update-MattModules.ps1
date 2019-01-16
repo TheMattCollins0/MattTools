@@ -68,7 +68,7 @@ function Update-MattModules {
         if ($PSCmdlet.ShouldProcess("Checked for updates to modules downloaded from PSGallery successfully")) {
 
             # Create variable containing all modules installed from the PSGallery
-            $Modules = @( Get-Module -ListAvailable | Where-Object { $_.ModuleBase -like "$HOME\*" -and $_.RepositorySourceLocation -like "https://www.powershellgallery*" } | Sort-Object -Property Name, Version -Descending | Get-Unique -PipelineVariable Module )
+            $Modules = @( Get-Module -ListAvailable | Where-Object { $_.ModuleBase -like "$HOME\*" -and $_.RepositorySourceLocation -like "https://www.powershellgallery*" -and $_.Name -NotLike "BetterCredentials" } | Sort-Object -Property Name, Version -Descending | Get-Unique -PipelineVariable Module )
 
             Write-Verbose "There are $($Modules.count) modules installed"
 
