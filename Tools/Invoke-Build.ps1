@@ -56,9 +56,6 @@ $ModuleName = $env:BUILD_DEFINITIONNAME
 # Module file path variable
 $ModuleFile = ".\" + $ModuleName + "\" + $ModuleName + ".psm1"
 
-# Creation of PSScriptRoot variable
-# $PSScriptRoot = $env:BUILD_DEFINITIONNAME
-
 # Creation and update of PlatyPS help if docs path does not exist
 $DocsPathTest = Test-Path -Path $Docs -PathType Container
 
