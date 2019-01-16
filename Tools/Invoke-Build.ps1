@@ -54,7 +54,7 @@ if (-not(Test-Path -Path $Output -PathType Container)) {
 $ModuleName = $env:BUILD_DEFINITIONNAME
 
 # Module file path variable
-$ModuleFile = $ModulePath + "\" + $ModuleName + ".psm1"
+$ModuleFile = ".\" + $ModulePath + "\" + $ModuleName + ".psm1"
 
 # Creation of PSScriptRoot variable
 # $PSScriptRoot = $env:BUILD_DEFINITIONNAME
@@ -77,7 +77,7 @@ if ( !$DocsPathTest ) {
 # Update of PlatyPS help of the docs path does exist
 if ( $DocsPathTest ) {
     # Import the PowerShell module
-    Import-Module $ModuleName
+    Import-Module $ModuleFile
 
     # Update the help files
     Update-MarkdownHelp -Path $Docs
