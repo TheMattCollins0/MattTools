@@ -5,75 +5,56 @@ online version:
 schema: 2.0.0
 ---
 
-# Update-MattModules
+# Compare-Items
 
 ## SYNOPSIS
-Update Matt modules
+Compares contents of two .txt files
 
 ## SYNTAX
 
 ```
-Update-MattModules [-PSGallery] [-WhatIf] [-Confirm] [<CommonParameters>]
+Compare-Items [-OriginalFile] <String> [-CompareFile] <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update modules that are stored in PSGallery and NodePowerShellRepository
+This function wraps around the Compare-Object file, to display differences between two files.
+It forces you to supply the two files as parameters.
+The function currently works best on text or csv files with only one column
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Update-MattModules
-```
-
-### EXAMPLE 2
-```
-Update-MattModules -PSGallery
+Compare-Items -OriginalFile "C:\Scripts\Input\FileOne.txt" -CompareFile "C:\Scripts\Input\FileTwo.txt"
 ```
 
 ## PARAMETERS
 
-### -PSGallery
-Checks for updates to modules installed from the PSGallery
+### -OriginalFile
+This parameter specifies the location of the first file you want to compare
 
 ```yaml
-Type: SwitchParameter
+Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
+Required: True
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -CompareFile
+This parameter specifies the location of the second file you want to compare
 
 ```yaml
-Type: SwitchParameter
+Type: String
 Parameter Sets: (All)
-Aliases: cf
+Aliases:
 
-Required: False
-Position: Named
+Required: True
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -88,6 +69,6 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 ## OUTPUTS
 
 ## NOTES
-Can also be called by running Update-NodeModules
+This function also supports the -Verbose parameter for more console output
 
 ## RELATED LINKS
