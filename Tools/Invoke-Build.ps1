@@ -33,52 +33,55 @@ $PesterResultsPath = ".\" + "Results" + "\" + "PesterResults" + ".xml"
 # Run the Pester and PSScriptAnalyzer tests
 Invoke-Pester -OutputFile $PesterResultsPath -OutputFormat 'NUnitXml' -Script '.\Tests*'
 
-# Section for documentation updates
-<#
+## Section for documentation updates
 # Creation of docs path variable
 $Docs = ".\Docs"
 
 # Creation of the output path variable
-$Output = .\en-US"
+$Output = ".\en-US"
 
-# Module file path variable
-$ModuleFile = $ModulePath + "\" + $ModulePath + ".psm1"
+# Create the docs folder
+if (-not(Test-Path -Path $Docs -PathType Container)) {
+    New-Item -Path $Docs -ItemType Directory | Out-Null
+}
+
+# Create the output folder
+if (-not(Test-Path -Path $Output -PathType Container)) {
+    New-Item -Path $Output -ItemType Directory | Out-Null
+}
 
 # Creation of $ModuleName variable
 $ModuleName = $env:BUILD_DEFINITIONNAME
 
+# Module file path variable
+$ModuleFile = $ModulePath + "\" + $ModuleName + ".psm1"
+
 # Creation of PSScriptRoot variable
-$PSScriptRoot = $env:BUILD_DEFINITIONNAME
+# $PSScriptRoot = $env:BUILD_DEFINITIONNAME
 
 # Creation and update of PlatyPS help if docs path does not exist
-if (!$Docs) {
+$DocsPathTest = Test-Path -Path $Docs -PathType Container
 
-    # Creation of the Docs path
-    if (-not(Test-Path -Path $Docs -PathType Container)) {
-    New-Item -Path $Docs -ItemType Directory | Out-Null
-    }
+if ( !$DocsPathTest ) {
 
     # Import the module
     Import-Module $ModuleFile
 
     # Create the new markdown help
-    New-MarkdownHelp -Module $ModuleName -OutputFolder .\docs
-
-    # Creation of the en-US External help path
-    if (-not(Test-Path -Path $Output -PathType Container)) {
-    New-Item -Path $Output -ItemType Directory | Out-Null
-    }
+    New-MarkdownHelp -Module $ModuleName -OutputFolder $Docs
 
     # Create the external help
-    New-ExternalHelp $Docs -OutputPath $Output
+    New-ExternalHelp -Path $Docs -OutputPath $Output
 }
 
 # Update of PlatyPS help of the docs path does exist
-if ($Docs) {
+if ( $DocsPathTest ) {
     # Import the PowerShell module
-    Import-Module $ModuleName -Force
+    Import-Module $ModuleName
 
     # Update the help files
-    Update-MarkdownHelp $Docs
+    Update-MarkdownHelp -Path $Docs
+
+    # Update the external help
+    New-ExternalHelp -Path $Docs -OutputPath $Output -Force
 }
-#>

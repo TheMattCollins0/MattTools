@@ -6,6 +6,8 @@ $PSCodeHealthReportResultsPath = ".\Results\" + "PSCodeHealthReport" + ".html"
 $ReadMeUpdatePath = ".\" + "ReadMe" + ".md"
 $FinalPsd1 = ".\" + $ModuleName + "\" + $ModuleName + ".psd1"
 $FinalPsm1 = ".\" + $ModuleName + "\" + $ModuleName + ".psm1"
+$DocsPath = ".\Docs"
+$OutputPath = ".\Output"
 
 # Git for the version number change commit back to GitHub
 git config user.email "matt.collins@node-it.com"
@@ -16,5 +18,7 @@ git add "$PSCodeHealthReportResultsPath"
 git add "$ReadMeUpdatePath"
 git add "$FinalPsd1"
 git add "$FinalPsm1"
+git add "$DocsPath"
+git add "$OutputPath"
 git commit -m "Updated Version Number ***NO_CI***"
 git push origin HEAD:master
