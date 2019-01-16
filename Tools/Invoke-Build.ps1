@@ -40,35 +40,35 @@ $Docs = ".\Docs"
 # Creation of the output path variable
 $Output = ".\en-US"
 
-# Create the docs folder
-if (-not(Test-Path -Path $Docs -PathType Container)) {
-    New-Item -Path $Docs -ItemType Directory | Out-Null
-}
-
-# Create the output folder
-if (-not(Test-Path -Path $Output -PathType Container)) {
-    New-Item -Path $Output -ItemType Directory | Out-Null
-}
-
 # Creation of $ModuleName variable
 $ModuleName = $env:BUILD_DEFINITIONNAME
 
 # Module file path variable
-$ModuleFile = ".\" + $ModuleName + "\" + $ModuleName + ".psm1"
+$ModuleFile = ".\" + $ModuleName
 
 # Creation and update of PlatyPS help if docs path does not exist
 $DocsPathTest = Test-Path -Path $Docs -PathType Container
 
 if ( !$DocsPathTest ) {
 
+    # Create the docs folder
+    if (-not(Test-Path -Path $Docs -PathType Container)) {
+        New-Item -Path $Docs -ItemType Directory | Out-Null
+    }
+
+    # Create the output folder
+    if (-not(Test-Path -Path $Output -PathType Container)) {
+        New-Item -Path $Output -ItemType Directory | Out-Null
+    }
+
     # Import the module
     Import-Module $ModuleFile
 
     # Create the new markdown help
-    New-MarkdownHelp -Module $ModuleName -OutputFolder $Docs
+    New-MarkdownHelp -Module $ModuleName -OutputFolder $Docs -Force
 
     # Create the external help
-    New-ExternalHelp -Path $Docs -OutputPath $Output
+    New-ExternalHelp -Path $Docs -OutputPath $Output -Force
 }
 
 # Update of PlatyPS help of the docs path does exist
@@ -77,7 +77,7 @@ if ( $DocsPathTest ) {
     Import-Module $ModuleFile
 
     # Update the help files
-    Update-MarkdownHelp -Path $Docs
+    New-MarkdownHelp -Module $ModuleName -OutputFolder $Docs -Force
 
     # Update the external help
     New-ExternalHelp -Path $Docs -OutputPath $Output -Force
