@@ -54,7 +54,7 @@ if (-not(Test-Path -Path $Output -PathType Container)) {
 $ModuleName = $env:BUILD_DEFINITIONNAME
 
 # Module file path variable
-$ModuleFile = ".\" + $ModulePath + "\" + $ModuleName + ".psm1"
+$ModuleFile = ".\" + $ModuleName + "\" + $ModuleName + ".psm1"
 
 # Creation of PSScriptRoot variable
 # $PSScriptRoot = $env:BUILD_DEFINITIONNAME
