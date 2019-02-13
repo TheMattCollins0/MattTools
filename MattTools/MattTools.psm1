@@ -831,7 +831,7 @@ function Update-MattModules {
                 Write-Verbose "$($SelectModule.Name) module has been found in the NodePowerShellRepository"
                 $ObjectComparison = Compare-Object -ReferenceObject $SelectModule $Module -Property Name, Version | Where-Object { $_.SideIndicator -eq "=>" } | Select-Object -Property Name, Version
                 if ( $ObjectComparison ) {
-                    Write-Host "    An update for $($ObjectComparison.Name) has been found" -ForegroundColor White
+                    Write-Host "    An update for $($ObjectComparison.Name) has been found" -ForegroundColor Red
                     $ModuleString = $($ObjectComparison.Name)
                     $Updates += $ModuleString
                 }
@@ -874,7 +874,7 @@ function Update-MattModules {
                 Write-Verbose "$($SelectModule.Name) module has been found in the PSGallery"
                 $ObjectComparison = Compare-Object -ReferenceObject $SelectModule $Module -Property Name, Version | Where-Object { $_.SideIndicator -eq "=>" } | Select-Object -Property Name, Version
                 if ( $ObjectComparison ) {
-                    Write-Host "    An update for $($ObjectComparison.Name) has been found" -ForegroundColor White
+                    Write-Host "    An update for $($ObjectComparison.Name) has been found" -ForegroundColor Red
                     $ModuleString = $($ObjectComparison.Name)
                     $Updates += $ModuleString
                 }
