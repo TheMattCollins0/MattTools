@@ -5,75 +5,62 @@ online version:
 schema: 2.0.0
 ---
 
-# Update-MattModules
+# Add-ArtifactsCredential
 
 ## SYNOPSIS
-Update Matt modules
+Azure Artifacts credentials creation
 
 ## SYNTAX
 
 ```
-Update-MattModules [-PSGallery] [-WhatIf] [-Confirm] [<CommonParameters>]
+Add-ArtifactsCredential [[-Username] <String>] [-PAT] <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update modules that are stored in PSGallery and NodePowerShellRepository
+Adds the credentials required to add an Azure Artifacts feed as a repository.
+The credentials are stored in credential manager using the BetterCredentials module
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Update-MattModules
+Add-ArtifactsCredential -PAT wdadmineig2u5ng8e3s6h
 ```
 
 ### EXAMPLE 2
 ```
-Update-MattModules -PSGallery
+Add-ArtifactsCredential -Username UsernameHere -PAT wdadmineig2u5ng8e3s6h
 ```
 
 ## PARAMETERS
 
-### -PSGallery
-Checks for updates to modules installed from the PSGallery
+### -Username
+The username parameter is used when storing the credentials.
+The default value is NodePAT
 
 ```yaml
-Type: SwitchParameter
+Type: String
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: False
+Position: 1
+Default value: NodePAT
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+### -PAT
+The PAT is generated within Azure DevOps.
+Is is best to create a new PAT with only read access to Package Management to prevent misuse of the credentials
 
 ```yaml
-Type: SwitchParameter
+Type: String
 Parameter Sets: (All)
-Aliases: wi
+Aliases:
 
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
+Required: True
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

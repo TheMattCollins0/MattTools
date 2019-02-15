@@ -189,7 +189,7 @@
                 <div class="col-sm-4 col-md-5 col-lg-4 right-header">
                     <h5>
                         Analyzed path :<span class="right-header-data"> C:\agent\_work\5\s\MattTools</span><br>
-                        Analysis date :<span class="right-header-data"> 2019-02-13 17:33:35Z</span>
+                        Analysis date :<span class="right-header-data"> 2019-02-15 17:32:40Z</span>
                     </h5>
                 </div>
             </div>
@@ -223,7 +223,7 @@
                                 <h3 class="panel-title"><i class="fa fa-code" aria-hidden="true">&nbsp;</i> Number of Functions</h3>
                             </div>
                             <div class="panel-body">
-                                <h2>14</h2>
+                                <h2>17</h2>
                             </div>
                         </div>
                     </div>
@@ -233,7 +233,7 @@
                                 <h3 class="panel-title"><i class="fa fa-arrows-v" aria-hidden="true">&nbsp;</i> Lines of Code - Total</h3>
                             </div>
                             <div class="panel-body">
-                                <h2>678</h2>
+                                <h2>851</h2>
                             </div>
                         </div>
                     </div>
@@ -246,9 +246,9 @@
                             </div>
                             <table class="table">
                                 <tr class="text-success"><td>Errors</td><td>0</td></tr>
-                                <tr class="text-danger"><td>Warnings</td><td>61</td></tr>
+                                <tr class="text-danger"><td>Warnings</td><td>73</td></tr>
                                 <tr class="text-success"><td>Information</td><td>0</td></tr>
-                                <tr class="text-danger"><td>Total</td><td>61</td></tr>
+                                <tr class="text-danger"><td>Total</td><td>73</td></tr>
                             </table>
                         </div>
                     </div>
@@ -282,7 +282,7 @@
                                 <h3 class="panel-title"><i class="fa fa-plus-square-o" aria-hidden="true">&nbsp;</i> ScriptAnalyzer Findings - Total</h3>
                             </div>
                             <div class="panel-body">
-                                <h2>61</h2>
+                                <h2>73</h2>
                             </div>
                         </div>
                     </div>
@@ -302,7 +302,7 @@
                                 <h3 class="panel-title"><i class="fa fa-exclamation-triangle" aria-hidden="true">&nbsp;</i> ScriptAnalyzer Warnings</h3>
                             </div>
                             <div class="panel-body">
-                                <h2>61</h2>
+                                <h2>73</h2>
                             </div>
                         </div>
                     </div>
@@ -314,7 +314,7 @@
                                 <h3 class="panel-title"><i class="fa fa-bar-chart" aria-hidden="true">&nbsp;</i> ScriptAnalyzer Findings - Average</h3>
                             </div>
                             <div class="panel-body">
-                                <h2>4.29</h2>
+                                <h2>4.24</h2>
                             </div>
                         </div>
                     </div>
@@ -356,6 +356,12 @@
                                 </thead>
                                 <tbody>
                                     <tr>
+                                        <td>Add-ArtifactsCredential</td>
+                                        <td class="success">0</td>
+                                        <td class=""></td>
+                                        <td class="success">True</td>
+                                    </tr>
+                                    <tr>
                                         <td>Add-AzureDevOpsRepository</td>
                                         <td class="success">0</td>
                                         <td class=""></td>
@@ -369,18 +375,18 @@
                                             <table>
                                                  <tr>
                                                     <td class="warning cell-largeContent">ScriptName : MattTools.psm1<br>
-Line (in the function) : 71<br>
-Severity                      : Warning<br>
-RuleName                      : PSAvoidUsingWriteHost<br>
-Message                       : Script definition uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.<br>
-                                                    </td>
-                                                </tr>
-                                                 <tr>
-                                                    <td class="warning cell-largeContent">ScriptName : MattTools.psm1<br>
 Line (in the function) : 1<br>
 Severity                      : Warning<br>
 RuleName                      : PSUseSingularNouns<br>
 Message                       : The cmdlet 'Compare-Items' uses a plural noun. A singular noun should be used instead.<br>
+                                                    </td>
+                                                </tr>
+                                                 <tr>
+                                                    <td class="warning cell-largeContent">ScriptName : MattTools.psm1<br>
+Line (in the function) : 71<br>
+Severity                      : Warning<br>
+RuleName                      : PSAvoidUsingWriteHost<br>
+Message                       : Script definition uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.<br>
                                                     </td>
                                                 </tr>
                                              </table>
@@ -688,6 +694,12 @@ Message                       : Script definition uses Write-Host. Avoid using W
                                         <td class="success">True</td>
                                     </tr>
                                     <tr>
+                                        <td>Install-NodeModule</td>
+                                        <td class="success">0</td>
+                                        <td class=""></td>
+                                        <td class="success">True</td>
+                                    </tr>
+                                    <tr>
                                         <td>Invoke-MattPlaster</td>
                                         <td class="success">0</td>
                                         <td class=""></td>
@@ -947,6 +959,112 @@ Message                       : Script definition uses Write-Host. Avoid using W
                                         </td>
                                         <td class="success">True</td>
                                     </tr>
+                                    <tr>
+                                        <td>Update-NodeModules</td>
+                                        <td class="warning">12</td>
+                                        <td class="warning">
+                                            <button type="button" class="btn btn-warning btn-sm cell-expand-collapse"> Expand</button>
+                                            <table>
+                                                 <tr>
+                                                    <td class="warning cell-largeContent">ScriptName : MattTools.psm1<br>
+Line (in the function) : 39<br>
+Severity                      : Warning<br>
+RuleName                      : PSAvoidUsingWriteHost<br>
+Message                       : Script definition uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.<br>
+                                                    </td>
+                                                </tr>
+                                                 <tr>
+                                                    <td class="warning cell-largeContent">ScriptName : MattTools.psm1<br>
+Line (in the function) : 44<br>
+Severity                      : Warning<br>
+RuleName                      : PSAvoidUsingWriteHost<br>
+Message                       : Script definition uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.<br>
+                                                    </td>
+                                                </tr>
+                                                 <tr>
+                                                    <td class="warning cell-largeContent">ScriptName : MattTools.psm1<br>
+Line (in the function) : 53<br>
+Severity                      : Warning<br>
+RuleName                      : PSAvoidUsingWriteHost<br>
+Message                       : Script definition uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.<br>
+                                                    </td>
+                                                </tr>
+                                                 <tr>
+                                                    <td class="warning cell-largeContent">ScriptName : MattTools.psm1<br>
+Line (in the function) : 55<br>
+Severity                      : Warning<br>
+RuleName                      : PSAvoidUsingWriteHost<br>
+Message                       : Script definition uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.<br>
+                                                    </td>
+                                                </tr>
+                                                 <tr>
+                                                    <td class="warning cell-largeContent">ScriptName : MattTools.psm1<br>
+Line (in the function) : 59<br>
+Severity                      : Warning<br>
+RuleName                      : PSAvoidUsingWriteHost<br>
+Message                       : Script definition uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.<br>
+                                                    </td>
+                                                </tr>
+                                                 <tr>
+                                                    <td class="warning cell-largeContent">ScriptName : MattTools.psm1<br>
+Line (in the function) : 78<br>
+Severity                      : Warning<br>
+RuleName                      : PSAvoidUsingWriteHost<br>
+Message                       : Script definition uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.<br>
+                                                    </td>
+                                                </tr>
+                                                 <tr>
+                                                    <td class="warning cell-largeContent">ScriptName : MattTools.psm1<br>
+Line (in the function) : 83<br>
+Severity                      : Warning<br>
+RuleName                      : PSAvoidUsingWriteHost<br>
+Message                       : Script definition uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.<br>
+                                                    </td>
+                                                </tr>
+                                                 <tr>
+                                                    <td class="warning cell-largeContent">ScriptName : MattTools.psm1<br>
+Line (in the function) : 92<br>
+Severity                      : Warning<br>
+RuleName                      : PSAvoidUsingWriteHost<br>
+Message                       : Script definition uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.<br>
+                                                    </td>
+                                                </tr>
+                                                 <tr>
+                                                    <td class="warning cell-largeContent">ScriptName : MattTools.psm1<br>
+Line (in the function) : 94<br>
+Severity                      : Warning<br>
+RuleName                      : PSAvoidUsingWriteHost<br>
+Message                       : Script definition uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.<br>
+                                                    </td>
+                                                </tr>
+                                                 <tr>
+                                                    <td class="warning cell-largeContent">ScriptName : MattTools.psm1<br>
+Line (in the function) : 98<br>
+Severity                      : Warning<br>
+RuleName                      : PSAvoidUsingWriteHost<br>
+Message                       : Script definition uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.<br>
+                                                    </td>
+                                                </tr>
+                                                 <tr>
+                                                    <td class="warning cell-largeContent">ScriptName : MattTools.psm1<br>
+Line (in the function) : 1<br>
+Severity                      : Warning<br>
+RuleName                      : PSUseShouldProcessForStateChangingFunctions<br>
+Message                       : Function ’Update-NodeModules’ has verb that could change system state. Therefore, the function has to support 'ShouldProcess'.<br>
+                                                    </td>
+                                                </tr>
+                                                 <tr>
+                                                    <td class="warning cell-largeContent">ScriptName : MattTools.psm1<br>
+Line (in the function) : 1<br>
+Severity                      : Warning<br>
+RuleName                      : PSUseSingularNouns<br>
+Message                       : The cmdlet 'Update-NodeModules' uses a plural noun. A singular noun should be used instead.<br>
+                                                    </td>
+                                                </tr>
+                                             </table>
+                                        </td>
+                                        <td class="success">True</td>
+                                    </tr>
 
                                 </tbody>
                             </table>
@@ -962,7 +1080,7 @@ Message                       : Script definition uses Write-Host. Avoid using W
                                 <h3 class="panel-title"><i class="fa fa-arrows-v" aria-hidden="true">&nbsp;</i> Lines of Code - Total</h3>
                             </div>
                             <div class="panel-body">
-                                <h2>678</h2>
+                                <h2>851</h2>
                             </div>
                         </div>
                     </div>
@@ -994,7 +1112,7 @@ Message                       : Script definition uses Write-Host. Avoid using W
                                 <h3 class="panel-title"><i class="fa fa-arrows-v" aria-hidden="true">&nbsp;</i> Lines of Code - Average</h3>
                             </div>
                             <div class="panel-body">
-                                <h2>48.43</h2>
+                                <h2>50.06</h2>
                             </div>
                         </div>
                     </div>
@@ -1004,7 +1122,7 @@ Message                       : Script definition uses Write-Host. Avoid using W
                                 <h3 class="panel-title"><i class="fa fa-arrows-alt" aria-hidden="true">&nbsp;</i> Complexity - Average</h3>
                             </div>
                             <div class="panel-body">
-                                <h2>4.57</h2>
+                                <h2>4.71</h2>
                             </div>
                         </div>
                     </div>
@@ -1014,7 +1132,7 @@ Message                       : Script definition uses Write-Host. Avoid using W
                                 <h3 class="panel-title"><i class="fa fa-object-group" aria-hidden="true">&nbsp;</i> Nesting Depth - Average</h3>
                             </div>
                             <div class="panel-body">
-                                <h2>1.86</h2>
+                                <h2>1.94</h2>
                             </div>
                         </div>
                     </div>
@@ -1036,8 +1154,14 @@ Message                       : Script definition uses Write-Host. Avoid using W
                                 </thead>
                                 <tbody>
                                     <tr>
+                                        <td>Add-ArtifactsCredential</td>
+                                        <td class="warning">38</td>
+                                        <td class="success">3</td>
+                                        <td class="success">2</td>
+                                    </tr>
+                                    <tr>
                                         <td>Add-AzureDevOpsRepository</td>
-                                        <td class="danger">73</td>
+                                        <td class="danger">69</td>
                                         <td class="success">4</td>
                                         <td class="success">2</td>
                                     </tr>
@@ -1058,6 +1182,12 @@ Message                       : Script definition uses Write-Host. Avoid using W
                                         <td class="warning">42</td>
                                         <td class="success">1</td>
                                         <td class="success">0</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Install-NodeModule</td>
+                                        <td class="warning">50</td>
+                                        <td class="success">4</td>
+                                        <td class="success">2</td>
                                     </tr>
                                     <tr>
                                         <td>Invoke-MattPlaster</td>
@@ -1119,6 +1249,12 @@ Message                       : Script definition uses Write-Host. Avoid using W
                                         <td class="success">12</td>
                                         <td class="success">4</td>
                                     </tr>
+                                    <tr>
+                                        <td>Update-NodeModules</td>
+                                        <td class="danger">89</td>
+                                        <td class="success">9</td>
+                                        <td class="success">3</td>
+                                    </tr>
 
                                 </tbody>
                             </table>
@@ -1166,7 +1302,7 @@ Message                       : Script definition uses Write-Host. Avoid using W
                                 <h3 class="panel-title"><i class="fa fa-times" aria-hidden="true">&nbsp;</i> Number of Missed Commands</h3>
                             </div>
                             <div class="panel-body">
-                                <h2>296</h2>
+                                <h2>394</h2>
                             </div>
                         </div>
                     </div>
@@ -1244,9 +1380,14 @@ Message                       : Script definition uses Write-Host. Avoid using W
                                 </thead>
                                 <tbody>
                                     <tr>
+                                        <td>Add-ArtifactsCredential</td>
+                                        <td class="danger">0</td>
+                                        <td class="warning">8</td>
+                                    </tr>
+                                    <tr>
                                         <td>Add-AzureDevOpsRepository</td>
                                         <td class="danger">0</td>
-                                        <td class="danger">26</td>
+                                        <td class="danger">24</td>
                                     </tr>
                                     <tr>
                                         <td>Compare-Items</td>
@@ -1262,6 +1403,11 @@ Message                       : Script definition uses Write-Host. Avoid using W
                                         <td>Get-MattHelp</td>
                                         <td class="danger">0</td>
                                         <td class="danger">34</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Install-NodeModule</td>
+                                        <td class="danger">0</td>
+                                        <td class="danger">13</td>
                                     </tr>
                                     <tr>
                                         <td>Invoke-MattPlaster</td>
@@ -1312,6 +1458,11 @@ Message                       : Script definition uses Write-Host. Avoid using W
                                         <td>Update-MattModules</td>
                                         <td class="danger">0</td>
                                         <td class="danger">78</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Update-NodeModules</td>
+                                        <td class="danger">0</td>
+                                        <td class="danger">80</td>
                                     </tr>
 
                                 </tbody>

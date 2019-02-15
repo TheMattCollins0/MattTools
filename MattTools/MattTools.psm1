@@ -1,3 +1,57 @@
+function Add-ArtifactsCredential {
+
+    #Requires -Modules BetterCredentials
+
+    <#
+    .SYNOPSIS
+    Azure Artifacts credentials creation
+    .DESCRIPTION
+    Adds the credentials required to add an Azure Artifacts feed as a repository. The credentials are stored in credential manager using the BetterCredentials module
+    .PARAMETER Username
+    The username parameter is used when storing the credentials. The default value is NodePAT
+    .PARAMETER PAT
+    The PAT is generated within Azure DevOps. Is is best to create a new PAT with only read access to Package Management to prevent misuse of the credentials
+    .EXAMPLE
+    Add-ArtifactsCredential -PAT wdadmineig2u5ng8e3s6h
+    .EXAMPLE
+    Add-ArtifactsCredential -Username UsernameHere -PAT wdadmineig2u5ng8e3s6h
+    .NOTES
+    This function also supports the -Verbose parameter to show more detailed console output
+    #>
+
+    [cmdletbinding()]
+    param(
+        [Parameter(Mandatory = $false)]
+        [string] $Username = "NodePAT",
+        [Parameter(Mandatory = $true)]
+        [string] $PAT
+    )
+
+    begin {
+        
+        $CredentialCheck = BetterCredentials\Get-Credential -Username $Username -ErrorAction SilentlyContinue
+        if ( !$CredentialCheck ) {
+            Write-Verbose -Message "There are no credentials stored with the specified username, proceeding with the creation"
+        }
+        else {
+            throw "An entry in Credential Manager already exists for the specified username. to recreate them, please delete the entry from Credential Manager"
+        }
+        Write-Verbose -Message 'The credential check has completed successfully, proceeding to the credential creations now'
+
+    }
+
+    process {
+
+        # Creation of credentials in the Windows Credential Vault using BetterCredentials
+        Write-Verbose -Message "Adding the credentials to the Credential Vault"
+        try {
+            BetterCredentials\Get-Credential -Username $Username -Password $PAT -Store -ErrorAction Stop
+        }
+        catch {
+            throw "Unable to create the credentials, please try the BetterCredentials creation manually"
+        }
+    }
+}
 function Add-AzureDevOpsRepository {
 
     #Requires -Modules BetterCredentials
@@ -11,12 +65,10 @@ function Add-AzureDevOpsRepository {
     This is the name you want the repository to be registered with
     .PARAMETER Username
     The username parameter is not checked when the repository is registered, however the Username is used by BetterCredentials to store the authentication information and when interacting with the repository to install modules
-    .PARAMETER PAT
-    The PAT is generated within Azure DevOps. Is is best to create a new PAT with only read access to Package Management to prevent misuse of the credentials
-    .PARAMETER RepositoryURL
-    This is the URL provided by Azure DevOps for using the repository
+    .PARAMETER FeedName
+    This is the name of the Azure Artifacts feed for the repository
     .EXAMPLE
-    Add-AzureDevOpsRepository -RepositoryName TestRepository -Username UsernameHere -PAT wdadmineig2u5ng8e3s6h7spahkbun3qaaojufgmmi4pip2c7hla -RepositoryURL https://pkgs.dev.azure.com/SiteName/_packaging/FeedName/nuget/v2 -Verbose
+    Add-AzureDevOpsRepository -RepositoryName TestRepository -Username UsernameHere -FeedName FeedName -Verbose
     .NOTES
     This function also supports the -Verbose parameter to show more detailed console output
     #>
@@ -25,21 +77,16 @@ function Add-AzureDevOpsRepository {
     param (
         [Parameter(Mandatory = $true)]
         $RepositoryName,
-
         [Parameter(Mandatory = $true)]
         $Username,
-
         [Parameter(Mandatory = $true)]
-        $PAT,
-
-        [Parameter(Mandatory = $true)]
-        $RepositoryURL
+        $FeedName
     )
 
     begin {
-        # Creation of credentials in the Windows Credential Vault using BetterCredentials
-        Write-Verbose -Message "Adding the credentials to the Credential Vault"
-        BetterCredentials\Get-Credential -Username $Username -Password $PAT -Store -ErrorAction SilentlyContinue | Out-Null
+
+        # Creation of the RepositoryURL variable from the FeedName parameter
+        $RepositoryURL = "https://pkgs.dev.azure.com/MattNodeIT/_packaging/" + $FeedName + "/nuget/v2"
 
         # Check that the credentials were created successfully
         try {
@@ -47,9 +94,10 @@ function Add-AzureDevOpsRepository {
             $Credentials = BetterCredentials\Get-Credential -Username $Username -ErrorAction Stop
         }
         catch {
-            throw "Unable to retrive the credentials, please check they were stored successfully. Try running BetterCredentials\Get-Credential again manually"
+            throw "Unable to retrive the credentials, please check they were stored successfully using the Add-ArtifactsCredential function"
         }
-        Write-Verbose -Message 'The credentials appear to have been created successfully in the $Credentials variable. Checking for repository existence now'
+
+        Write-Verbose -Message 'The credentials have been stored successfully in the $Credentials variable. Checking for repository existence now'
 
         # Check to see if there is a repository already registered with the same name
         $RepositoryCheck = Get-PSRepository -Name $RepositoryName -ErrorAction SilentlyContinue
@@ -251,6 +299,70 @@ function Get-MattHelp {
 }
 
 New-Alias -Name GMH -Value Get-MattHelp
+function Install-NodeModule {
+
+    #Requires -Modules BetterCredentials
+
+    <#
+    .SYNOPSIS
+    Install a module from an Azure Artifacts repository
+    .DESCRIPTION
+    This function wraps around the Install-Module function and uses BetterCredentials to secure authentication to the feed and reduce installation effort
+    .PARAMETER Name
+    This parameter specifies the name of the module you wish to install
+    .PARAMETER Repository
+    This parameter specifies the name of the Repository that you want to
+    .EXAMPLE
+    Install-NodeModule -Name MODULENAME -Repository REPOSITORYNAME
+    .NOTES
+    This function also supports the -Verbose parameter for more console output
+    #>
+
+    [cmdletbinding()]
+    param(
+        [Parameter(Mandatory = $true)]
+        [string] $Name,
+        [Parameter(Mandatory = $true)]
+        [string] $Repository
+    )
+
+    begin {
+
+        # Import the Azure Artifacts feed credentials using BetterCredentials
+        $CredentialCheck = BetterCredentials\Get-Credential -Username NodePAT -ErrorAction SilentlyContinue
+        if ($CredentialCheck) {
+            Write-Verbose -Message "The credentials were imported by BetterCredentials successfully"
+        }
+        else {
+            throw "Unable to retrive the credentials, please check that they have been created"
+        }
+        Write-Verbose -Message 'The credentials have been imported by BetterCredentials successfully. Checking for repository existence now'
+
+        # Check to see if the repository already exists
+        $RepositoryCheck = Get-PSRepository -Name $Repository -ErrorAction SilentlyContinue
+        if ($RepositoryCheck) {
+            Write-Verbose -Message "The repository exists, it is possible to install the module from this location"
+        }
+        else {
+            throw "The specified repository has not been added to PowerShell, please add the repository then try again."
+        }
+
+    }
+
+    process {
+
+        # Module installation
+        try {
+            Write-Verbose -Message "Installing the module now"
+            Install-Module -Name $Name -Repository $Repository -Credential ( BetterCredentials\Get-Credential -Username NodePAT ) -Force -ErrorAction Stop
+        }
+        catch {
+            throw "Unable to install the application, please run the command again manually"
+        }
+
+
+    }
+}
 function Invoke-MattPlaster {
 
     <#
@@ -805,7 +917,7 @@ function Update-MattModules {
     .EXAMPLE
     Update-MattModules -PSGallery
     .NOTES
-    Can also be called by running Update-NodeModules
+    This function also supports the -Verbose parameter to show more detailed console output
     #>
 
     [CmdletBinding(SupportsShouldProcess = $True)]
@@ -901,6 +1013,107 @@ function Update-MattModules {
     }
 
 }
+function Update-NodeModules {
 
-New-Alias -Name Update-NodeModules -Value Update-MattModules
-Export-ModuleMember -Function Add-AzureDevOpsRepository,Compare-Items,Get-LastCmdTime,Get-MattHelp,Invoke-MattPlaster,Invoke-ProfileBanner,New-RegistryPath,New-RegistryProperty,Set-LocationGitHub,Set-LocationInput,Set-LocationOutput,Set-LocationPowerShell,Set-LocationRoot,Update-MattModules -Alias *
+    <#
+    .SYNOPSIS
+    Update Node Azure Artifacts based modules
+    .DESCRIPTION
+    Update modules that are installed from an Azure Artifacts repository. By default it checks NodePowerShell, using the -NodeClients parameter will check for updates to NodeClients modules
+    .PARAMETER NodeClients
+    Checks for updates to modules installed from the NodeClients repository
+    .EXAMPLE
+    Update-NodeModules
+    .EXAMPLE
+    Update-NodeModules -NodeClients
+    .NOTES
+    This function also supports the -Verbose parameter to show more detailed console output
+    #>
+
+    [CmdletBinding()]
+    Param (
+        [Parameter(Mandatory = $False)]
+        [switch]$NodeClients
+    )
+
+    if ( !$NodeClients ) {
+        # Create variable containing all modules installed from the NodePowerShell repository
+        $Modules = @( Get-Module -ListAvailable | Where-Object { $_.ModuleBase -like "$HOME\*" -and $_.RepositorySourceLocation -like "https://pkgs.dev.azure.com/MattNodeIT/_packaging/NodePowerShell/*" } | Get-Unique -PipelineVariable Module )
+
+        Write-Verbose "There are $($Modules.count) modules installed"
+
+        # Create an empty collection to store the modules that need updating
+        $Updates = @()
+
+        ForEach ( $Module in @( $Modules )) {
+            Write-Verbose "Currently selected module is - $($Module.Name)"
+            $SelectModule = Find-Module -Name $($Module.Name) -Repository NodePowerShell -Credential ( BetterCredentials\Get-Credential -Username NodePAT ) | Select-Object Name, Version
+            Write-Verbose "$($SelectModule.Name) module has been found in the NodePowerShell repository"
+            $ObjectComparison = Compare-Object -ReferenceObject $SelectModule $Module -Property Name, Version | Where-Object { $_.SideIndicator -eq "=>" } | Select-Object -Property Name, Version
+            if ( $ObjectComparison ) {
+                Write-Host "    An update for $($ObjectComparison.Name) has been found" -ForegroundColor White
+                $ModuleString = $($ObjectComparison.Name)
+                $Updates += $ModuleString
+            }
+            else {
+                Write-Host "An update for $($Module.Name) has not been found"  -ForegroundColor Yellow
+            }
+        }
+
+        if ( $Updates.count -ge 1 ) {
+            Write-Verbose "There are $($Updates.count) modules to be updated"
+
+            # Loop through all modules with updates available and install the latest version
+            ForEach ( $Update in $Updates ) {
+                Write-Host "    Currently updating $Update to the latest version" -ForegroundColor White
+                Install-Module -Name $Update -Repository NodePowerShell -Credential ( BetterCredentials\Get-Credential -Username NodePAT ) -Force
+                Write-Host "Completed updating the $Update module" -ForegroundColor Green
+            }
+        }
+        else {
+            Write-Host "There are no modules requiring updates" -ForegroundColor White
+        }
+    }
+    elseif ( $NodeClients ) {
+
+        # Create variable containing all modules installed from the NodeClients repository
+        $Modules = @( Get-Module -ListAvailable | Where-Object { $_.ModuleBase -like "$HOME\*" -and $_.RepositorySourceLocation -like "https://pkgs.dev.azure.com/MattNodeIT/_packaging/NodeClients/*" } | Get-Unique -PipelineVariable Module )
+
+        Write-Verbose "There are $($Modules.count) modules installed"
+
+        # Create an empty collection to store the modules that need updating
+        $Updates = @()
+
+        ForEach ( $Module in @( $Modules )) {
+            Write-Verbose "Currently selected module is - $($Module.Name)"
+            $SelectModule = Find-Module -Name $($Module.Name) -Repository NodeClients -Credential ( BetterCredentials\Get-Credential -Username NodePAT ) | Select-Object Name, Version
+            Write-Verbose "$($SelectModule.Name) module has been found in the NodeClients repository"
+            $ObjectComparison = Compare-Object -ReferenceObject $SelectModule $Module -Property Name, Version | Where-Object { $_.SideIndicator -eq "=>" } | Select-Object -Property Name, Version
+            if ( $ObjectComparison ) {
+                Write-Host "    An update for $($ObjectComparison.Name) has been found" -ForegroundColor White
+                $ModuleString = $($ObjectComparison.Name)
+                $Updates += $ModuleString
+            }
+            else {
+                Write-Host "An update for $($Module.Name) has not been found"  -ForegroundColor Yellow
+            }
+        }
+
+        if ( $Updates.count -ge 1 ) {
+            Write-Verbose "There are $($Updates.count) modules to be updated"
+
+            # Loop through all modules with updates available and install the latest version
+            ForEach ( $Update in $Updates ) {
+                Write-Host "    Currently updating $Update to the latest version" -ForegroundColor White
+                Install-Module -Name $Update -Repository NodeClients -Credential ( BetterCredentials\Get-Credential -Username NodePAT ) -Force
+                Write-Host "Completed updating the $Update module" -ForegroundColor Green
+            }
+        }
+        else {
+            Write-Host "There are no modules requiring updates" -ForegroundColor White
+        }
+
+    }
+
+}
+Export-ModuleMember -Function Add-ArtifactsCredential,Add-NodeRepository,Compare-Items,Get-LastCmdTime,Get-MattHelp,Install-NodeModule,Invoke-MattPlaster,Invoke-ProfileBanner,New-RegistryPath,New-RegistryProperty,Set-LocationGitHub,Set-LocationInput,Set-LocationOutput,Set-LocationPowerShell,Set-LocationRoot,Update-MattModules,Update-NodeModules -Alias *

@@ -5,36 +5,37 @@ online version:
 schema: 2.0.0
 ---
 
-# Update-MattModules
+# Update-NodeModules
 
 ## SYNOPSIS
-Update Matt modules
+Update Node Azure Artifacts based modules
 
 ## SYNTAX
 
 ```
-Update-MattModules [-PSGallery] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-NodeModules [-NodeClients] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update modules that are stored in PSGallery and NodePowerShellRepository
+Update modules that are installed from an Azure Artifacts repository.
+By default it checks NodePowerShell, using the -NodeClients parameter will check for updates to NodeClients modules
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Update-MattModules
+Update-NodeModules
 ```
 
 ### EXAMPLE 2
 ```
-Update-MattModules -PSGallery
+Update-NodeModules -NodeClients
 ```
 
 ## PARAMETERS
 
-### -PSGallery
-Checks for updates to modules installed from the PSGallery
+### -NodeClients
+Checks for updates to modules installed from the NodeClients repository
 
 ```yaml
 Type: SwitchParameter
@@ -44,37 +45,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
