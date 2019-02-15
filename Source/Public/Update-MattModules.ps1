@@ -12,7 +12,7 @@ function Update-MattModules {
     .EXAMPLE
     Update-MattModules -PSGallery
     .NOTES
-    Can also be called by running Update-NodeModules
+    This function also supports the -Verbose parameter to show more detailed console output
     #>
 
     [CmdletBinding(SupportsShouldProcess = $True)]

@@ -17,4 +17,5 @@
     PlatyPS          = 'latest'
     PSGitHub         = 'latest'
     Plaster          = 'latest'
+    BetterCredentials = '4.3'
 }

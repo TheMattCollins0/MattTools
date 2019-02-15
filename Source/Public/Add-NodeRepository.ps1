@@ -11,12 +11,10 @@ function Add-AzureDevOpsRepository {
     This is the name you want the repository to be registered with
     .PARAMETER Username
     The username parameter is not checked when the repository is registered, however the Username is used by BetterCredentials to store the authentication information and when interacting with the repository to install modules
-    .PARAMETER PAT
-    The PAT is generated within Azure DevOps. Is is best to create a new PAT with only read access to Package Management to prevent misuse of the credentials
-    .PARAMETER RepositoryURL
-    This is the URL provided by Azure DevOps for using the repository
+    .PARAMETER FeedName
+    This is the name of the Azure Artifacts feed for the repository
     .EXAMPLE
-    Add-AzureDevOpsRepository -RepositoryName TestRepository -Username UsernameHere -PAT wdadmineig2u5ng8e3s6h7spahkbun3qaaojufgmmi4pip2c7hla -RepositoryURL https://pkgs.dev.azure.com/SiteName/_packaging/FeedName/nuget/v2 -Verbose
+    Add-AzureDevOpsRepository -RepositoryName TestRepository -Username UsernameHere -FeedName FeedName -Verbose
     .NOTES
     This function also supports the -Verbose parameter to show more detailed console output
     #>
@@ -25,21 +23,16 @@ function Add-AzureDevOpsRepository {
     param (
         [Parameter(Mandatory = $true)]
         $RepositoryName,
-
         [Parameter(Mandatory = $true)]
         $Username,
-
         [Parameter(Mandatory = $true)]
-        $PAT,
-
-        [Parameter(Mandatory = $true)]
-        $RepositoryURL
+        $FeedName
     )
 
     begin {
-        # Creation of credentials in the Windows Credential Vault using BetterCredentials
-        Write-Verbose -Message "Adding the credentials to the Credential Vault"
-        BetterCredentials\Get-Credential -Username $Username -Password $PAT -Store -ErrorAction SilentlyContinue | Out-Null
+
+        # Creation of the RepositoryURL variable from the FeedName parameter
+        $RepositoryURL = "https://pkgs.dev.azure.com/MattNodeIT/_packaging/" + $FeedName + "/nuget/v2"
 
         # Check that the credentials were created successfully
         try {
@@ -47,9 +40,10 @@ function Add-AzureDevOpsRepository {
             $Credentials = BetterCredentials\Get-Credential -Username $Username -ErrorAction Stop
         }
         catch {
-            throw "Unable to retrive the credentials, please check they were stored successfully. Try running BetterCredentials\Get-Credential again manually"
+            throw "Unable to retrive the credentials, please check they were stored successfully using the Add-ArtifactsCredential function"
         }
-        Write-Verbose -Message 'The credentials appear to have been created successfully in the $Credentials variable. Checking for repository existence now'
+
+        Write-Verbose -Message 'The credentials have been stored successfully in the $Credentials variable. Checking for repository existence now'
 
         # Check to see if there is a repository already registered with the same name
         $RepositoryCheck = Get-PSRepository -Name $RepositoryName -ErrorAction SilentlyContinue
