@@ -17,5 +17,15 @@
     PlatyPS          = 'latest'
     PSGitHub         = 'latest'
     Plaster          = 'latest'
-    BetterCredentials = '4.3'
+    
+    BetterCredentialsInstall = @{
+        Name           = 'BetterCredentials'
+        DependencyType = 'PSGalleryModule'
+        Parameters     = @{
+            Repository         = 'PSGallery'
+            SkipPublisherCheck = $true
+            AllowClobber = $true
+        }
+        Version        = '4.3'
+    }
 }
