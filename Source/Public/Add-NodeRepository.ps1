@@ -6,11 +6,11 @@ function Add-NodeRepository {
     .SYNOPSIS
     Registers Azure Nuget feed as a repository
     .DESCRIPTION
-    Registers an Azure Package Management nuget feed to PowerShell as a repository. This uses BetterCredentials to store the repository credentials in the Windows Credential Vault to make it easier to interact with the repository
+    Registers an Azure Package Management nuget feed to PowerShell as a repository. This uses BetterCredentials access the repository credentials stored in the Windows Credential Vault
     .PARAMETER RepositoryName
     This is the name you want the repository to be registered with
     .PARAMETER Username
-    The username parameter is not checked when the repository is registered, however the Username is used by BetterCredentials to store the authentication information and when interacting with the repository to install modules
+    This is the username that the Azure Artifacts PAT is stored in Credential Manager using. This is to allow retrieval of the credentials using BetterCredentials
     .PARAMETER FeedName
     This is the name of the Azure Artifacts feed for the repository
     .EXAMPLE
