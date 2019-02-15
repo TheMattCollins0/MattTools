@@ -52,7 +52,7 @@ function Add-ArtifactsCredential {
         }
     }
 }
-function Add-AzureDevOpsRepository {
+function Add-NodeRepository {
 
     #Requires -Modules BetterCredentials
 
@@ -68,7 +68,7 @@ function Add-AzureDevOpsRepository {
     .PARAMETER FeedName
     This is the name of the Azure Artifacts feed for the repository
     .EXAMPLE
-    Add-AzureDevOpsRepository -RepositoryName TestRepository -Username UsernameHere -FeedName FeedName -Verbose
+    Add-NodeRepository -RepositoryName TestRepository -Username UsernameHere -FeedName FeedName -Verbose
     .NOTES
     This function also supports the -Verbose parameter to show more detailed console output
     #>
