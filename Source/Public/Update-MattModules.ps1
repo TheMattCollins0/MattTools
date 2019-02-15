@@ -108,5 +108,3 @@ function Update-MattModules {
     }
 
 }
-
-New-Alias -Name Update-NodeModules -Value Update-MattModules
