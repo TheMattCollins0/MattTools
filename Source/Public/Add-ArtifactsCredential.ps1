@@ -28,13 +28,13 @@ function Add-ArtifactsCredential {
     )
 
     begin {
-        
+
         $CredentialCheck = BetterCredentials\Get-Credential -Username $Username -ErrorAction SilentlyContinue
         if ( !$CredentialCheck ) {
             Write-Verbose -Message "There are no credentials stored with the specified username, proceeding with the creation"
         }
         else {
-            throw "An entry in Credential Manager already exists for the specified username. to recreate them, please delete the entry from Credential Manager"
+            throw "An entry in Credential Manager already exists for the specified username. To recreate them, please delete the entry from Credential Manager"
         }
         Write-Verbose -Message 'The credential check has completed successfully, proceeding to the credential creations now'
 

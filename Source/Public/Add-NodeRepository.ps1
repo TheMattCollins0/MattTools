@@ -10,7 +10,7 @@ function Add-NodeRepository {
     .PARAMETER RepositoryName
     This is the name you want the repository to be registered with
     .PARAMETER Username
-    This is the username that the Azure Artifacts PAT is stored in Credential Manager using. This is to allow retrieval of the credentials using BetterCredentials
+    This is the username that the Azure Artifacts PAT is stored in Credential Manager using. This is to allow retrieval of the credentials using BetterCredentials. The default username is set to NodePAT
     .PARAMETER FeedName
     This is the name of the Azure Artifacts feed for the repository
     .EXAMPLE
@@ -22,11 +22,11 @@ function Add-NodeRepository {
     [cmdletbinding()]
     param (
         [Parameter(Mandatory = $true)]
-        $RepositoryName,
+        [string] $RepositoryName,
+        [Parameter(Mandatory = $false)]
+        [string] $Username = "NodePAT",
         [Parameter(Mandatory = $true)]
-        $Username,
-        [Parameter(Mandatory = $true)]
-        $FeedName
+        [string] $FeedName
     )
 
     begin {
