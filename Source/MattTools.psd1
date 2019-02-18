@@ -12,7 +12,7 @@
 RootModule = 'MattTools.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.4.35'
+ModuleVersion = '0.4.36'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()

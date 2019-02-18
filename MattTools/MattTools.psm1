@@ -91,7 +91,7 @@ function Add-NodeRepository {
         # Check that the credentials were created successfully
         try {
             Write-Verbose -Message "Testing if the credentials are available in the Credential Vault"
-            $Credentials = BetterCredentials\Get-Credential -Username $Username -ErrorAction Stop
+            $Credentials = BetterCredentials\Get-Credential -Username $Username
         }
         catch {
             throw "Unable to retrive the credentials, please check they were stored successfully using the Add-ArtifactsCredential function"
