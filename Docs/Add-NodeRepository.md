@@ -13,7 +13,7 @@ Registers Azure Nuget feed as a repository
 ## SYNTAX
 
 ```
-Add-NodeRepository [-RepositoryName] <Object> [-Username] <Object> [-FeedName] <Object> [<CommonParameters>]
+Add-NodeRepository [-RepositoryName] <String> [[-Username] <String>] [-FeedName] <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,7 +33,7 @@ Add-NodeRepository -RepositoryName TestRepository -Username UsernameHere -FeedNa
 This is the name you want the repository to be registered with
 
 ```yaml
-Type: Object
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -46,16 +46,17 @@ Accept wildcard characters: False
 
 ### -Username
 This is the username that the Azure Artifacts PAT is stored in Credential Manager using.
-This is to allow retrieval of the credentials using BetterCredentials
+This is to allow retrieval of the credentials using BetterCredentials.
+The default username is set to NodePAT
 
 ```yaml
-Type: Object
+Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 2
-Default value: None
+Default value: NodePAT
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -64,7 +65,7 @@ Accept wildcard characters: False
 This is the name of the Azure Artifacts feed for the repository
 
 ```yaml
-Type: Object
+Type: String
 Parameter Sets: (All)
 Aliases:
 

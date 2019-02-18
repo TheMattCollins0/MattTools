@@ -28,13 +28,13 @@ function Add-ArtifactsCredential {
     )
 
     begin {
-        
+
         $CredentialCheck = BetterCredentials\Get-Credential -Username $Username -ErrorAction SilentlyContinue
         if ( !$CredentialCheck ) {
             Write-Verbose -Message "There are no credentials stored with the specified username, proceeding with the creation"
         }
         else {
-            throw "An entry in Credential Manager already exists for the specified username. to recreate them, please delete the entry from Credential Manager"
+            throw "An entry in Credential Manager already exists for the specified username. To recreate them, please delete the entry from Credential Manager"
         }
         Write-Verbose -Message 'The credential check has completed successfully, proceeding to the credential creations now'
 
@@ -64,7 +64,7 @@ function Add-NodeRepository {
     .PARAMETER RepositoryName
     This is the name you want the repository to be registered with
     .PARAMETER Username
-    This is the username that the Azure Artifacts PAT is stored in Credential Manager using. This is to allow retrieval of the credentials using BetterCredentials
+    This is the username that the Azure Artifacts PAT is stored in Credential Manager using. This is to allow retrieval of the credentials using BetterCredentials. The default username is set to NodePAT
     .PARAMETER FeedName
     This is the name of the Azure Artifacts feed for the repository
     .EXAMPLE
@@ -76,11 +76,11 @@ function Add-NodeRepository {
     [cmdletbinding()]
     param (
         [Parameter(Mandatory = $true)]
-        $RepositoryName,
+        [string] $RepositoryName,
+        [Parameter(Mandatory = $false)]
+        [string] $Username = "NodePAT",
         [Parameter(Mandatory = $true)]
-        $Username,
-        [Parameter(Mandatory = $true)]
-        $FeedName
+        [string] $FeedName
     )
 
     begin {
