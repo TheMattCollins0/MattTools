@@ -45,7 +45,7 @@ function Add-ArtifactsCredential {
         # Creation of credentials in the Windows Credential Vault using BetterCredentials
         Write-Verbose -Message "Adding the credentials to the Credential Vault"
         try {
-            BetterCredentials\Get-Credential -Username $Username -Password $PAT -Store -ErrorAction Stop
+            BetterCredentials\Get-Credential -Username $Username -Password $PAT -Store
         }
         catch {
             throw "Unable to create the credentials, please try the BetterCredentials creation manually"
