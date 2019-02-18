@@ -26,31 +26,16 @@ function Add-ArtifactsCredential {
         [Parameter(Mandatory = $true)]
         [string] $PAT
     )
-
-    begin {
-        <#
-        $CredentialCheck = BetterCredentials\Get-Credential -Username $Username -ErrorAction SilentlyContinue
-        if ( !$CredentialCheck ) {
-            Write-Verbose -Message "There are no credentials stored with the specified username, proceeding with the creation"
-        }
-        else {
-            throw "An entry in Credential Manager already exists for the specified username. To recreate them, please delete the entry from Credential Manager"
-        }
-        Write-Verbose -Message 'The credential check has completed successfully, proceeding to the credential creations now'
-        #>
+    
+    # Creation of credentials in the Windows Credential Vault using BetterCredentials
+    Write-Verbose -Message "Adding the credentials to the Credential Vault"
+    try {
+        BetterCredentials\Get-Credential -Username $Username -Password $PAT -Store
+    }
+    catch {
+        throw "Unable to create the credentials, please try the BetterCredentials creation manually"
     }
 
-    process {
-
-        # Creation of credentials in the Windows Credential Vault using BetterCredentials
-        Write-Verbose -Message "Adding the credentials to the Credential Vault"
-        try {
-            BetterCredentials\Get-Credential -Username $Username -Password $PAT -Store
-        }
-        catch {
-            throw "Unable to create the credentials, please try the BetterCredentials creation manually"
-        }
-    }
 }
 function Add-NodeRepository {
 
