@@ -113,6 +113,13 @@
           <maml:para></maml:para>
         </dev:remarks>
       </command:example>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 3 --------------------------</maml:title>
+        <dev:code>Add-ArtifactsCredential -PAT wdadmineig2u5ng8e3s6h -RepositoryName RepositoryName</dev:code>
+        <dev:remarks>
+          <maml:para></maml:para>
+        </dev:remarks>
+      </command:example>
     </command:examples>
     <command:relatedLinks />
   </command:command>

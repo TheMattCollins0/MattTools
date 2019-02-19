@@ -33,6 +33,11 @@ Add-ArtifactsCredential -PAT wdadmineig2u5ng8e3s6h
 Add-ArtifactsCredential -Username UsernameHere -PAT wdadmineig2u5ng8e3s6h
 ```
 
+### EXAMPLE 3
+```
+Add-ArtifactsCredential -PAT wdadmineig2u5ng8e3s6h -RepositoryName RepositoryName
+```
+
 ## PARAMETERS
 
 ### -Username
