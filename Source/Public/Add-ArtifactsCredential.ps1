@@ -17,6 +17,8 @@ function Add-ArtifactsCredential {
     Add-ArtifactsCredential -PAT wdadmineig2u5ng8e3s6h
     .EXAMPLE
     Add-ArtifactsCredential -Username UsernameHere -PAT wdadmineig2u5ng8e3s6h
+    .EXAMPLE
+    Add-ArtifactsCredential -PAT wdadmineig2u5ng8e3s6h -RepositoryName RepositoryName
     .NOTES
     This function also supports the -Verbose parameter to show more detailed console output
     #>
