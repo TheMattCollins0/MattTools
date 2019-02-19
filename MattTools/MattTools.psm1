@@ -11,6 +11,8 @@ function Add-ArtifactsCredential {
     The username parameter is used when storing the credentials. The default value is NodePAT
     .PARAMETER PAT
     The PAT is generated within Azure DevOps. Is is best to create a new PAT with only read access to Package Management to prevent misuse of the credentials
+    .PARAMETER RepositoryName
+    Supply the repository name to initialise the NuGet Package Source
     .EXAMPLE
     Add-ArtifactsCredential -PAT wdadmineig2u5ng8e3s6h
     .EXAMPLE
@@ -24,18 +26,36 @@ function Add-ArtifactsCredential {
         [Parameter(Mandatory = $false)]
         [string] $Username = "NodePAT",
         [Parameter(Mandatory = $true)]
-        [string] $PAT
+        [string] $PAT,
+        [Parameter(Mandatory = $false)]
+        [string] $RepositoryName
     )
-    
-    # Creation of credentials in the Windows Credential Vault using BetterCredentials
-    Write-Verbose -Message "Adding the credentials to the Credential Vault"
-    try {
-        BetterCredentials\Get-Credential -Username $Username -Password $PAT -Store
-    }
-    catch {
-        throw "Unable to create the credentials, please try the BetterCredentials creation manually"
+
+    begin {
+
+        if ( $RepositoryName ) {
+            $PackageSourceUrl = "https://pkgs.dev.azure.com/MattNodeIT/_packaging/" + $RepositoryName + "/nuget/v2"
+        }
+
     }
 
+    process {
+
+        # Creation of credentials in the Windows Credential Vault using BetterCredentials
+        Write-Verbose -Message "Adding the credentials to the Credential Vault"
+        try {
+            BetterCredentials\Get-Credential -Username $Username -Password $PAT -Store -Force
+        }
+        catch {
+            throw "Unable to create the credentials, please try the BetterCredentials creation manually"
+        }
+
+        # Trying to add the NuGet package source
+        if ( $RepositoryName ) {
+            NuGet Sources Add -Name $RepositoryName -Source $PackageSourceUrl -Username $Username -Password $PAT
+        }
+
+    }
 }
 function Add-NodeRepository {
 
@@ -76,7 +96,7 @@ function Add-NodeRepository {
         # Check that the credentials were created successfully
         try {
             Write-Verbose -Message "Testing if the credentials are available in the Credential Vault"
-            $Credentials = BetterCredentials\Get-Credential -Username $Username
+            $Credentials = BetterCredentials\Get-Credential -Username $Username -ErrorAction Stop
         }
         catch {
             throw "Unable to retrive the credentials, please check they were stored successfully using the Add-ArtifactsCredential function"
@@ -100,12 +120,14 @@ function Add-NodeRepository {
         }
         catch {
             Write-Verbose -Message "Installing the Nuget package provider in the CurrentUser scope"
-            Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force -Scope:CurrentUser | Out-Null
+            Install-PackageProvider -Name NuGet -MinimumVersion 3.0.0.1 -Force -Scope:CurrentUser | Out-Null
         }
 
     }
 
     process {
+
+
 
         Write-Verbose -Message "Beginning the repository registration process now"
 
