@@ -64,11 +64,16 @@ function Add-NodeRepository {
             Install-PackageProvider -Name NuGet -MinimumVersion 3.0.0.1 -Force -Scope:CurrentUser | Out-Null
         }
 
+        # Variable creations
+        $NugetUsername = $Credentials.Username
+        $PAT = $Credentials.Password
+
     }
 
     process {
 
-
+        # Addition of the NuGet source for the repository
+        NuGet Sources Add -Name $RepositoryName -Source $RepositoryURL -Username $NugetUsername -Password $PAT
 
         Write-Verbose -Message "Beginning the repository registration process now"
 
