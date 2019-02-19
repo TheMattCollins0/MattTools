@@ -37,7 +37,7 @@ function Add-NodeRepository {
         # Check that the credentials were created successfully
         try {
             Write-Verbose -Message "Testing if the credentials are available in the Credential Vault"
-            $Credentials = BetterCredentials\Get-Credential -Username $Username
+            $Credentials = BetterCredentials\Get-Credential -Username $Username -ErrorAction Stop
         }
         catch {
             throw "Unable to retrive the credentials, please check they were stored successfully using the Add-ArtifactsCredential function"
@@ -61,12 +61,14 @@ function Add-NodeRepository {
         }
         catch {
             Write-Verbose -Message "Installing the Nuget package provider in the CurrentUser scope"
-            Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force -Scope:CurrentUser | Out-Null
+            Install-PackageProvider -Name NuGet -MinimumVersion 3.0.0.1 -Force -Scope:CurrentUser | Out-Null
         }
 
     }
 
     process {
+
+
 
         Write-Verbose -Message "Beginning the repository registration process now"
 

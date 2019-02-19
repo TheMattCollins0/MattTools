@@ -11,6 +11,8 @@ function Add-ArtifactsCredential {
     The username parameter is used when storing the credentials. The default value is NodePAT
     .PARAMETER PAT
     The PAT is generated within Azure DevOps. Is is best to create a new PAT with only read access to Package Management to prevent misuse of the credentials
+    .PARAMETER RepositoryName
+    Supply the repository name to initialise the NuGet Package Source
     .EXAMPLE
     Add-ArtifactsCredential -PAT wdadmineig2u5ng8e3s6h
     .EXAMPLE
@@ -24,16 +26,34 @@ function Add-ArtifactsCredential {
         [Parameter(Mandatory = $false)]
         [string] $Username = "NodePAT",
         [Parameter(Mandatory = $true)]
-        [string] $PAT
+        [string] $PAT,
+        [Parameter(Mandatory = $false)]
+        [string] $RepositoryName
     )
-    
-    # Creation of credentials in the Windows Credential Vault using BetterCredentials
-    Write-Verbose -Message "Adding the credentials to the Credential Vault"
-    try {
-        BetterCredentials\Get-Credential -Username $Username -Password $PAT -Store
-    }
-    catch {
-        throw "Unable to create the credentials, please try the BetterCredentials creation manually"
+
+    begin {
+
+        if ( $RepositoryName ) {
+            $PackageSourceUrl = "https://pkgs.dev.azure.com/MattNodeIT/_packaging/" + $RepositoryName + "/nuget/v2"
+        }
+
     }
 
+    process {
+
+        # Creation of credentials in the Windows Credential Vault using BetterCredentials
+        Write-Verbose -Message "Adding the credentials to the Credential Vault"
+        try {
+            BetterCredentials\Get-Credential -Username $Username -Password $PAT -Store -Force
+        }
+        catch {
+            throw "Unable to create the credentials, please try the BetterCredentials creation manually"
+        }
+
+        # Trying to add the NuGet package source
+        if ( $RepositoryName ) {
+            NuGet Sources Add -Name $RepositoryName -Source $PackageSourceUrl -Username $Username -Password $PAT
+        }
+
+    }
 }
