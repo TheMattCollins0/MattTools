@@ -27,18 +27,6 @@
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
-          <maml:name>RepositoryName</maml:name>
-          <maml:Description>
-            <maml:para>Supply the repository name to initialise the NuGet Package Source</maml:para>
-          </maml:Description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-          <dev:type>
-            <maml:name>String</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
       </command:syntaxItem>
     </command:syntax>
     <command:parameters>
@@ -46,18 +34,6 @@
         <maml:name>PAT</maml:name>
         <maml:Description>
           <maml:para>The PAT is generated within Azure DevOps. Is is best to create a new PAT with only read access to Package Management to prevent misuse of the credentials</maml:para>
-        </maml:Description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        <dev:type>
-          <maml:name>String</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>None</dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
-        <maml:name>RepositoryName</maml:name>
-        <maml:Description>
-          <maml:para>Supply the repository name to initialise the NuGet Package Source</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -84,7 +60,7 @@
       </command:example>
       <command:example>
         <maml:title>-------------------------- EXAMPLE 2 --------------------------</maml:title>
-        <dev:code>Add-ArtifactsCredential -PAT wdadmineig2u5ng8e3s6h -RepositoryName RepositoryName</dev:code>
+        <dev:code>Add-ArtifactsCredential -PAT wdadmineig2u5ng8e3s6h</dev:code>
         <dev:remarks>
           <maml:para></maml:para>
         </dev:remarks>

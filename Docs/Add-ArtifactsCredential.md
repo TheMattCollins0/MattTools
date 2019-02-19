@@ -13,7 +13,7 @@ Azure Artifacts credentials creation
 ## SYNTAX
 
 ```
-Add-ArtifactsCredential [-PAT] <String> [[-RepositoryName] <String>] [<CommonParameters>]
+Add-ArtifactsCredential [-PAT] <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,7 +29,7 @@ Add-ArtifactsCredential -PAT wdadmineig2u5ng8e3s6h
 
 ### EXAMPLE 2
 ```
-Add-ArtifactsCredential -PAT wdadmineig2u5ng8e3s6h -RepositoryName RepositoryName
+Add-ArtifactsCredential -PAT wdadmineig2u5ng8e3s6h
 ```
 
 ## PARAMETERS
@@ -45,21 +45,6 @@ Aliases:
 
 Required: True
 Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RepositoryName
-Supply the repository name to initialise the NuGet Package Source
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
