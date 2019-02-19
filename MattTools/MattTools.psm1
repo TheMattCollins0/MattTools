@@ -7,16 +7,12 @@ function Add-ArtifactsCredential {
     Azure Artifacts credentials creation
     .DESCRIPTION
     Adds the credentials required to add an Azure Artifacts feed as a repository. The credentials are stored in credential manager using the BetterCredentials module
-    .PARAMETER Username
-    The username parameter is used when storing the credentials. The default value is NodePAT
     .PARAMETER PAT
     The PAT is generated within Azure DevOps. Is is best to create a new PAT with only read access to Package Management to prevent misuse of the credentials
     .PARAMETER RepositoryName
     Supply the repository name to initialise the NuGet Package Source
     .EXAMPLE
     Add-ArtifactsCredential -PAT wdadmineig2u5ng8e3s6h
-    .EXAMPLE
-    Add-ArtifactsCredential -Username UsernameHere -PAT wdadmineig2u5ng8e3s6h
     .EXAMPLE
     Add-ArtifactsCredential -PAT wdadmineig2u5ng8e3s6h -RepositoryName RepositoryName
     .NOTES
@@ -25,8 +21,6 @@ function Add-ArtifactsCredential {
 
     [cmdletbinding()]
     param(
-        [Parameter(Mandatory = $false)]
-        [string] $Username = "NodePAT",
         [Parameter(Mandatory = $true)]
         [string] $PAT,
         [Parameter(Mandatory = $false)]
@@ -39,6 +33,8 @@ function Add-ArtifactsCredential {
             $PackageSourceUrl = "https://pkgs.dev.azure.com/MattNodeIT/_packaging/" + $RepositoryName + "/nuget/v2"
         }
         #>
+        # Username variable generation
+        $Username = "NodePAT"
     }
 
     process {
@@ -71,12 +67,10 @@ function Add-NodeRepository {
     Registers an Azure Package Management nuget feed to PowerShell as a repository. This uses BetterCredentials access the repository credentials stored in the Windows Credential Vault
     .PARAMETER RepositoryName
     This is the name you want the repository to be registered with
-    .PARAMETER Username
-    This is the username that the Azure Artifacts PAT is stored in Credential Manager using. This is to allow retrieval of the credentials using BetterCredentials. The default username is set to NodePAT
     .PARAMETER FeedName
     This is the name of the Azure Artifacts feed for the repository
     .EXAMPLE
-    Add-NodeRepository -RepositoryName TestRepository -Username UsernameHere -FeedName FeedName -Verbose
+    Add-NodeRepository -RepositoryName TestRepository -FeedName FeedName -Verbose
     .NOTES
     This function also supports the -Verbose parameter to show more detailed console output
     #>
@@ -85,8 +79,6 @@ function Add-NodeRepository {
     param (
         [Parameter(Mandatory = $true)]
         [string] $RepositoryName,
-        [Parameter(Mandatory = $false)]
-        [string] $Username = "NodePAT",
         [Parameter(Mandatory = $true)]
         [string] $FeedName
     )
@@ -95,6 +87,9 @@ function Add-NodeRepository {
 
         # Creation of the RepositoryURL variable from the FeedName parameter
         $RepositoryURL = "https://pkgs.dev.azure.com/MattNodeIT/_packaging/" + $FeedName + "/nuget/v2"
+
+        # Username variable generation
+        $Username = "NodePAT"
 
         # Check that the credentials were created successfully
         try {
@@ -230,6 +225,102 @@ function Compare-Items {
 
     }
 }
+function Find-NodeModule {
+
+
+    #Requires -Modules BetterCredentials
+
+    <#
+    .SYNOPSIS
+    Find module or modules in an Azure Artifacts repository
+    .DESCRIPTION
+    This function wraps around the Find-Module function. It uses BetterCredentials module to secure authentication to the feed and reduce installation effort
+    .PARAMETER Name
+    This parameter specifies the name of the module you wish to find
+    .PARAMETER Repository
+    This parameter specifies the name of the Repository that you want to search. This parameter defaults to NodePowerShell
+    .EXAMPLE
+    Find-NodeModule -Name MODULENAME -Repository REPOSITORYNAME
+    .EXAMPLE
+    Find-NodeModule
+    .EXAMPLE
+    Find-NodeModule -Repository REPOSITORYNAME
+    .NOTES
+    This function also supports the -Verbose parameter for more console output
+    #>
+
+    [cmdletbinding()]
+    param(
+        [Parameter(Mandatory = $false)]
+        [string] $Name,
+        [Parameter(Mandatory = $false)]
+        [string] $Repository = "NodePowerShell"
+    )
+
+    begin {
+
+        if ( $Name ) {
+
+            Write-Verbose -Message "A module name has been specified, finding this module in the specified repository"
+
+        }
+        elseif ( !$Name ) {
+
+            Write-Verbose -Message "A module name has not been specified, searching for all available modules in the specified repository"
+
+        }
+
+        # Username variable generation
+        $Username = "NodePAT"
+
+        # Import the Azure Artifacts feed credentials using BetterCredentials
+        # Check that the credentials were created successfully
+        try {
+            Write-Verbose -Message "Testing if the credentials are available in the Credential Vault"
+            $Credentials = BetterCredentials\Get-Credential -Username $Username -ErrorAction Stop
+        }
+        catch {
+            throw "Unable to retrive the credentials, please check they were stored successfully using the Add-ArtifactsCredential function"
+        }
+
+        Write-Verbose -Message 'The credentials have been imported by BetterCredentials successfully. Checking for repository existence now'
+
+        # Check to see if the repository already exists
+        $RepositoryCheck = Get-PSRepository -Name $Repository -ErrorAction SilentlyContinue
+        if ($RepositoryCheck) {
+            Write-Verbose -Message "The repository exists, it is possible to find modules in this location"
+        }
+        else {
+            throw "The specified repository has not been added to PowerShell, please add the repository then try again."
+        }
+
+    }
+
+    process {
+
+        if ( $Name ) {
+            # Search for specific module
+            try {
+                Write-Verbose -Message "Finding the module now"
+                Find-Module -Name $Name -Repository $Repository -Credential $Credentials -Force -ErrorAction Stop
+            }
+            catch {
+                throw "Unable to find the module, please check that the module and repository names are correct"
+            }
+        }
+        elseif ( !$Name ) {
+            # Search for all modules in a repository
+            try {
+                Write-Verbose -Message "Finding any modules"
+                Find-Module * -Repository $Repository -Credential $Credentials -Force -ErrorAction Stop
+            }
+            catch {
+                throw "Unable to find any modules, please check that there are modules published to this repository"
+            }
+        }
+
+    }
+}
 function Get-LastCmdTime {
 
     <#
@@ -326,7 +417,7 @@ function Install-NodeModule {
     .PARAMETER Name
     This parameter specifies the name of the module you wish to install
     .PARAMETER Repository
-    This parameter specifies the name of the Repository that you want to
+    This parameter specifies the name of the Repository that you want to install the module from. This parameter defaults to the value NodePowerShell
     .EXAMPLE
     Install-NodeModule -Name MODULENAME -Repository REPOSITORYNAME
     .NOTES
@@ -337,20 +428,25 @@ function Install-NodeModule {
     param(
         [Parameter(Mandatory = $true)]
         [string] $Name,
-        [Parameter(Mandatory = $true)]
-        [string] $Repository
+        [Parameter(Mandatory = $false)]
+        [string] $Repository = "NodePowerShell"
     )
 
     begin {
 
+        # Username variable generation
+        $Username = "NodePAT"
+
         # Import the Azure Artifacts feed credentials using BetterCredentials
-        $CredentialCheck = BetterCredentials\Get-Credential -Username NodePAT -ErrorAction SilentlyContinue
-        if ($CredentialCheck) {
-            Write-Verbose -Message "The credentials were imported by BetterCredentials successfully"
+        # Check that the credentials were created successfully
+        try {
+            Write-Verbose -Message "Testing if the credentials are available in the Credential Vault"
+            $Credentials = BetterCredentials\Get-Credential -Username $Username -ErrorAction Stop
         }
-        else {
-            throw "Unable to retrive the credentials, please check that they have been created"
+        catch {
+            throw "Unable to retrive the credentials, please check they were stored successfully using the Add-ArtifactsCredential function"
         }
+
         Write-Verbose -Message 'The credentials have been imported by BetterCredentials successfully. Checking for repository existence now'
 
         # Check to see if the repository already exists
@@ -369,7 +465,7 @@ function Install-NodeModule {
         # Module installation
         try {
             Write-Verbose -Message "Installing the module now"
-            Install-Module -Name $Name -Repository $Repository -Credential ( BetterCredentials\Get-Credential -Username NodePAT ) -Force -ErrorAction Stop
+            Install-Module -Name $Name -Repository $Repository -Credential $Credentials -Force -ErrorAction Stop
         }
         catch {
             throw "Unable to install the application, please run the command again manually"
@@ -1028,4 +1124,4 @@ function Update-MattModules {
     }
 
 }
-Export-ModuleMember -Function Add-ArtifactsCredential,Add-NodeRepository,Compare-Items,Get-LastCmdTime,Get-MattHelp,Install-NodeModule,Invoke-MattPlaster,Invoke-ProfileBanner,New-RegistryPath,New-RegistryProperty,Set-LocationGitHub,Set-LocationInput,Set-LocationOutput,Set-LocationPowerShell,Set-LocationRoot,Update-MattModules -Alias *
+Export-ModuleMember -Function Add-ArtifactsCredential,Add-NodeRepository,Compare-Items,Find-NodeModule,Get-LastCmdTime,Get-MattHelp,Install-NodeModule,Invoke-MattPlaster,Invoke-ProfileBanner,New-RegistryPath,New-RegistryProperty,Set-LocationGitHub,Set-LocationInput,Set-LocationOutput,Set-LocationPowerShell,Set-LocationRoot,Update-MattModules -Alias *

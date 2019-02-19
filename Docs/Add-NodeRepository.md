@@ -13,7 +13,7 @@ Registers Azure Nuget feed as a repository
 ## SYNTAX
 
 ```
-Add-NodeRepository [-RepositoryName] <String> [[-Username] <String>] [-FeedName] <String> [<CommonParameters>]
+Add-NodeRepository [-RepositoryName] <String> [-FeedName] <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,7 +24,7 @@ This uses BetterCredentials access the repository credentials stored in the Wind
 
 ### EXAMPLE 1
 ```
-Add-NodeRepository -RepositoryName TestRepository -Username UsernameHere -FeedName FeedName -Verbose
+Add-NodeRepository -RepositoryName TestRepository -FeedName FeedName -Verbose
 ```
 
 ## PARAMETERS
@@ -44,23 +44,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Username
-This is the username that the Azure Artifacts PAT is stored in Credential Manager using.
-This is to allow retrieval of the credentials using BetterCredentials.
-The default username is set to NodePAT
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 2
-Default value: NodePAT
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -FeedName
 This is the name of the Azure Artifacts feed for the repository
 
@@ -70,7 +53,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 3
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

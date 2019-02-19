@@ -5,38 +5,49 @@ online version:
 schema: 2.0.0
 ---
 
-# Install-NodeModule
+# Find-NodeModule
 
 ## SYNOPSIS
-Install a module from an Azure Artifacts repository
+Find module or modules in an Azure Artifacts repository
 
 ## SYNTAX
 
 ```
-Install-NodeModule [-Name] <String> [[-Repository] <String>] [<CommonParameters>]
+Find-NodeModule [[-Name] <String>] [[-Repository] <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This function wraps around the Install-Module function and uses BetterCredentials to secure authentication to the feed and reduce installation effort
+This function wraps around the Find-Module function.
+It uses BetterCredentials module to secure authentication to the feed and reduce installation effort
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Install-NodeModule -Name MODULENAME -Repository REPOSITORYNAME
+Find-NodeModule -Name MODULENAME -Repository REPOSITORYNAME
+```
+
+### EXAMPLE 2
+```
+Find-NodeModule
+```
+
+### EXAMPLE 3
+```
+Find-NodeModule -Repository REPOSITORYNAME
 ```
 
 ## PARAMETERS
 
 ### -Name
-This parameter specifies the name of the module you wish to install
+This parameter specifies the name of the module you wish to find
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 1
 Default value: None
 Accept pipeline input: False
@@ -44,8 +55,8 @@ Accept wildcard characters: False
 ```
 
 ### -Repository
-This parameter specifies the name of the Repository that you want to install the module from.
-This parameter defaults to the value NodePowerShell
+This parameter specifies the name of the Repository that you want to search.
+This parameter defaults to NodePowerShell
 
 ```yaml
 Type: String

@@ -13,8 +13,7 @@ Azure Artifacts credentials creation
 ## SYNTAX
 
 ```
-Add-ArtifactsCredential [[-Username] <String>] [-PAT] <String> [[-RepositoryName] <String>]
- [<CommonParameters>]
+Add-ArtifactsCredential [-PAT] <String> [[-RepositoryName] <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,31 +29,10 @@ Add-ArtifactsCredential -PAT wdadmineig2u5ng8e3s6h
 
 ### EXAMPLE 2
 ```
-Add-ArtifactsCredential -Username UsernameHere -PAT wdadmineig2u5ng8e3s6h
-```
-
-### EXAMPLE 3
-```
 Add-ArtifactsCredential -PAT wdadmineig2u5ng8e3s6h -RepositoryName RepositoryName
 ```
 
 ## PARAMETERS
-
-### -Username
-The username parameter is used when storing the credentials.
-The default value is NodePAT
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 1
-Default value: NodePAT
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -PAT
 The PAT is generated within Azure DevOps.
@@ -66,7 +44,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -81,7 +59,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 3
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
