@@ -34,11 +34,11 @@ function Add-ArtifactsCredential {
     )
 
     begin {
-
+        <#
         if ( $RepositoryName ) {
             $PackageSourceUrl = "https://pkgs.dev.azure.com/MattNodeIT/_packaging/" + $RepositoryName + "/nuget/v2"
         }
-
+        #>
     }
 
     process {
@@ -52,11 +52,12 @@ function Add-ArtifactsCredential {
             throw "Unable to create the credentials, please try the BetterCredentials creation manually"
         }
 
+        <#
         # Trying to add the NuGet package source
         if ( $RepositoryName ) {
             NuGet Sources Add -Name $RepositoryName -Source $PackageSourceUrl -Username $Username -Password $PAT
         }
-
+        #>
     }
 }
 function Add-NodeRepository {
@@ -125,11 +126,16 @@ function Add-NodeRepository {
             Install-PackageProvider -Name NuGet -MinimumVersion 3.0.0.1 -Force -Scope:CurrentUser | Out-Null
         }
 
+        # Variable creations
+        $NugetUsername = $Credentials.Username
+        $PAT = $Credentials.Password
+
     }
 
     process {
 
-
+        # Addition of the NuGet source for the repository
+        NuGet Sources Add -Name $RepositoryName -Source $RepositoryURL -Username $NugetUsername -Password $PAT
 
         Write-Verbose -Message "Beginning the repository registration process now"
 
