@@ -11,6 +11,15 @@ Param
 
 )
 
+# Test if the required version of PowerShellGet is available
+try {
+    Import-Module PowerShellGet -Force -RequiredVersion "1.5.0.0" -ErrorAction Stop
+}
+catch {
+    Install-Module PowerShellGet -Force -RequiredVersion "1.5.0.0" -Scope CurrentUser
+    Import-Module PowerShellGet -Force -RequiredVersion "1.5.0.0"
+}
+
 $ModuleFolderName = $env:BUILD_DEFINITIONNAME
 
 If ($RepoBaseURI.Substring($RepoBaseURI.Length - 1, 1) -ne '/') {
@@ -48,4 +57,3 @@ If (!$ExistingRepo) {
     Unregister-PSRepository -Name $FeedName
 }
 Write-Output "Done!"
-
