@@ -75,7 +75,7 @@ function Find-NodeModule {
             # Search for specific module
             try {
                 Write-Verbose -Message "Finding the module now"
-                Find-Module -Name $Name -Repository $Repository -Credential $Credentials -Force -ErrorAction Stop
+                Find-Module -Name $Name -Repository $Repository -Credential $Credentials -ErrorAction Stop
             }
             catch {
                 throw "Unable to find the module, please check that the module and repository names are correct"
@@ -85,7 +85,7 @@ function Find-NodeModule {
             # Search for all modules in a repository
             try {
                 Write-Verbose -Message "Finding any modules"
-                Find-Module * -Repository $Repository -Credential $Credentials -Force -ErrorAction Stop
+                Find-Module -Repository $Repository -Credential $Credentials -ErrorAction Stop
             }
             catch {
                 throw "Unable to find any modules, please check that there are modules published to this repository"
