@@ -10,7 +10,7 @@ function Install-NodeModule {
     .PARAMETER Name
     This parameter specifies the name of the module you wish to install
     .PARAMETER Repository
-    This parameter specifies the name of the Repository that you want to
+    This parameter specifies the name of the Repository that you want to install the module from. This parameter defaults to the value NodePowerShell
     .EXAMPLE
     Install-NodeModule -Name MODULENAME -Repository REPOSITORYNAME
     .NOTES
@@ -21,20 +21,25 @@ function Install-NodeModule {
     param(
         [Parameter(Mandatory = $true)]
         [string] $Name,
-        [Parameter(Mandatory = $true)]
-        [string] $Repository
+        [Parameter(Mandatory = $false)]
+        [string] $Repository = "NodePowerShell"
     )
 
     begin {
 
+        # Username variable generation
+        $Username = "NodePAT"
+
         # Import the Azure Artifacts feed credentials using BetterCredentials
-        $CredentialCheck = BetterCredentials\Get-Credential -Username NodePAT -ErrorAction SilentlyContinue
-        if ($CredentialCheck) {
-            Write-Verbose -Message "The credentials were imported by BetterCredentials successfully"
+        # Check that the credentials were created successfully
+        try {
+            Write-Verbose -Message "Testing if the credentials are available in the Credential Vault"
+            $Credentials = BetterCredentials\Get-Credential -Username $Username -ErrorAction Stop
         }
-        else {
-            throw "Unable to retrive the credentials, please check that they have been created"
+        catch {
+            throw "Unable to retrive the credentials, please check they were stored successfully using the Add-ArtifactsCredential function"
         }
+
         Write-Verbose -Message 'The credentials have been imported by BetterCredentials successfully. Checking for repository existence now'
 
         # Check to see if the repository already exists
@@ -53,7 +58,7 @@ function Install-NodeModule {
         # Module installation
         try {
             Write-Verbose -Message "Installing the module now"
-            Install-Module -Name $Name -Repository $Repository -Credential ( BetterCredentials\Get-Credential -Username NodePAT ) -Force -ErrorAction Stop
+            Install-Module -Name $Name -Repository $Repository -Credential $Credentials -Force -ErrorAction Stop
         }
         catch {
             throw "Unable to install the application, please run the command again manually"
