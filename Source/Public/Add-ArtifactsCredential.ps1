@@ -9,12 +9,10 @@ function Add-ArtifactsCredential {
     Adds the credentials required to add an Azure Artifacts feed as a repository. The credentials are stored in credential manager using the BetterCredentials module
     .PARAMETER PAT
     The PAT is generated within Azure DevOps. Is is best to create a new PAT with only read access to Package Management to prevent misuse of the credentials
-    .PARAMETER RepositoryName
-    Supply the repository name to initialise the NuGet Package Source
     .EXAMPLE
     Add-ArtifactsCredential -PAT wdadmineig2u5ng8e3s6h
     .EXAMPLE
-    Add-ArtifactsCredential -PAT wdadmineig2u5ng8e3s6h -RepositoryName RepositoryName
+    Add-ArtifactsCredential -PAT wdadmineig2u5ng8e3s6h
     .NOTES
     This function also supports the -Verbose parameter to show more detailed console output
     #>
@@ -22,9 +20,9 @@ function Add-ArtifactsCredential {
     [cmdletbinding()]
     param(
         [Parameter(Mandatory = $true)]
-        [string] $PAT,
-        [Parameter(Mandatory = $false)]
-        [string] $RepositoryName
+        [string] $PAT
+        # [Parameter(Mandatory = $false)]
+        # [string] $RepositoryName
     )
 
     begin {
@@ -33,6 +31,7 @@ function Add-ArtifactsCredential {
             $PackageSourceUrl = "https://pkgs.dev.azure.com/MattNodeIT/_packaging/" + $RepositoryName + "/nuget/v2"
         }
         #>
+        
         # Username variable generation
         $Username = "NodePAT"
     }
