@@ -1,4 +1,4 @@
-function Unregister-NodeRepository {
+function Remove-NodeRepository {
 
     <#
     .SYNOPSIS
@@ -8,7 +8,7 @@ function Unregister-NodeRepository {
     .PARAMETER Repository
     This is the name of the repository you want to remove
     .EXAMPLE
-    Unregister-NodeRepository -Repository TestRepository -Verbose
+    Remove-NodeRepository -Repository TestRepository -Verbose
     .NOTES
     This function also supports the -Verbose parameter to show more detailed console output
     #>

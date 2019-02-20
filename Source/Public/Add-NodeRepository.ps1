@@ -55,7 +55,7 @@ function Add-NodeRepository {
         # Test for then install the Nuget PowerShell Package Provider
         try {
             Write-Verbose -Message "Trying to get the Nuget package provider"
-            Get-PackageProvider -Name NuGet -ErrorAction Stop
+            Get-PackageProvider -Name NuGet -ErrorAction Stop | Out-Null
         }
         catch {
             Write-Verbose -Message "Installing the Nuget package provider in the CurrentUser scope"
@@ -71,7 +71,7 @@ function Add-NodeRepository {
     process {
 
         # Addition of the NuGet source for the repository
-        NuGet Sources Add -Name $Repository -Source $RepositoryURL -Username $NugetUsername -Password $PAT
+        NuGet Sources Add -Name $Repository -Source $RepositoryURL -Username $NugetUsername -Password $PAT | Out-Null
 
         Write-Verbose -Message "Beginning the repository registration process now"
 
