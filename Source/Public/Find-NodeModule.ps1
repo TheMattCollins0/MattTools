@@ -1,6 +1,5 @@
 function Find-NodeModule {
 
-
     #Requires -Modules BetterCredentials
 
     <#
