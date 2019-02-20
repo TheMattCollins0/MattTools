@@ -27,6 +27,9 @@ function Add-NodeRepository {
 
     begin {
 
+        # Download the Nuget executable using the Get-NugetExe function
+        Get-NugetExe
+
         # Creation of the RepositoryURL variable from the FeedName parameter
         $RepositoryURL = "https://pkgs.dev.azure.com/MattNodeIT/_packaging/" + $FeedName + "/nuget/v2"
 
