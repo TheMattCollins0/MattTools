@@ -92,13 +92,11 @@ function Add-NodeRepository {
     .SYNOPSIS
     Registers Azure Nuget feed as a repository
     .DESCRIPTION
-    Registers an Azure Package Management nuget feed to PowerShell as a repository. This uses BetterCredentials access the repository credentials stored in the Windows Credential Vault
+    Registers an Azure Package Management NuGet feed to PowerShell as a repository. This uses BetterCredentials access the repository credentials stored in the Windows Credential Vault
     .PARAMETER RepositoryName
     This is the name you want the repository to be registered with
-    .PARAMETER FeedName
-    This is the name of the Azure Artifacts feed for the repository
     .EXAMPLE
-    Add-NodeRepository -RepositoryName TestRepository -FeedName FeedName -Verbose
+    Add-NodeRepository -RepositoryName TestRepository -Verbose
     .NOTES
     This function also supports the -Verbose parameter to show more detailed console output
     #>
@@ -106,9 +104,7 @@ function Add-NodeRepository {
     [cmdletbinding()]
     param (
         [Parameter(Mandatory = $true)]
-        [string] $RepositoryName,
-        [Parameter(Mandatory = $true)]
-        [string] $FeedName
+        [string] $RepositoryName
     )
 
     begin {
@@ -116,8 +112,8 @@ function Add-NodeRepository {
         # Download the Nuget executable using the Get-NugetExe function
         Get-NugetExe
 
-        # Creation of the RepositoryURL variable from the FeedName parameter
-        $RepositoryURL = "https://pkgs.dev.azure.com/MattNodeIT/_packaging/" + $FeedName + "/nuget/v2"
+        # Creation of the RepositoryURL variable from the RepositoryName parameter
+        $RepositoryURL = "https://pkgs.dev.azure.com/MattNodeIT/_packaging/" + $RepositoryName + "/nuget/v2"
 
         # Username variable generation
         $Username = "NodePAT"

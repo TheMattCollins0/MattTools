@@ -211,7 +211,7 @@
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>Registers an Azure Package Management nuget feed to PowerShell as a repository. This uses BetterCredentials access the repository credentials stored in the Windows Credential Vault</maml:para>
+      <maml:para>Registers an Azure Package Management NuGet feed to PowerShell as a repository. This uses BetterCredentials access the repository credentials stored in the Windows Credential Vault</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -220,18 +220,6 @@
           <maml:name>RepositoryName</maml:name>
           <maml:Description>
             <maml:para>This is the name you want the repository to be registered with</maml:para>
-          </maml:Description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-          <dev:type>
-            <maml:name>String</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
-          <maml:name>FeedName</maml:name>
-          <maml:Description>
-            <maml:para>This is the name of the Azure Artifacts feed for the repository</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
@@ -255,18 +243,6 @@
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
-        <maml:name>FeedName</maml:name>
-        <maml:Description>
-          <maml:para>This is the name of the Azure Artifacts feed for the repository</maml:para>
-        </maml:Description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        <dev:type>
-          <maml:name>String</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>None</dev:defaultValue>
-      </command:parameter>
     </command:parameters>
     <command:inputTypes />
     <command:returnValues />
@@ -278,7 +254,7 @@
     <command:examples>
       <command:example>
         <maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
-        <dev:code>Add-NodeRepository -RepositoryName TestRepository -FeedName FeedName -Verbose</dev:code>
+        <dev:code>Add-NodeRepository -RepositoryName TestRepository -Verbose</dev:code>
         <dev:remarks>
           <maml:para></maml:para>
         </dev:remarks>

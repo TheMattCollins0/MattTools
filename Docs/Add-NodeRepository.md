@@ -13,18 +13,18 @@ Registers Azure Nuget feed as a repository
 ## SYNTAX
 
 ```
-Add-NodeRepository [-RepositoryName] <String> [-FeedName] <String> [<CommonParameters>]
+Add-NodeRepository [-RepositoryName] <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Registers an Azure Package Management nuget feed to PowerShell as a repository.
+Registers an Azure Package Management NuGet feed to PowerShell as a repository.
 This uses BetterCredentials access the repository credentials stored in the Windows Credential Vault
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Add-NodeRepository -RepositoryName TestRepository -FeedName FeedName -Verbose
+Add-NodeRepository -RepositoryName TestRepository -Verbose
 ```
 
 ## PARAMETERS
@@ -39,21 +39,6 @@ Aliases:
 
 Required: True
 Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -FeedName
-This is the name of the Azure Artifacts feed for the repository
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
