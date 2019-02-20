@@ -15,7 +15,7 @@ function Add-NodeRepository {
     This function also supports the -Verbose parameter to show more detailed console output
     #>
 
-    [cmdletbinding()]
+    [CmdletBinding()]
     param (
         [Parameter(Mandatory = $true)]
         [string] $RepositoryName
@@ -82,7 +82,6 @@ function Add-NodeRepository {
             InstallationPolicy        = 'Trusted'
             PackageManagementProvider = 'Nuget'
             Credential                = $Credentials
-            Verbose                   = $true
         }
 
         Register-PSRepository @RepositoryRegistrationSplat
