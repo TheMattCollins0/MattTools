@@ -12,7 +12,7 @@
 RootModule = 'MattTools.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.4.50'
+ModuleVersion = '0.4.51'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -72,9 +72,9 @@ Description = 'A collection of tools that speed up my life'
 FunctionsToExport = 'Add-ArtifactsCredential', 'Add-NodeRepository', 'Compare-Items', 
                'Find-NodeModule', 'Get-LastCmdTime', 'Get-MattHelp', 
                'Install-NodeModule', 'Invoke-MattPlaster', 'Invoke-ProfileBanner', 
-               'New-RegistryPath', 'New-RegistryProperty', 'Set-LocationGitHub', 
-               'Set-LocationInput', 'Set-LocationOutput', 'Set-LocationPowerShell', 
-               'Set-LocationRoot', 'Unregister-NodeRepository', 'Update-MattModules'
+               'New-RegistryPath', 'New-RegistryProperty', 'Remove-NodeRepository', 
+               'Set-LocationGitHub', 'Set-LocationInput', 'Set-LocationOutput', 
+               'Set-LocationPowerShell', 'Set-LocationRoot', 'Update-MattModules'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = @()

@@ -189,7 +189,7 @@
                 <div class="col-sm-4 col-md-5 col-lg-4 right-header">
                     <h5>
                         Analyzed path :<span class="right-header-data"> C:\agent\_work\5\s\MattTools</span><br>
-                        Analysis date :<span class="right-header-data"> 2019-02-20 14:15:14Z</span>
+                        Analysis date :<span class="right-header-data"> 2019-02-20 14:26:29Z</span>
                     </h5>
                 </div>
             </div>
@@ -246,9 +246,9 @@
                             </div>
                             <table class="table">
                                 <tr class="text-success"><td>Errors</td><td>0</td></tr>
-                                <tr class="text-danger"><td>Warnings</td><td>61</td></tr>
+                                <tr class="text-danger"><td>Warnings</td><td>62</td></tr>
                                 <tr class="text-success"><td>Information</td><td>0</td></tr>
-                                <tr class="text-danger"><td>Total</td><td>61</td></tr>
+                                <tr class="text-danger"><td>Total</td><td>62</td></tr>
                             </table>
                         </div>
                     </div>
@@ -282,7 +282,7 @@
                                 <h3 class="panel-title"><i class="fa fa-plus-square-o" aria-hidden="true">&nbsp;</i> ScriptAnalyzer Findings - Total</h3>
                             </div>
                             <div class="panel-body">
-                                <h2>61</h2>
+                                <h2>62</h2>
                             </div>
                         </div>
                     </div>
@@ -302,7 +302,7 @@
                                 <h3 class="panel-title"><i class="fa fa-exclamation-triangle" aria-hidden="true">&nbsp;</i> ScriptAnalyzer Warnings</h3>
                             </div>
                             <div class="panel-body">
-                                <h2>61</h2>
+                                <h2>62</h2>
                             </div>
                         </div>
                     </div>
@@ -314,7 +314,7 @@
                                 <h3 class="panel-title"><i class="fa fa-bar-chart" aria-hidden="true">&nbsp;</i> ScriptAnalyzer Findings - Average</h3>
                             </div>
                             <div class="panel-body">
-                                <h2>3.16</h2>
+                                <h2>3.21</h2>
                             </div>
                         </div>
                     </div>
@@ -844,6 +844,24 @@ Message                       : Function ’New-RegistryProperty’ has verb that co
                                         <td class="success">True</td>
                                     </tr>
                                     <tr>
+                                        <td>Remove-NodeRepository</td>
+                                        <td class="success">1</td>
+                                        <td class="warning">
+                                            <button type="button" class="btn btn-warning btn-sm cell-expand-collapse"> Expand</button>
+                                            <table>
+                                                 <tr>
+                                                    <td class="warning cell-largeContent">ScriptName : MattTools.psm1<br>
+Line (in the function) : 1<br>
+Severity                      : Warning<br>
+RuleName                      : PSUseShouldProcessForStateChangingFunctions<br>
+Message                       : Function ’Remove-NodeRepository’ has verb that could change system state. Therefore, the function has to support 'ShouldProcess'.<br>
+                                                    </td>
+                                                </tr>
+                                             </table>
+                                        </td>
+                                        <td class="success">True</td>
+                                    </tr>
+                                    <tr>
                                         <td>Set-LocationGitHub</td>
                                         <td class="success">0</td>
                                         <td class=""></td>
@@ -869,12 +887,6 @@ Message                       : Function ’New-RegistryProperty’ has verb that co
                                     </tr>
                                     <tr>
                                         <td>Set-LocationRoot</td>
-                                        <td class="success">0</td>
-                                        <td class=""></td>
-                                        <td class="success">True</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Unregister-NodeRepository</td>
                                         <td class="success">0</td>
                                         <td class=""></td>
                                         <td class="success">True</td>
@@ -1138,6 +1150,12 @@ Message                       : Script definition uses Write-Host. Avoid using W
                                         <td class="success">2</td>
                                     </tr>
                                     <tr>
+                                        <td>Remove-NodeRepository</td>
+                                        <td class="warning">43</td>
+                                        <td class="success">3</td>
+                                        <td class="success">2</td>
+                                    </tr>
+                                    <tr>
                                         <td>Set-LocationGitHub</td>
                                         <td class="success">25</td>
                                         <td class="success">3</td>
@@ -1164,12 +1182,6 @@ Message                       : Script definition uses Write-Host. Avoid using W
                                     <tr>
                                         <td>Set-LocationRoot</td>
                                         <td class="success">25</td>
-                                        <td class="success">3</td>
-                                        <td class="success">2</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Unregister-NodeRepository</td>
-                                        <td class="warning">43</td>
                                         <td class="success">3</td>
                                         <td class="success">2</td>
                                     </tr>
@@ -1226,7 +1238,7 @@ Message                       : Script definition uses Write-Host. Avoid using W
                                 <h3 class="panel-title"><i class="fa fa-times" aria-hidden="true">&nbsp;</i> Number of Missed Commands</h3>
                             </div>
                             <div class="panel-body">
-                                <h2>367</h2>
+                                <h2>369</h2>
                             </div>
                         </div>
                     </div>
@@ -1316,7 +1328,7 @@ Message                       : Script definition uses Write-Host. Avoid using W
                                     <tr>
                                         <td>Add-NodeRepository</td>
                                         <td class="danger">0</td>
-                                        <td class="danger">28</td>
+                                        <td class="danger">30</td>
                                     </tr>
                                     <tr>
                                         <td>Compare-Items</td>
@@ -1364,6 +1376,11 @@ Message                       : Script definition uses Write-Host. Avoid using W
                                         <td class="danger">15</td>
                                     </tr>
                                     <tr>
+                                        <td>Remove-NodeRepository</td>
+                                        <td class="danger">0</td>
+                                        <td class="warning">10</td>
+                                    </tr>
+                                    <tr>
                                         <td>Set-LocationGitHub</td>
                                         <td class="danger">0</td>
                                         <td class="success">4</td>
@@ -1387,11 +1404,6 @@ Message                       : Script definition uses Write-Host. Avoid using W
                                         <td>Set-LocationRoot</td>
                                         <td class="danger">0</td>
                                         <td class="success">4</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Unregister-NodeRepository</td>
-                                        <td class="danger">0</td>
-                                        <td class="warning">10</td>
                                     </tr>
                                     <tr>
                                         <td>Update-MattModules</td>
