@@ -58,13 +58,6 @@
           <maml:para></maml:para>
         </dev:remarks>
       </command:example>
-      <command:example>
-        <maml:title>-------------------------- EXAMPLE 2 --------------------------</maml:title>
-        <dev:code>Add-ArtifactsCredential -PAT wdadmineig2u5ng8e3s6h</dev:code>
-        <dev:remarks>
-          <maml:para></maml:para>
-        </dev:remarks>
-      </command:example>
     </command:examples>
     <command:relatedLinks />
   </command:command>
@@ -219,7 +212,7 @@
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
           <maml:name>Repository</maml:name>
           <maml:Description>
-            <maml:para>This is the name you want the repository to be registered with</maml:para>
+            <maml:para>The name of the repository being registered</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
@@ -234,7 +227,7 @@
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
         <maml:name>Repository</maml:name>
         <maml:Description>
-          <maml:para>This is the name you want the repository to be registered with</maml:para>
+          <maml:para>The name of the repository being registered</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -424,21 +417,21 @@
     <command:examples>
       <command:example>
         <maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
-        <dev:code>Find-NodeModule -Name MODULENAME -Repository REPOSITORYNAME</dev:code>
-        <dev:remarks>
-          <maml:para></maml:para>
-        </dev:remarks>
-      </command:example>
-      <command:example>
-        <maml:title>-------------------------- EXAMPLE 2 --------------------------</maml:title>
         <dev:code>Find-NodeModule</dev:code>
         <dev:remarks>
           <maml:para></maml:para>
         </dev:remarks>
       </command:example>
       <command:example>
-        <maml:title>-------------------------- EXAMPLE 3 --------------------------</maml:title>
+        <maml:title>-------------------------- EXAMPLE 2 --------------------------</maml:title>
         <dev:code>Find-NodeModule -Repository REPOSITORYNAME</dev:code>
+        <dev:remarks>
+          <maml:para></maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 3 --------------------------</maml:title>
+        <dev:code>Find-NodeModule -Name MODULENAME -Repository REPOSITORYNAME</dev:code>
         <dev:remarks>
           <maml:para></maml:para>
         </dev:remarks>
@@ -1070,7 +1063,7 @@
     <command:examples>
       <command:example>
         <maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
-        <dev:code>Remove-NodeRepository -Repository TestRepository -Verbose</dev:code>
+        <dev:code>Remove-NodeRepository -Repository TestRepository</dev:code>
         <dev:remarks>
           <maml:para></maml:para>
         </dev:remarks>

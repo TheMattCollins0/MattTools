@@ -27,11 +27,6 @@ The credentials are stored in credential manager using the BetterCredentials mod
 Add-ArtifactsCredential -PAT wdadmineig2u5ng8e3s6h
 ```
 
-### EXAMPLE 2
-```
-Add-ArtifactsCredential -PAT wdadmineig2u5ng8e3s6h
-```
-
 ## PARAMETERS
 
 ### -PAT

@@ -43,8 +43,6 @@ function Add-ArtifactsCredential {
     The PAT is generated within Azure DevOps. Is is best to create a new PAT with only read access to Package Management to prevent misuse of the credentials
     .EXAMPLE
     Add-ArtifactsCredential -PAT wdadmineig2u5ng8e3s6h
-    .EXAMPLE
-    Add-ArtifactsCredential -PAT wdadmineig2u5ng8e3s6h
     .NOTES
     This function also supports the -Verbose parameter to show more detailed console output
     #>
@@ -84,7 +82,7 @@ function Add-NodeRepository {
     .DESCRIPTION
     Registers an Azure Package Management NuGet feed to PowerShell as a repository. This uses BetterCredentials access the repository credentials stored in the Windows Credential Vault
     .PARAMETER Repository
-    This is the name you want the repository to be registered with
+    The name of the repository being registered
     .EXAMPLE
     Add-NodeRepository -Repository TestRepository -Verbose
     .NOTES
@@ -255,11 +253,11 @@ function Find-NodeModule {
     .PARAMETER Repository
     This parameter specifies the name of the Repository that you want to search. This parameter defaults to NodePowerShell
     .EXAMPLE
-    Find-NodeModule -Name MODULENAME -Repository REPOSITORYNAME
-    .EXAMPLE
     Find-NodeModule
     .EXAMPLE
     Find-NodeModule -Repository REPOSITORYNAME
+    .EXAMPLE
+    Find-NodeModule -Name MODULENAME -Repository REPOSITORYNAME
     .NOTES
     This function also supports the -Verbose parameter for more console output
     #>
@@ -835,7 +833,7 @@ function Remove-NodeRepository {
     .PARAMETER Repository
     This is the name of the repository you want to remove
     .EXAMPLE
-    Remove-NodeRepository -Repository TestRepository -Verbose
+    Remove-NodeRepository -Repository TestRepository
     .NOTES
     This function also supports the -Verbose parameter to show more detailed console output
     #>

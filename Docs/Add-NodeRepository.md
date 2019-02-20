@@ -30,7 +30,7 @@ Add-NodeRepository -Repository TestRepository -Verbose
 ## PARAMETERS
 
 ### -Repository
-This is the name you want the repository to be registered with
+The name of the repository being registered
 
 ```yaml
 Type: String

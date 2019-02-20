@@ -24,17 +24,17 @@ It uses BetterCredentials module to secure authentication to the feed and reduce
 
 ### EXAMPLE 1
 ```
-Find-NodeModule -Name MODULENAME -Repository REPOSITORYNAME
+Find-NodeModule
 ```
 
 ### EXAMPLE 2
 ```
-Find-NodeModule
+Find-NodeModule -Repository REPOSITORYNAME
 ```
 
 ### EXAMPLE 3
 ```
-Find-NodeModule -Repository REPOSITORYNAME
+Find-NodeModule -Name MODULENAME -Repository REPOSITORYNAME
 ```
 
 ## PARAMETERS

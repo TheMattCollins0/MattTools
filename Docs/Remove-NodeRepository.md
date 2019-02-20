@@ -23,7 +23,7 @@ Removes an Azure Package Management NuGet feed from PowerShell's repositories.
 
 ### EXAMPLE 1
 ```
-Remove-NodeRepository -Repository TestRepository -Verbose
+Remove-NodeRepository -Repository TestRepository
 ```
 
 ## PARAMETERS
