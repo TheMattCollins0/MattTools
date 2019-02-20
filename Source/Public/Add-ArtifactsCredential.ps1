@@ -11,8 +11,6 @@ function Add-ArtifactsCredential {
     The PAT is generated within Azure DevOps. Is is best to create a new PAT with only read access to Package Management to prevent misuse of the credentials
     .EXAMPLE
     Add-ArtifactsCredential -PAT wdadmineig2u5ng8e3s6h
-    .EXAMPLE
-    Add-ArtifactsCredential -PAT wdadmineig2u5ng8e3s6h
     .NOTES
     This function also supports the -Verbose parameter to show more detailed console output
     #>

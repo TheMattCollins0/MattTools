@@ -8,7 +8,7 @@ function Remove-NodeRepository {
     .PARAMETER Repository
     This is the name of the repository you want to remove
     .EXAMPLE
-    Remove-NodeRepository -Repository TestRepository -Verbose
+    Remove-NodeRepository -Repository TestRepository
     .NOTES
     This function also supports the -Verbose parameter to show more detailed console output
     #>

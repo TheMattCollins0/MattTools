@@ -12,11 +12,11 @@ function Find-NodeModule {
     .PARAMETER Repository
     This parameter specifies the name of the Repository that you want to search. This parameter defaults to NodePowerShell
     .EXAMPLE
-    Find-NodeModule -Name MODULENAME -Repository REPOSITORYNAME
-    .EXAMPLE
     Find-NodeModule
     .EXAMPLE
     Find-NodeModule -Repository REPOSITORYNAME
+    .EXAMPLE
+    Find-NodeModule -Name MODULENAME -Repository REPOSITORYNAME
     .NOTES
     This function also supports the -Verbose parameter for more console output
     #>

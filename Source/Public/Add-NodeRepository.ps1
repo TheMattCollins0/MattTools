@@ -8,7 +8,7 @@ function Add-NodeRepository {
     .DESCRIPTION
     Registers an Azure Package Management NuGet feed to PowerShell as a repository. This uses BetterCredentials access the repository credentials stored in the Windows Credential Vault
     .PARAMETER Repository
-    This is the name you want the repository to be registered with
+    The name of the repository being registered
     .EXAMPLE
     Add-NodeRepository -Repository TestRepository -Verbose
     .NOTES
