@@ -8,7 +8,7 @@ function Get-NugetExe {
     $nugetPath = "C:\ProgramData\Node\Nuget"
     if (!(Test-Path -Path $nugetPath)) {
         Write-Verbose -Message "Creating directory $nugetPath"
-        New-Item -Path $nugetPath -ItemType Directory
+        New-Item -Path $nugetPath -ItemType Directory | Out-Null
     }
     Write-Verbose -Message "Working Folder : $nugetPath"
     $NugetExe = "$nugetPath\nuget.exe"
@@ -18,7 +18,7 @@ function Get-NugetExe {
         $sourceNugetExe = $NuGetInstallUri
         Write-Verbose -Message "$sourceNugetExe -OutFile $NugetExe"
 
-        Invoke-WebRequest $sourceNugetExe -OutFile $NugetExe
+        Invoke-WebRequest $sourceNugetExe -OutFile $NugetExe | Out-Null
         if (-not (Test-Path $NugetExe)) {
             Throw "Nuget download hasn't worked."
         }
@@ -881,7 +881,7 @@ function Remove-NodeRepository {
     process {
 
         # Addition of the NuGet source for the repository
-        NuGet Sources Remove -Name $Repository
+        NuGet Sources Remove -Name $Repository | Out-Null
 
         Write-Verbose -Message "Beginning the repository registration process now"
 
