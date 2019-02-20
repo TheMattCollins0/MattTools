@@ -217,7 +217,7 @@
       <command:syntaxItem>
         <maml:name>Add-NodeRepository</maml:name>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
-          <maml:name>RepositoryName</maml:name>
+          <maml:name>Repository</maml:name>
           <maml:Description>
             <maml:para>This is the name you want the repository to be registered with</maml:para>
           </maml:Description>
@@ -232,7 +232,7 @@
     </command:syntax>
     <command:parameters>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
-        <maml:name>RepositoryName</maml:name>
+        <maml:name>Repository</maml:name>
         <maml:Description>
           <maml:para>This is the name you want the repository to be registered with</maml:para>
         </maml:Description>
@@ -254,7 +254,7 @@
     <command:examples>
       <command:example>
         <maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
-        <dev:code>Add-NodeRepository -RepositoryName TestRepository -Verbose</dev:code>
+        <dev:code>Add-NodeRepository -Repository TestRepository -Verbose</dev:code>
         <dev:remarks>
           <maml:para></maml:para>
         </dev:remarks>
@@ -1601,6 +1601,67 @@
       <command:example>
         <maml:title>-------------------------- EXAMPLE 2 --------------------------</maml:title>
         <dev:code>C</dev:code>
+        <dev:remarks>
+          <maml:para></maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks />
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Unregister-NodeRepository</command:name>
+      <command:verb>Unregister</command:verb>
+      <command:noun>NodeRepository</command:noun>
+      <maml:description>
+        <maml:para>Removes a repository registered against an Azure Artifacts feed</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>Removes an Azure Package Management NuGet feed from PowerShell's repositories.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Unregister-NodeRepository</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
+          <maml:name>Repository</maml:name>
+          <maml:Description>
+            <maml:para>This is the name of the repository you want to remove</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
+        <maml:name>Repository</maml:name>
+        <maml:Description>
+          <maml:para>This is the name of the repository you want to remove</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes />
+    <command:returnValues />
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>This function also supports the -Verbose parameter to show more detailed console output</maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
+        <dev:code>Unregister-NodeRepository -Repository TestRepository -Verbose</dev:code>
         <dev:remarks>
           <maml:para></maml:para>
         </dev:remarks>

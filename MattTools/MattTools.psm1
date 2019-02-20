@@ -96,10 +96,10 @@ function Add-NodeRepository {
     Registers Azure Nuget feed as a repository
     .DESCRIPTION
     Registers an Azure Package Management NuGet feed to PowerShell as a repository. This uses BetterCredentials access the repository credentials stored in the Windows Credential Vault
-    .PARAMETER RepositoryName
+    .PARAMETER Repository
     This is the name you want the repository to be registered with
     .EXAMPLE
-    Add-NodeRepository -RepositoryName TestRepository -Verbose
+    Add-NodeRepository -Repository TestRepository -Verbose
     .NOTES
     This function also supports the -Verbose parameter to show more detailed console output
     #>
@@ -107,7 +107,7 @@ function Add-NodeRepository {
     [CmdletBinding()]
     param (
         [Parameter(Mandatory = $true)]
-        [string] $RepositoryName
+        [string] $Repository
     )
 
     begin {
@@ -115,8 +115,8 @@ function Add-NodeRepository {
         # Download the Nuget executable using the Get-NugetExe function
         Get-NugetExe
 
-        # Creation of the RepositoryURL variable from the RepositoryName parameter
-        $RepositoryURL = "https://pkgs.dev.azure.com/MattNodeIT/_packaging/" + $RepositoryName + "/nuget/v2"
+        # Creation of the RepositoryURL variable from the Repository parameter
+        $RepositoryURL = "https://pkgs.dev.azure.com/MattNodeIT/_packaging/" + $Repository + "/nuget/v2"
 
         # Username variable generation
         $Username = "NodePAT"
@@ -133,7 +133,7 @@ function Add-NodeRepository {
         Write-Verbose -Message 'The credentials have been stored successfully in the $Credentials variable. Checking for repository existence now'
 
         # Check to see if there is a repository already registered with the same name
-        $RepositoryCheck = Get-PSRepository -Name $RepositoryName -ErrorAction SilentlyContinue
+        $RepositoryCheck = Get-PSRepository -Name $Repository -ErrorAction SilentlyContinue
         if (!$RepositoryCheck) {
             Write-Verbose -Message "There is not another repository with the same name, proceeding to the creation now"
         }
@@ -160,12 +160,12 @@ function Add-NodeRepository {
     process {
 
         # Addition of the NuGet source for the repository
-        NuGet Sources Add -Name $RepositoryName -Source $RepositoryURL -Username $NugetUsername -Password $PAT
+        NuGet Sources Add -Name $Repository -Source $RepositoryURL -Username $NugetUsername -Password $PAT
 
         Write-Verbose -Message "Beginning the repository registration process now"
 
         $RepositoryRegistrationSplat = @{
-            Name                      = $RepositoryName
+            Name                      = $Repository
             SourceLocation            = $RepositoryURL
             PublishLocation           = $RepositoryURL
             InstallationPolicy        = 'Trusted'
@@ -1043,6 +1043,61 @@ function Set-LocationRoot {
 }
 
 New-Alias -Name C -Value Set-LocationRoot
+function Unregister-NodeRepository {
+
+    <#
+    .SYNOPSIS
+    Removes a repository registered against an Azure Artifacts feed
+    .DESCRIPTION
+    Removes an Azure Package Management NuGet feed from PowerShell's repositories.
+    .PARAMETER Repository
+    This is the name of the repository you want to remove
+    .EXAMPLE
+    Unregister-NodeRepository -Repository TestRepository -Verbose
+    .NOTES
+    This function also supports the -Verbose parameter to show more detailed console output
+    #>
+
+    [CmdletBinding()]
+    param (
+        [Parameter(Mandatory = $true)]
+        [string] $Repository
+    )
+
+    begin {
+
+        # Download the Nuget executable using the Get-NugetExe function
+        Get-NugetExe
+
+        Write-Verbose -Message 'Checking for repository existence now'
+
+        # Check to see if there is a repository already registered with the same name
+        $RepositoryCheck = Get-PSRepository -Name $Repository -ErrorAction SilentlyContinue
+        if (!$RepositoryCheck) {
+            throw "There is not a registered repository with the specified name, please check the spelling or availability of the repository"
+        }
+        else {
+            Write-Verbose -Message  "The specified name is registered as a repository, proceeding with the removal now"
+        }
+
+    }
+
+    process {
+
+        # Addition of the NuGet source for the repository
+        NuGet Sources Remove -Name $Repository
+
+        Write-Verbose -Message "Beginning the repository registration process now"
+
+        # Run the command to unregister the repository
+        try {
+        Unregister-PSRepository -Name $Repository
+        }
+        catch {
+            throw "Unable to remove the repository, check that it is possible to remove it"
+        }
+    }
+}
 function Update-MattModules {
 
     <#
@@ -1153,4 +1208,4 @@ function Update-MattModules {
     }
 
 }
-Export-ModuleMember -Function Add-ArtifactsCredential,Add-NodeRepository,Compare-Items,Find-NodeModule,Get-LastCmdTime,Get-MattHelp,Install-NodeModule,Invoke-MattPlaster,Invoke-ProfileBanner,New-RegistryPath,New-RegistryProperty,Set-LocationGitHub,Set-LocationInput,Set-LocationOutput,Set-LocationPowerShell,Set-LocationRoot,Update-MattModules -Alias *
+Export-ModuleMember -Function Add-ArtifactsCredential,Add-NodeRepository,Compare-Items,Find-NodeModule,Get-LastCmdTime,Get-MattHelp,Install-NodeModule,Invoke-MattPlaster,Invoke-ProfileBanner,New-RegistryPath,New-RegistryProperty,Set-LocationGitHub,Set-LocationInput,Set-LocationOutput,Set-LocationPowerShell,Set-LocationRoot,Unregister-NodeRepository,Update-MattModules -Alias *

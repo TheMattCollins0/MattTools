@@ -5,32 +5,31 @@ online version:
 schema: 2.0.0
 ---
 
-# Add-NodeRepository
+# Unregister-NodeRepository
 
 ## SYNOPSIS
-Registers Azure Nuget feed as a repository
+Removes a repository registered against an Azure Artifacts feed
 
 ## SYNTAX
 
 ```
-Add-NodeRepository [-Repository] <String> [<CommonParameters>]
+Unregister-NodeRepository [-Repository] <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Registers an Azure Package Management NuGet feed to PowerShell as a repository.
-This uses BetterCredentials access the repository credentials stored in the Windows Credential Vault
+Removes an Azure Package Management NuGet feed from PowerShell's repositories.
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Add-NodeRepository -Repository TestRepository -Verbose
+Unregister-NodeRepository -Repository TestRepository -Verbose
 ```
 
 ## PARAMETERS
 
 ### -Repository
-This is the name you want the repository to be registered with
+This is the name of the repository you want to remove
 
 ```yaml
 Type: String
