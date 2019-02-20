@@ -40,7 +40,7 @@ function Remove-NodeRepository {
     process {
 
         # Addition of the NuGet source for the repository
-        NuGet Sources Remove -Name $Repository
+        NuGet Sources Remove -Name $Repository | Out-Null
 
         Write-Verbose -Message "Beginning the repository registration process now"
 
