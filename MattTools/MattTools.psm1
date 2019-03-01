@@ -136,16 +136,22 @@ function Add-NodeRepository {
             Install-PackageProvider -Name NuGet -MinimumVersion 3.0.0.1 -Force -Scope:CurrentUser | Out-Null
         }
 
-        # Variable creations
-        $NugetUsername = $Credentials.Username
-        $PAT = $Credentials.Password
+        # Credentials variable creations
+        $NuGetUsername = $Credentials.Username
+        $NuGetPAT = $Credentials.Password
 
     }
 
     process {
 
-        # Addition of the NuGet source for the repository
-        NuGet Sources Add -Name $Repository -Source $RepositoryURL -Username $NugetUsername -Password $PAT | Out-Null
+        # Testing if the Nuget source is already registered and addition of the source if it doesn't exist
+        $NugetSourceTesting = nuget sources List | Select-String -Pattern $Repository -Quiet
+        if ( !$NugetSourceTesting ) {
+            Nuget Sources Add -Name $Repository -Source $RepositoryURL -Username $NuGetUsername -Password $NuGetPAT | Out-Null
+        }
+        elseif ( $NugetSourceTesting ) {
+            Write-Verbose -Message "The nuget source already exists, skipping the source addition step"
+        }
 
         Write-Verbose -Message "Beginning the repository registration process now"
 
