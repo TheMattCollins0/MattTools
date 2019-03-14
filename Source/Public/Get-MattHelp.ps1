@@ -46,7 +46,11 @@ function Get-MattHelp {
     Write-Host "Use Invoke-MattPlaster to create a Plaster Template, follow prompts for ModuleName and ModuleDescription"
     Write-Host ""
     Write-Host "Install-Module -Repository NodePowerShellRepository -Name ModuleName -Scope CurrentUser -Force"
-
+    Write-Host ""
+    Write-Host "Run either Start-PowerShellAsSystem or Sys from an elevated PowerShell console to open a new PowerShell console running as System"
+    Write-Host "This command requires that PsExec is installed to the system path environmental variable. Install SysInternals using Chocolatey"
+    Write-Host ""
+    
 }
 
 New-Alias -Name GMH -Value Get-MattHelp
