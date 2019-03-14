@@ -1088,6 +1088,32 @@ function Set-LocationRoot {
 }
 
 New-Alias -Name C -Value Set-LocationRoot
+function Start-PowerShellAsSystem {
+
+    <#
+    .SYNOPSIS
+    Run PowerShell as system
+    .DESCRIPTION
+    This function uses PsExec to start a new PowerShell console as the system account
+    .EXAMPLE
+    Start-PowerShellAsSystem
+    .EXAMPLE
+    SYS
+    .NOTES
+    Function supports the alias Sys
+    #>
+
+    [CmdletBinding()]
+    Param ()
+
+    begin {}
+
+    process {
+        PsExec -i -s Powershell.exe
+    }
+}
+
+New-Alias -Name Sys -Value Start-PowerShellAsSystem
 function Update-MattModules {
 
     <#
@@ -1198,4 +1224,4 @@ function Update-MattModules {
     }
 
 }
-Export-ModuleMember -Function Add-ArtifactsCredential,Add-NodeRepository,Compare-Items,Find-NodeModule,Get-LastCmdTime,Get-MattHelp,Install-NodeModule,Invoke-MattPlaster,Invoke-ProfileBanner,New-RegistryPath,New-RegistryProperty,Remove-NodeRepository,Set-LocationGitHub,Set-LocationInput,Set-LocationOutput,Set-LocationPowerShell,Set-LocationRoot,Update-MattModules -Alias *
+Export-ModuleMember -Function Add-ArtifactsCredential,Add-NodeRepository,Compare-Items,Find-NodeModule,Get-LastCmdTime,Get-MattHelp,Install-NodeModule,Invoke-MattPlaster,Invoke-ProfileBanner,New-RegistryPath,New-RegistryProperty,Remove-NodeRepository,Set-LocationGitHub,Set-LocationInput,Set-LocationOutput,Set-LocationPowerShell,Set-LocationRoot,Start-PowerShellAsSystem,Update-MattModules -Alias *

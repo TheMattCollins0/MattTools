@@ -5,43 +5,33 @@ online version:
 schema: 2.0.0
 ---
 
-# New-RegistryPath
+# Start-PowerShellAsSystem
 
 ## SYNOPSIS
-Creates a new registry path
+Run PowerShell as system
 
 ## SYNTAX
 
 ```
-New-RegistryPath [[-Path] <Object>] [<CommonParameters>]
+Start-PowerShellAsSystem [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This function takes the supplied path and creates it in the registry
+This function uses PsExec to start a new PowerShell console as the system account
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-New-RegistryPath -Path "HKLM:\SOFTWARE\NodeIT"
+Start-PowerShellAsSystem
+```
+
+### EXAMPLE 2
+```
+SYS
 ```
 
 ## PARAMETERS
-
-### -Path
-Specifies the path that you wish to create
-
-```yaml
-Type: Object
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 1
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
 
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
@@ -51,6 +41,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ## NOTES
-This function does not currently show any output
+Function supports the alias Sys
 
 ## RELATED LINKS

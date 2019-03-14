@@ -1210,7 +1210,7 @@
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="Path">
           <maml:name>InputPath</maml:name>
           <maml:Description>
-            <maml:para>{{Fill InputPath Description}}</maml:para>
+            <maml:para>{{ Fill InputPath Description }}</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
@@ -1247,7 +1247,7 @@
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="Path">
         <maml:name>InputPath</maml:name>
         <maml:Description>
-          <maml:para>{{Fill InputPath Description}}</maml:para>
+          <maml:para>{{ Fill InputPath Description }}</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -1655,6 +1655,49 @@
       <command:example>
         <maml:title>-------------------------- EXAMPLE 2 --------------------------</maml:title>
         <dev:code>C</dev:code>
+        <dev:remarks>
+          <maml:para></maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks />
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Start-PowerShellAsSystem</command:name>
+      <command:verb>Start</command:verb>
+      <command:noun>PowerShellAsSystem</command:noun>
+      <maml:description>
+        <maml:para>Run PowerShell as system</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>This function uses PsExec to start a new PowerShell console as the system account</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Start-PowerShellAsSystem</maml:name>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters />
+    <command:inputTypes />
+    <command:returnValues />
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Function supports the alias Sys</maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
+        <dev:code>Start-PowerShellAsSystem</dev:code>
+        <dev:remarks>
+          <maml:para></maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 2 --------------------------</maml:title>
+        <dev:code>SYS</dev:code>
         <dev:remarks>
           <maml:para></maml:para>
         </dev:remarks>
