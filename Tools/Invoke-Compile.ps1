@@ -53,4 +53,4 @@ foreach ( $PublicFunction in $PublicFunctions ) {
 
 Write-Verbose -Message "Making $($PublicFunctionNames.Count) public functions available via Export-ModuleMember"
 
-"Export-ModuleMember -Function $($PublicFunctionNames -join ',') -Alias *" | Add-Content -Path $DestinationModule
+"Export-ModuleMember -Function $($PublicFunctionNames -join ', ') -Alias *" | Add-Content -Path $DestinationModule
