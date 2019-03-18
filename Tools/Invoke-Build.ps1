@@ -5,7 +5,7 @@ param ()
 $ErrorActionPreference = 'stop'
 
 # Checking for then installing the Nuget package provider and PSDepend packages for the build environment
-$PSDependCheck = Import-Module PSDepend -ErrorAction Continue
+$PSDependCheck = Import-Module PSDepend -ErrorAction SilentlyContinue
 
 if ( !$PSDependCheck ) {
     Write-Verbose -Message "Installing Nuget and PSDepend"
