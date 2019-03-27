@@ -424,7 +424,11 @@ function Get-MattHelp {
     Write-Host "Run either Start-PowerShellAsSystem or Sys from an elevated PowerShell console to open a new PowerShell console running as System"
     Write-Host "This command requires that PsExec is installed to the system path environmental variable. Install SysInternals using Chocolatey"
     Write-Host ""
-    
+    Write-Host "Run either Start-Ping or P and supply an IP address or hostname to ping continuously"
+    Write-Host ""
+    Write-Host "Run either Start-TcPing or TP and supply an IP address or hostname and a TCP port number to ping the TCP port continuously"
+    Write-Host ""
+
 }
 
 New-Alias -Name GMH -Value Get-MattHelp
@@ -1092,6 +1096,34 @@ function Set-LocationRoot {
 }
 
 New-Alias -Name C -Value Set-LocationRoot
+function Start-Ping {
+
+    <#
+    .SYNOPSIS
+    Run Ping with -t specified as a default argument
+    .DESCRIPTION
+    This function wraps around Ping supplying the-t argument to always ping non-stop
+    .PARAMETER Address
+    The -Address parameter is for supplying the IP address or hostname you wish to ping
+    .EXAMPLE
+    Start-Ping test.domain.com
+    .EXAMPLE
+    P 1.1.1.1
+    .NOTES
+    Function supports the alias P
+    #>
+
+    [CmdletBinding()]
+    Param (
+        [Parameter(Mandatory = $true)]
+        [string]$Address
+    )
+
+    ping $Address -t
+
+}
+
+New-Alias -Name P -Value Start-Ping
 function Start-PowerShellAsSystem {
 
     <#
@@ -1118,6 +1150,40 @@ function Start-PowerShellAsSystem {
 }
 
 New-Alias -Name Sys -Value Start-PowerShellAsSystem
+function Start-TcPing {
+
+    <#
+    .SYNOPSIS
+    Run TcPing with -t specified as a default argument
+    .DESCRIPTION
+    This function wraps around TcPing supplying the-t argument to always ping non-stop
+    .PARAMETER Address
+    The -Address parameter is for supplying the IP address or hostname you wish to test
+    .PARAMETER Port
+    The -Port parameter supplies the TCP port that you want to test
+    .EXAMPLE
+    Start-TcPing test.domain.com 443
+    .EXAMPLE
+    tp 1.1.1.1 80
+    .NOTES
+    Function supports the alias tp
+    #>
+
+    [CmdletBinding()]
+    Param (
+        [Parameter(Mandatory = $true)]
+        [string]$Address,
+        [Parameter(Mandatory = $true)]
+        [Int32]$Port
+
+    )
+
+    tcping -t $Address $Port
+
+
+}
+
+New-Alias -Name Tp -Value Start-TcPing
 function Update-MattModules {
 
     <#
@@ -1237,4 +1303,4 @@ else {
 }
 
 }
-Export-ModuleMember -Function Add-ArtifactsCredential, Add-NodeRepository, Compare-Items, Find-NodeModule, Get-LastCmdTime, Get-MattHelp, Install-NodeModule, Invoke-MattPlaster, Invoke-ProfileBanner, New-RegistryPath, New-RegistryProperty, Remove-NodeRepository, Set-LocationGitHub, Set-LocationInput, Set-LocationOutput, Set-LocationPowerShell, Set-LocationRoot, Start-PowerShellAsSystem, Update-MattModules -Alias *
+Export-ModuleMember -Function Add-ArtifactsCredential, Add-NodeRepository, Compare-Items, Find-NodeModule, Get-LastCmdTime, Get-MattHelp, Install-NodeModule, Invoke-MattPlaster, Invoke-ProfileBanner, New-RegistryPath, New-RegistryProperty, Remove-NodeRepository, Set-LocationGitHub, Set-LocationInput, Set-LocationOutput, Set-LocationPowerShell, Set-LocationRoot, Start-Ping, Start-PowerShellAsSystem, Start-TcPing, Update-MattModules -Alias *
