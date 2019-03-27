@@ -50,7 +50,11 @@ function Get-MattHelp {
     Write-Host "Run either Start-PowerShellAsSystem or Sys from an elevated PowerShell console to open a new PowerShell console running as System"
     Write-Host "This command requires that PsExec is installed to the system path environmental variable. Install SysInternals using Chocolatey"
     Write-Host ""
-    
+    Write-Host "Run either Start-Ping or P and supply an IP address or hostname to ping continuously"
+    Write-Host ""
+    Write-Host "Run either Start-TcPing or TP and supply an IP address or hostname and a TCP port number to ping the TCP port continuously"
+    Write-Host ""
+
 }
 
 New-Alias -Name GMH -Value Get-MattHelp
