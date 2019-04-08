@@ -15,12 +15,7 @@ if ( !$PSDependCheck ) {
 
 # Import the PSDepend module
 Write-Verbose -Message "Importing the PSDepend module"
-# try {
-    Import-Module PSDepend -Force
-# }
-# catch {
-#    Install-Module -Name PSDepend -Scope CurrentUser -Force
-# }
+Import-Module PSDepend -Force
 
 # Run Invoke-PSDepend to install or update the required modules to allow the build to run
 Write-Verbose -Message "Invoking the PSDepend module to install the required modules"
