@@ -9,13 +9,18 @@ $PSDependCheck = Import-Module PSDepend -ErrorAction SilentlyContinue
 
 if ( !$PSDependCheck ) {
     Write-Verbose -Message "Installing Nuget and PSDepend"
-    Install-PackageProvider -Name Nuget -Scope CurrentUser -Force -Confirm:$false
-    Install-Module -Name PSDepend -Scope CurrentUser -Force -Confirm:$false
+    Install-PackageProvider -Name Nuget -Scope CurrentUser -Force
+    Install-Module -Name PSDepend -Scope CurrentUser -Force
 }
 
 # Import the PSDepend module
 Write-Verbose -Message "Importing the PSDepend module"
-Import-Module PSDepend -Force
+# try {
+    Import-Module PSDepend -Force
+# }
+# catch {
+#    Install-Module -Name PSDepend -Scope CurrentUser -Force
+# }
 
 # Run Invoke-PSDepend to install or update the required modules to allow the build to run
 Write-Verbose -Message "Invoking the PSDepend module to install the required modules"
