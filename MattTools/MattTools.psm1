@@ -1291,7 +1291,7 @@ if ( $Updates.count -ge 1 ) {
     # Loop through all modules with updates available and install the latest version
     ForEach ( $Update in $Updates ) {
         Write-Host "    Currently updating $Update to the latest version" -ForegroundColor White
-        Install-Module -Name $Update -Repository PSGallery -Scope CurrentUser -Force
+        Install-Module -Name $Update -Repository PSGallery -Scope CurrentUser -Force -SkipPublisherCheck
         Write-Host "Completed updating the $Update module" -ForegroundColor Green
     }
 }

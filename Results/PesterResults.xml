@@ -1,33 +1,33 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
-<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="61" errors="0" failures="5" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2019-04-08" time="12:03:55">
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="61" errors="0" failures="5" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2019-04-08" time="12:24:41">
   <environment user="NDBHSV-DA-01$" machine-name="NDBHSV-DA-01" cwd="C:\agent\_work\5\s" user-domain="NODEIT" platform="Microsoft Windows Server 2016 Standard|C:\Windows|\Device\Harddisk0\Partition2" nunit-version="2.5.8.0" os-version="10.0.14393" clr-version="4.0.30319.42000" />
   <culture-info current-culture="en-GB" current-uiculture="en-US" />
-  <test-suite type="Powershell" name="Pester" executed="True" result="Failure" success="False" time="17.565" asserts="0">
+  <test-suite type="Powershell" name="Pester" executed="True" result="Failure" success="False" time="22.0925" asserts="0">
     <results>
-      <test-suite type="TestFixture" name="PowerShell Module Import Test" executed="True" result="Success" success="True" time="1.7618" asserts="0" description="PowerShell Module Import Test">
+      <test-suite type="TestFixture" name="PowerShell Module Import Test" executed="True" result="Success" success="True" time="2.0499" asserts="0" description="PowerShell Module Import Test">
         <results>
-          <test-case description="Module Path should exist" name="PowerShell Module Import Test.Module Path should exist" time="0.9828" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="Should be imported successfully" name="PowerShell Module Import Test.Should be imported successfully" time="0.779" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="Module Path should exist" name="PowerShell Module Import Test.Module Path should exist" time="1.1554" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="Should be imported successfully" name="PowerShell Module Import Test.Should be imported successfully" time="0.8945" asserts="0" success="True" result="Success" executed="True" />
         </results>
       </test-suite>
-      <test-suite type="TestFixture" name="Testing against PSSA rules" executed="True" result="Failure" success="False" time="15.8032" asserts="0" description="Testing against PSSA rules">
+      <test-suite type="TestFixture" name="Testing against PSSA rules" executed="True" result="Failure" success="False" time="20.0426" asserts="0" description="Testing against PSSA rules">
         <results>
-          <test-case description="Should pass PSAlignAssignmentStatement" name="Testing against PSSA rules.Should pass PSAlignAssignmentStatement" time="13.0857" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="Should pass PSAvoidUsingCmdletAliases" name="Testing against PSSA rules.Should pass PSAvoidUsingCmdletAliases" time="0.0697" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="Should pass PSAvoidAssignmentToAutomaticVariable" name="Testing against PSSA rules.Should pass PSAvoidAssignmentToAutomaticVariable" time="0.0258" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="Should pass PSAlignAssignmentStatement" name="Testing against PSSA rules.Should pass PSAlignAssignmentStatement" time="17.1531" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="Should pass PSAvoidUsingCmdletAliases" name="Testing against PSSA rules.Should pass PSAvoidUsingCmdletAliases" time="0.0315" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="Should pass PSAvoidAssignmentToAutomaticVariable" name="Testing against PSSA rules.Should pass PSAvoidAssignmentToAutomaticVariable" time="0.025" asserts="0" success="True" result="Success" executed="True" />
           <test-case description="Should pass PSAvoidDefaultValueSwitchParameter" name="Testing against PSSA rules.Should pass PSAvoidDefaultValueSwitchParameter" time="0.0243" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="Should pass PSAvoidDefaultValueForMandatoryParameter" name="Testing against PSSA rules.Should pass PSAvoidDefaultValueForMandatoryParameter" time="0.0278" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="Should pass PSAvoidUsingEmptyCatchBlock" name="Testing against PSSA rules.Should pass PSAvoidUsingEmptyCatchBlock" time="0.0269" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="Should pass PSAvoidGlobalAliases" name="Testing against PSSA rules.Should pass PSAvoidGlobalAliases" time="0.0283" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="Should pass PSAvoidGlobalFunctions" name="Testing against PSSA rules.Should pass PSAvoidGlobalFunctions" time="0.0289" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="Should pass PSAvoidGlobalVars" name="Testing against PSSA rules.Should pass PSAvoidGlobalVars" time="0.0256" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="Should pass PSAvoidInvokingEmptyMembers" name="Testing against PSSA rules.Should pass PSAvoidInvokingEmptyMembers" time="0.0259" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="Should pass PSAvoidNullOrEmptyHelpMessageAttribute" name="Testing against PSSA rules.Should pass PSAvoidNullOrEmptyHelpMessageAttribute" time="0.0284" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="Should pass PSAvoidUsingPositionalParameters" name="Testing against PSSA rules.Should pass PSAvoidUsingPositionalParameters" time="0.027" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="Should pass PSReservedCmdletChar" name="Testing against PSSA rules.Should pass PSReservedCmdletChar" time="0.0277" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="Should pass PSReservedParams" name="Testing against PSSA rules.Should pass PSReservedParams" time="0.0281" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="Should pass PSAvoidShouldContinueWithoutForce" name="Testing against PSSA rules.Should pass PSAvoidShouldContinueWithoutForce" time="0.0262" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="Should pass PSAvoidTrailingWhitespace" name="Testing against PSSA rules.Should pass PSAvoidTrailingWhitespace" time="0.2001" asserts="0" success="False" result="Failure" executed="True">
+          <test-case description="Should pass PSAvoidDefaultValueForMandatoryParameter" name="Testing against PSSA rules.Should pass PSAvoidDefaultValueForMandatoryParameter" time="0.0246" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="Should pass PSAvoidUsingEmptyCatchBlock" name="Testing against PSSA rules.Should pass PSAvoidUsingEmptyCatchBlock" time="0.0254" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="Should pass PSAvoidGlobalAliases" name="Testing against PSSA rules.Should pass PSAvoidGlobalAliases" time="0.0239" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="Should pass PSAvoidGlobalFunctions" name="Testing against PSSA rules.Should pass PSAvoidGlobalFunctions" time="0.0243" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="Should pass PSAvoidGlobalVars" name="Testing against PSSA rules.Should pass PSAvoidGlobalVars" time="0.0233" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="Should pass PSAvoidInvokingEmptyMembers" name="Testing against PSSA rules.Should pass PSAvoidInvokingEmptyMembers" time="0.0329" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="Should pass PSAvoidNullOrEmptyHelpMessageAttribute" name="Testing against PSSA rules.Should pass PSAvoidNullOrEmptyHelpMessageAttribute" time="0.0248" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="Should pass PSAvoidUsingPositionalParameters" name="Testing against PSSA rules.Should pass PSAvoidUsingPositionalParameters" time="0.024" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="Should pass PSReservedCmdletChar" name="Testing against PSSA rules.Should pass PSReservedCmdletChar" time="0.0238" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="Should pass PSReservedParams" name="Testing against PSSA rules.Should pass PSReservedParams" time="0.0244" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="Should pass PSAvoidShouldContinueWithoutForce" name="Testing against PSSA rules.Should pass PSAvoidShouldContinueWithoutForce" time="0.0246" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="Should pass PSAvoidTrailingWhitespace" name="Testing against PSSA rules.Should pass PSAvoidTrailingWhitespace" time="0.1841" asserts="0" success="False" result="Failure" executed="True">
             <failure>
               <message>Expected: {0}
 But was:  {9}</message>
@@ -36,14 +36,14 @@ But was:  {9}</message>
 </stack-trace>
             </failure>
           </test-case>
-          <test-case description="Should pass PSAvoidUsingUsernameAndPasswordParams" name="Testing against PSSA rules.Should pass PSAvoidUsingUsernameAndPasswordParams" time="0.1752" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="Should pass PSAvoidUsingComputerNameHardcoded" name="Testing against PSSA rules.Should pass PSAvoidUsingComputerNameHardcoded" time="0.0274" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="Should pass PSAvoidUsingConvertToSecureStringWithPlainText" name="Testing against PSSA rules.Should pass PSAvoidUsingConvertToSecureStringWithPlainText" time="0.0265" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="Should pass PSAvoidUsingDeprecatedManifestFields" name="Testing against PSSA rules.Should pass PSAvoidUsingDeprecatedManifestFields" time="0.0273" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="Should pass PSAvoidUsingInvokeExpression" name="Testing against PSSA rules.Should pass PSAvoidUsingInvokeExpression" time="0.0273" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="Should pass PSAvoidUsingPlainTextForPassword" name="Testing against PSSA rules.Should pass PSAvoidUsingPlainTextForPassword" time="0.0245" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="Should pass PSAvoidUsingUsernameAndPasswordParams" name="Testing against PSSA rules.Should pass PSAvoidUsingUsernameAndPasswordParams" time="0.1576" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="Should pass PSAvoidUsingComputerNameHardcoded" name="Testing against PSSA rules.Should pass PSAvoidUsingComputerNameHardcoded" time="0.024" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="Should pass PSAvoidUsingConvertToSecureStringWithPlainText" name="Testing against PSSA rules.Should pass PSAvoidUsingConvertToSecureStringWithPlainText" time="0.0245" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="Should pass PSAvoidUsingDeprecatedManifestFields" name="Testing against PSSA rules.Should pass PSAvoidUsingDeprecatedManifestFields" time="0.0252" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="Should pass PSAvoidUsingInvokeExpression" name="Testing against PSSA rules.Should pass PSAvoidUsingInvokeExpression" time="0.0324" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="Should pass PSAvoidUsingPlainTextForPassword" name="Testing against PSSA rules.Should pass PSAvoidUsingPlainTextForPassword" time="0.0246" asserts="0" success="True" result="Success" executed="True" />
           <test-case description="Should pass PSAvoidUsingWMICmdlet" name="Testing against PSSA rules.Should pass PSAvoidUsingWMICmdlet" time="0.0234" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="Should pass PSAvoidUsingWriteHost" name="Testing against PSSA rules.Should pass PSAvoidUsingWriteHost" time="0.3882" asserts="0" success="False" result="Failure" executed="True">
+          <test-case description="Should pass PSAvoidUsingWriteHost" name="Testing against PSSA rules.Should pass PSAvoidUsingWriteHost" time="0.8708" asserts="0" success="False" result="Failure" executed="True">
             <failure>
               <message>Expected: {0}
 But was:  {63}</message>
@@ -52,14 +52,14 @@ But was:  {63}</message>
 </stack-trace>
             </failure>
           </test-case>
-          <test-case description="Should pass PSUseCompatibleCommands" name="Testing against PSSA rules.Should pass PSUseCompatibleCommands" time="0.0364" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="Should pass PSUseCompatibleSyntax" name="Testing against PSSA rules.Should pass PSUseCompatibleSyntax" time="0.0254" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="Should pass PSUseCompatibleTypes" name="Testing against PSSA rules.Should pass PSUseCompatibleTypes" time="0.0265" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="Should pass PSMisleadingBacktick" name="Testing against PSSA rules.Should pass PSMisleadingBacktick" time="0.0263" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="Should pass PSMissingModuleManifestField" name="Testing against PSSA rules.Should pass PSMissingModuleManifestField" time="0.0274" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="Should pass PSPlaceCloseBrace" name="Testing against PSSA rules.Should pass PSPlaceCloseBrace" time="0.0284" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="Should pass PSPlaceOpenBrace" name="Testing against PSSA rules.Should pass PSPlaceOpenBrace" time="0.126" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="Should pass PSPossibleIncorrectComparisonWithNull" name="Testing against PSSA rules.Should pass PSPossibleIncorrectComparisonWithNull" time="0.2095" asserts="0" success="False" result="Failure" executed="True">
+          <test-case description="Should pass PSUseCompatibleCommands" name="Testing against PSSA rules.Should pass PSUseCompatibleCommands" time="0.0356" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="Should pass PSUseCompatibleSyntax" name="Testing against PSSA rules.Should pass PSUseCompatibleSyntax" time="0.023" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="Should pass PSUseCompatibleTypes" name="Testing against PSSA rules.Should pass PSUseCompatibleTypes" time="0.0278" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="Should pass PSMisleadingBacktick" name="Testing against PSSA rules.Should pass PSMisleadingBacktick" time="0.0239" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="Should pass PSMissingModuleManifestField" name="Testing against PSSA rules.Should pass PSMissingModuleManifestField" time="0.026" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="Should pass PSPlaceCloseBrace" name="Testing against PSSA rules.Should pass PSPlaceCloseBrace" time="0.0232" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="Should pass PSPlaceOpenBrace" name="Testing against PSSA rules.Should pass PSPlaceOpenBrace" time="0.1307" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="Should pass PSPossibleIncorrectComparisonWithNull" name="Testing against PSSA rules.Should pass PSPossibleIncorrectComparisonWithNull" time="0.1346" asserts="0" success="False" result="Failure" executed="True">
             <failure>
               <message>Expected: {0}
 But was:  {1}</message>
@@ -68,22 +68,22 @@ But was:  {1}</message>
 </stack-trace>
             </failure>
           </test-case>
-          <test-case description="Should pass PSPossibleIncorrectUsageOfAssignmentOperator" name="Testing against PSSA rules.Should pass PSPossibleIncorrectUsageOfAssignmentOperator" time="0.041" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="Should pass PSPossibleIncorrectUsageOfRedirectionOperator" name="Testing against PSSA rules.Should pass PSPossibleIncorrectUsageOfRedirectionOperator" time="0.0423" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="Should pass PSProvideCommentHelp" name="Testing against PSSA rules.Should pass PSProvideCommentHelp" time="0.0257" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="Should pass PSUseApprovedVerbs" name="Testing against PSSA rules.Should pass PSUseApprovedVerbs" time="0.0274" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="Should pass PSUseBOMForUnicodeEncodedFile" name="Testing against PSSA rules.Should pass PSUseBOMForUnicodeEncodedFile" time="0.0267" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="Should pass PSUseCmdletCorrectly" name="Testing against PSSA rules.Should pass PSUseCmdletCorrectly" time="0.0231" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="Should pass PSUseCompatibleCmdlets" name="Testing against PSSA rules.Should pass PSUseCompatibleCmdlets" time="0.0273" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="Should pass PSUseConsistentIndentation" name="Testing against PSSA rules.Should pass PSUseConsistentIndentation" time="0.0257" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="Should pass PSUseConsistentWhitespace" name="Testing against PSSA rules.Should pass PSUseConsistentWhitespace" time="0.0284" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="Should pass PSUseCorrectCasing" name="Testing against PSSA rules.Should pass PSUseCorrectCasing" time="0.0247" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="Should pass PSUseDeclaredVarsMoreThanAssignments" name="Testing against PSSA rules.Should pass PSUseDeclaredVarsMoreThanAssignments" time="0.0232" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="Should pass PSUseLiteralInitializerForHashtable" name="Testing against PSSA rules.Should pass PSUseLiteralInitializerForHashtable" time="0.0271" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="Should pass PSUseOutputTypeCorrectly" name="Testing against PSSA rules.Should pass PSUseOutputTypeCorrectly" time="0.0251" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="Should pass PSUsePSCredentialType" name="Testing against PSSA rules.Should pass PSUsePSCredentialType" time="0.0251" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="Should pass PSShouldProcess" name="Testing against PSSA rules.Should pass PSShouldProcess" time="0.0242" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="Should pass PSUseShouldProcessForStateChangingFunctions" name="Testing against PSSA rules.Should pass PSUseShouldProcessForStateChangingFunctions" time="0.1415" asserts="0" success="False" result="Failure" executed="True">
+          <test-case description="Should pass PSPossibleIncorrectUsageOfAssignmentOperator" name="Testing against PSSA rules.Should pass PSPossibleIncorrectUsageOfAssignmentOperator" time="0.043" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="Should pass PSPossibleIncorrectUsageOfRedirectionOperator" name="Testing against PSSA rules.Should pass PSPossibleIncorrectUsageOfRedirectionOperator" time="0.0191" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="Should pass PSProvideCommentHelp" name="Testing against PSSA rules.Should pass PSProvideCommentHelp" time="0.0267" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="Should pass PSUseApprovedVerbs" name="Testing against PSSA rules.Should pass PSUseApprovedVerbs" time="0.0245" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="Should pass PSUseBOMForUnicodeEncodedFile" name="Testing against PSSA rules.Should pass PSUseBOMForUnicodeEncodedFile" time="0.025" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="Should pass PSUseCmdletCorrectly" name="Testing against PSSA rules.Should pass PSUseCmdletCorrectly" time="0.0242" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="Should pass PSUseCompatibleCmdlets" name="Testing against PSSA rules.Should pass PSUseCompatibleCmdlets" time="0.0294" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="Should pass PSUseConsistentIndentation" name="Testing against PSSA rules.Should pass PSUseConsistentIndentation" time="0.0235" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="Should pass PSUseConsistentWhitespace" name="Testing against PSSA rules.Should pass PSUseConsistentWhitespace" time="0.0228" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="Should pass PSUseCorrectCasing" name="Testing against PSSA rules.Should pass PSUseCorrectCasing" time="0.0223" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="Should pass PSUseDeclaredVarsMoreThanAssignments" name="Testing against PSSA rules.Should pass PSUseDeclaredVarsMoreThanAssignments" time="0.0256" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="Should pass PSUseLiteralInitializerForHashtable" name="Testing against PSSA rules.Should pass PSUseLiteralInitializerForHashtable" time="0.0231" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="Should pass PSUseOutputTypeCorrectly" name="Testing against PSSA rules.Should pass PSUseOutputTypeCorrectly" time="0.023" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="Should pass PSUsePSCredentialType" name="Testing against PSSA rules.Should pass PSUsePSCredentialType" time="0.0227" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="Should pass PSShouldProcess" name="Testing against PSSA rules.Should pass PSShouldProcess" time="0.0228" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="Should pass PSUseShouldProcessForStateChangingFunctions" name="Testing against PSSA rules.Should pass PSUseShouldProcessForStateChangingFunctions" time="0.0674" asserts="0" success="False" result="Failure" executed="True">
             <failure>
               <message>Expected: {0}
 But was:  {6}</message>
@@ -92,7 +92,7 @@ But was:  {6}</message>
 </stack-trace>
             </failure>
           </test-case>
-          <test-case description="Should pass PSUseSingularNouns" name="Testing against PSSA rules.Should pass PSUseSingularNouns" time="0.054" asserts="0" success="False" result="Failure" executed="True">
+          <test-case description="Should pass PSUseSingularNouns" name="Testing against PSSA rules.Should pass PSUseSingularNouns" time="0.0478" asserts="0" success="False" result="Failure" executed="True">
             <failure>
               <message>Expected: {0}
 But was:  {2}</message>
@@ -101,16 +101,16 @@ But was:  {2}</message>
 </stack-trace>
             </failure>
           </test-case>
-          <test-case description="Should pass PSUseSupportsShouldProcess" name="Testing against PSSA rules.Should pass PSUseSupportsShouldProcess" time="0.0392" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="Should pass PSUseToExportFieldsInManifest" name="Testing against PSSA rules.Should pass PSUseToExportFieldsInManifest" time="0.0246" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="Should pass PSUseUTF8EncodingForHelpFile" name="Testing against PSSA rules.Should pass PSUseUTF8EncodingForHelpFile" time="0.0231" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="Should pass PSUseSupportsShouldProcess" name="Testing against PSSA rules.Should pass PSUseSupportsShouldProcess" time="0.0353" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="Should pass PSUseToExportFieldsInManifest" name="Testing against PSSA rules.Should pass PSUseToExportFieldsInManifest" time="0.0233" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="Should pass PSUseUTF8EncodingForHelpFile" name="Testing against PSSA rules.Should pass PSUseUTF8EncodingForHelpFile" time="0.0228" asserts="0" success="True" result="Success" executed="True" />
           <test-case description="Should pass PSDSCDscExamplesPresent" name="Testing against PSSA rules.Should pass PSDSCDscExamplesPresent" time="0.0227" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="Should pass PSDSCDscTestsPresent" name="Testing against PSSA rules.Should pass PSDSCDscTestsPresent" time="0.0231" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="Should pass PSDSCReturnCorrectTypesForDSCFunctions" name="Testing against PSSA rules.Should pass PSDSCReturnCorrectTypesForDSCFunctions" time="0.0258" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="Should pass PSDSCUseIdenticalMandatoryParametersForDSC" name="Testing against PSSA rules.Should pass PSDSCUseIdenticalMandatoryParametersForDSC" time="0.0235" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="Should pass PSDSCUseIdenticalParametersForDSC" name="Testing against PSSA rules.Should pass PSDSCUseIdenticalParametersForDSC" time="0.0259" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="Should pass PSDSCStandardDSCFunctionsInResource" name="Testing against PSSA rules.Should pass PSDSCStandardDSCFunctionsInResource" time="0.0254" asserts="0" success="True" result="Success" executed="True" />
-          <test-case description="Should pass PSDSCUseVerboseMessageInDSCResource" name="Testing against PSSA rules.Should pass PSDSCUseVerboseMessageInDSCResource" time="0.0255" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="Should pass PSDSCDscTestsPresent" name="Testing against PSSA rules.Should pass PSDSCDscTestsPresent" time="0.0232" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="Should pass PSDSCReturnCorrectTypesForDSCFunctions" name="Testing against PSSA rules.Should pass PSDSCReturnCorrectTypesForDSCFunctions" time="0.0275" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="Should pass PSDSCUseIdenticalMandatoryParametersForDSC" name="Testing against PSSA rules.Should pass PSDSCUseIdenticalMandatoryParametersForDSC" time="0.0236" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="Should pass PSDSCUseIdenticalParametersForDSC" name="Testing against PSSA rules.Should pass PSDSCUseIdenticalParametersForDSC" time="0.0232" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="Should pass PSDSCStandardDSCFunctionsInResource" name="Testing against PSSA rules.Should pass PSDSCStandardDSCFunctionsInResource" time="0.0234" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="Should pass PSDSCUseVerboseMessageInDSCResource" name="Testing against PSSA rules.Should pass PSDSCUseVerboseMessageInDSCResource" time="0.0231" asserts="0" success="True" result="Success" executed="True" />
         </results>
       </test-suite>
     </results>
