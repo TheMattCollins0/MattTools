@@ -17,7 +17,7 @@ Update-MattModules [-PSGallery] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update modules that are stored in PSGallery and NodePowerShellRepository
+Update modules that are stored in PSGallery and MattPersonal
 
 ## EXAMPLES
 

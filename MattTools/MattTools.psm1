@@ -1190,7 +1190,7 @@ function Update-MattModules {
     .SYNOPSIS
     Update Matt modules
     .DESCRIPTION
-    Update modules that are stored in PSGallery and NodePowerShellRepository
+    Update modules that are stored in PSGallery and MattPersonal
     .PARAMETER PSGallery
     Checks for updates to modules installed from the PSGallery
     .EXAMPLE
@@ -1217,9 +1217,9 @@ function Update-MattModules {
 
     if ( !$PSGallery ) {
 
-        if ($PSCmdlet.ShouldProcess("Checked for updates to modules downloaded from NodePowerShellRepository successfully")) {
+        if ($PSCmdlet.ShouldProcess("Checked for updates to modules downloaded from MattPersonal successfully")) {
 
-            # Create variable containing all modules installed from the NodePowerShellRepository
+            # Create variable containing all modules installed from the MattPersonal
             $Modules = @( Get-Module -ListAvailable | Where-Object { $_.ModuleBase -like "$ModulePath" -and $_.RepositorySourceLocation -like "https://www.myget.org/*" } | Get-Unique -PipelineVariable Module )
 
         Write-Verbose "There are $($Modules.count) modules installed"
@@ -1229,8 +1229,8 @@ function Update-MattModules {
 
         ForEach ( $Module in @( $Modules )) {
             Write-Verbose "Currently selected module is - $($Module.Name)"
-            $SelectModule = Find-Module -Name $($Module.Name) -Repository NodePowerShellRepository | Select-Object Name, Version
-        Write-Verbose "$($SelectModule.Name) module has been found in the NodePowerShellRepository"
+            $SelectModule = Find-Module -Name $($Module.Name) -Repository MattPersonal | Select-Object Name, Version
+        Write-Verbose "$($SelectModule.Name) module has been found in the MattPersonal"
         $ObjectComparison = Compare-Object -ReferenceObject $SelectModule $Module -Property Name, Version | Where-Object { $_.SideIndicator -eq "=>" } | Select-Object -Property Name, Version
     if ( $ObjectComparison ) {
         Write-Host "    An update for $($ObjectComparison.Name) has been found" -ForegroundColor White
@@ -1248,7 +1248,7 @@ if ( $Updates.count -ge 1 ) {
     # Loop through all modules with updates available and install the latest version
     ForEach ( $Update in $Updates ) {
         Write-Host "    Currently updating $Update to the latest version" -ForegroundColor White
-        Install-Module -Name $Update -Repository NodePowerShellRepository -Scope CurrentUser -Force
+        Install-Module -Name $Update -Repository MattPersonal -Scope CurrentUser -Force
         Write-Host "Completed updating the $Update module" -ForegroundColor Green
     }
 }

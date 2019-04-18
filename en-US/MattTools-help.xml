@@ -1936,7 +1936,7 @@
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>Update modules that are stored in PSGallery and NodePowerShellRepository</maml:para>
+      <maml:para>Update modules that are stored in PSGallery and MattPersonal</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
