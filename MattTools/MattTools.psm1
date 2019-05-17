@@ -1184,22 +1184,6 @@ function Start-TcPing {
 }
 
 New-Alias -Name Tp -Value Start-TcPing
-function Update-AllModules {
-
-    <#
-    .SYNOPSIS
-    Update all PowerShell modules
-    .DESCRIPTION
-    This function runs all of the Node PowerShell module update commands one after the other to ensure all modules are updated
-    .EXAMPLE
-    Update-AllModules
-    #>
-
-    Update-NodeModules
-    Update-MattModules
-    Update-MattModules -PSGallery
-
-}
 function Update-MattModules {
 
     <#
@@ -1319,4 +1303,4 @@ function Update-MattModules {
     }
 
 }
-Export-ModuleMember -Function Add-ArtifactsCredential, Add-NodeRepository, Compare-Items, Find-NodeModule, Get-LastCmdTime, Get-MattHelp, Install-NodeModule, Invoke-MattPlaster, Invoke-ProfileBanner, New-RegistryPath, New-RegistryProperty, Remove-NodeRepository, Set-LocationGitHub, Set-LocationInput, Set-LocationOutput, Set-LocationPowerShell, Set-LocationRoot, Start-Ping, Start-PowerShellAsSystem, Start-TcPing, Update-AllModules, Update-MattModules -Alias *
+Export-ModuleMember -Function Add-ArtifactsCredential, Add-NodeRepository, Compare-Items, Find-NodeModule, Get-LastCmdTime, Get-MattHelp, Install-NodeModule, Invoke-MattPlaster, Invoke-ProfileBanner, New-RegistryPath, New-RegistryProperty, Remove-NodeRepository, Set-LocationGitHub, Set-LocationInput, Set-LocationOutput, Set-LocationPowerShell, Set-LocationRoot, Start-Ping, Start-PowerShellAsSystem, Start-TcPing, Update-MattModules -Alias *

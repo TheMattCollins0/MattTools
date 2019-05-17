@@ -12,7 +12,7 @@
 RootModule = 'MattTools.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.4.67'
+ModuleVersion = '0.4.68'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -75,8 +75,7 @@ FunctionsToExport = 'Add-ArtifactsCredential', 'Add-NodeRepository', 'Compare-It
                'New-RegistryPath', 'New-RegistryProperty', 'Remove-NodeRepository', 
                'Set-LocationGitHub', 'Set-LocationInput', 'Set-LocationOutput', 
                'Set-LocationPowerShell', 'Set-LocationRoot', 'Start-Ping', 
-               'Start-PowerShellAsSystem', 'Start-TcPing', 'Update-AllModules', 
-               'Update-MattModules'
+               'Start-PowerShellAsSystem', 'Start-TcPing', 'Update-MattModules'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = @()
