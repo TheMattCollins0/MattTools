@@ -1207,14 +1207,18 @@ function Update-MattModules {
         [switch]$PSGallery
     )
 
-    # Check for the version of PowerShell that's running
-    if ( $PSVersionTable.PSEdition -eq "Core" ) {
-        $ModulePath = "$HOME\OneDrive - Node IT Solutions\Documents\PowerShell\Modules\*"
+    # Check if NDBHSV-DA-01 is running the function and for the version of PowerShell that's running
+    if ( $env:COMPUTERNAME -eq "NDBHSV-DA-01" ) {
+        $ModulePath = "C:\Program Files\WindowsPowerShell\Modules\*"
     }
-    elseif ( $PSVersionTable.PSEdition -eq "Desktop" ) {
-        $ModulePath = "$HOME\OneDrive - Node IT Solutions\Documents\WindowsPowerShell\Modules\*"
+    else {
+        if ( $PSVersionTable.PSEdition -eq "Core" ) {
+            $ModulePath = "$HOME\OneDrive - Node IT Solutions\Documents\PowerShell\Modules\*"
+        }
+        elseif ( $PSVersionTable.PSEdition -eq "Desktop" ) {
+            $ModulePath = "$HOME\OneDrive - Node IT Solutions\Documents\WindowsPowerShell\Modules\*"
+        }
     }
-
     if ( !$PSGallery ) {
 
         if ($PSCmdlet.ShouldProcess("Checked for updates to modules downloaded from MattPersonal successfully")) {
