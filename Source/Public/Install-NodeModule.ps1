@@ -37,7 +37,7 @@ function Install-NodeModule {
             $Credentials = BetterCredentials\Get-Credential -Username $Username -ErrorAction Stop
         }
         catch {
-            throw "Unable to retrive the credentials, please check they were stored successfully using the Add-ArtifactsCredential function"
+            throw "Unable to retrieve the credentials, please check they were stored successfully using the Add-ArtifactsCredential function"
         }
 
         Write-Verbose -Message 'The credentials have been imported by BetterCredentials successfully. Checking for repository existence now'
@@ -58,7 +58,7 @@ function Install-NodeModule {
         # Module installation
         try {
             Write-Verbose -Message "Installing the module now"
-            Install-Module -Name $Name -Repository $Repository -Credential $Credentials -Force -ErrorAction Stop
+            Install-Module -Name $Name -Repository $Repository -Credential $Credentials -Scope CurrentUser -Force -ErrorAction Stop
         }
         catch {
             throw "Unable to install the application, please run the command again manually"
