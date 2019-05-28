@@ -43,7 +43,7 @@ function Install-NodeModule {
         Write-Verbose -Message 'The credentials have been imported by BetterCredentials successfully. Checking for repository existence now'
 
         # Check to see if the repository already exists
-        $RepositoryCheck = Get-PSRepository -Name $Repository -ErrorAction SilentlyContinue
+        $RepositoryCheck = Get-PSRepository -Name $Repository -ErrorAction Ignore
         if ($RepositoryCheck) {
             Write-Verbose -Message "The repository exists, it is possible to install the module from this location"
         }
