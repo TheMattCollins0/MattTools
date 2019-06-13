@@ -961,7 +961,7 @@ function Set-LocationInput {
 
     )
 
-    if ($PSCmdlet.ShouldProcess("Change of location to the $InputPath path successful")) {     
+    if ($PSCmdlet.ShouldProcess("Change of location to the $InputPath path successful")) {
         # Test if the $InputPath path is valid
         if (Test-Path "$InputPath") {
             # Set console location to the InputPath drive
@@ -974,7 +974,6 @@ function Set-LocationInput {
     }
 }
 
-New-Alias -Name In -Value Set-LocationInput
 New-Alias -Name Input -Value Set-LocationInput
 function Set-LocationOutput {
 
