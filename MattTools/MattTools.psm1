@@ -1296,8 +1296,6 @@ function Update-MattModules {
                 Write-Host "There are no modules requiring updates" -ForegroundColor White
             }
         }
-
     }
-
 }
 Export-ModuleMember -Function Add-ArtifactsCredential, Add-NodeRepository, Compare-Items, Find-NodeModule, Get-LastCmdTime, Get-MattHelp, Install-NodeModule, Invoke-MattPlaster, Invoke-ProfileBanner, New-RegistryPath, New-RegistryProperty, Remove-NodeRepository, Set-LocationGitHub, Set-LocationInput, Set-LocationOutput, Set-LocationPowerShell, Set-LocationRoot, Start-Ping, Start-PowerShellAsSystem, Start-TcPing, Update-MattModules -Alias *
