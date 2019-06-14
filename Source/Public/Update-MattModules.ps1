@@ -56,7 +56,7 @@ function Update-MattModules {
                     $Updates += $ModuleString
                 }
                 else {
-                    # Write-Host "An update for $($Module.Name) has not been found"  -ForegroundColor Yellow
+                    # Write-Host "An update for $($Module.Name) has not been found" -ForegroundColor Yellow
                 }
             }
 
