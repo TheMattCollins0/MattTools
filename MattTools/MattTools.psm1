@@ -1240,9 +1240,6 @@ function Update-MattModules {
                     $ModuleString = $($ObjectComparison.Name)
                     $Updates += $ModuleString
                 }
-                else {
-                    Write-Host "An update for $($Module.Name) has not been found"  -ForegroundColor Yellow
-                }
             }
 
             if ( $Updates.count -ge 1 ) {
@@ -1282,9 +1279,6 @@ function Update-MattModules {
                     Write-Host "    An update for $($ObjectComparison.Name) has been found" -ForegroundColor White
                     $ModuleString = $($ObjectComparison.Name)
                     $Updates += $ModuleString
-                }
-                else {
-                    Write-Host "An update for $($Module.Name) has not been found" -ForegroundColor Yellow
                 }
             }
 
