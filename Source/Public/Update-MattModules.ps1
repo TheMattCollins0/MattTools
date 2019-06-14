@@ -111,7 +111,5 @@ function Update-MattModules {
                 Write-Host "There are no modules requiring updates" -ForegroundColor White
             }
         }
-
     }
-
 }
