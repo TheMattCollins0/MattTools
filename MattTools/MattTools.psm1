@@ -1183,6 +1183,27 @@ function Start-TcPing {
 }
 
 New-Alias -Name Tp -Value Start-TcPing
+function Update-ChocolateyApplications {
+
+    <#
+    .SYNOPSIS
+    Update Chocolatey installed applications
+    .DESCRIPTION
+    Update applications that were installed through the Chocolatey package management application
+    .EXAMPLE
+    Update-ChocolateyApplications
+    .NOTES
+    Function allows use of the alias UCA
+    #>
+
+    [CmdletBinding()]
+    Param ()
+
+    choco upgrade all -y
+
+}
+
+New-Alias -Name UCA -Value Update-ChocolateyApplications
 function Update-MattModules {
 
     <#
@@ -1298,4 +1319,4 @@ function Update-MattModules {
         }
     }
 }
-Export-ModuleMember -Function Add-ArtifactsCredential, Add-NodeRepository, Compare-Items, Find-NodeModule, Get-LastCmdTime, Get-MattHelp, Install-NodeModule, Invoke-MattPlaster, Invoke-ProfileBanner, New-RegistryPath, New-RegistryProperty, Remove-NodeRepository, Set-LocationGitHub, Set-LocationInput, Set-LocationOutput, Set-LocationPowerShell, Set-LocationRoot, Start-Ping, Start-PowerShellAsSystem, Start-TcPing, Update-MattModules -Alias *
+Export-ModuleMember -Function Add-ArtifactsCredential, Add-NodeRepository, Compare-Items, Find-NodeModule, Get-LastCmdTime, Get-MattHelp, Install-NodeModule, Invoke-MattPlaster, Invoke-ProfileBanner, New-RegistryPath, New-RegistryProperty, Remove-NodeRepository, Set-LocationGitHub, Set-LocationInput, Set-LocationOutput, Set-LocationPowerShell, Set-LocationRoot, Start-Ping, Start-PowerShellAsSystem, Start-TcPing, Update-ChocolateyApplications, Update-MattModules -Alias *
