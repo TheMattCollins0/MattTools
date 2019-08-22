@@ -8,7 +8,7 @@ function Update-ChocolateyApplications {
     .EXAMPLE
     Update-ChocolateyApplications
     .NOTES
-    This function also supports the -Verbose parameter to show more detailed console output. Function also supports the alias UCA
+    Function allows use of the alias UCA
     #>
 
     [CmdletBinding()]
