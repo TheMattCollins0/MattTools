@@ -39,14 +39,14 @@ function Remove-NodeRepository {
 
     process {
 
-        # Addition of the NuGet source for the repository
-        NuGet Sources Remove -Name $Repository | Out-Null
+        # Removal of the NuGet source for the repository
+        NuGet Sources Remove -Name $Repository
 
         Write-Verbose -Message "Beginning the repository registration process now"
 
         # Run the command to unregister the repository
         try {
-        Unregister-PSRepository -Name $Repository
+            Unregister-PSRepository -Name $Repository
         }
         catch {
             throw "Unable to remove the repository, check that it is possible to remove it"
