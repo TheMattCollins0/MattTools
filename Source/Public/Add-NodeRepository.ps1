@@ -27,7 +27,7 @@ function Add-NodeRepository {
         Get-NugetExe
 
         # Creation of the RepositoryURL variable from the Repository parameter
-        $RepositoryURL = "https://pkgs.dev.azure.com/MattNodeIT/_packaging/" + $Repository + "/nuget/v2"
+        $RepositoryURL = "https://pkgs.dev.azure.com/NodeIT/_packaging/" + $Repository + "/nuget/v2"
 
         # Username variable generation
         $Username = "NodePAT"
