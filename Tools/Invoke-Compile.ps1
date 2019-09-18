@@ -4,7 +4,7 @@ param ()
 $SourceFolder = ".\Source\"
 $ModulePath = $env:BUILD_DEFINITIONNAME
 
-Write-Verbose -Message "Working in $SourceFolder" -verbose
+Write-Verbose -Message "Working in $SourceFolder"
 
 $Module = Get-ChildItem -Path $SourceFolder -Filter *.psd1 -Recurse | Select-Object -First 1
 
@@ -14,7 +14,7 @@ $DestinationModule = Join-Path -Path $($Module.Directory.FullName) -ChildPath ".
 $OutputManifest = Join-Path -Path $($Module.Directory.FullName) -ChildPath "..\$ModulePath\$($Module.BaseName).psd1"
 Copy-Item -Path $Module.FullName -Destination $OutputManifest -Force
 
-Write-Verbose -Message "Attempting to work with $DestinationModule" -verbose
+Write-Verbose -Message "Attempting to work with $DestinationModule"
 
 if (Test-Path -Path $DestinationModule ) {
     Remove-Item -Path $DestinationModule -Confirm:$False -force
