@@ -1,6 +1,6 @@
 # MattTools
 
-[![Build Status](https://mattnodeit.visualstudio.com/_apis/public/build/definitions/f8696591-2871-44c4-97e3-8c0b2198abc6/3/badge)](https://mattnodeit.visualstudio.com/_apis/public/build/definitions/f8696591-2871-44c4-97e3-8c0b2198abc6/3/badge) [![Release Status](https://rmprodweu1.vsrm.visualstudio.com/A8d8a579a-97aa-4bee-afaa-4cd9305f3466/_apis/public/Release/badge/f8696591-2871-44c4-97e3-8c0b2198abc6/2/2)](https://rmprodweu1.vsrm.visualstudio.com/A8d8a579a-97aa-4bee-afaa-4cd9305f3466/_apis/public/Release/badge/f8696591-2871-44c4-97e3-8c0b2198abc6/2/2)
+[![Build status](https://dev.azure.com/NodeIT/PowerShell%20Automation%20Process/_apis/build/status/MattTools)](https://dev.azure.com/NodeIT/PowerShell%20Automation%20Process/_build/latest?definitionId=3) [![Release Status](https://vsrm.dev.azure.com/NodeIT/_apis/public/Release/badge/f8696591-2871-44c4-97e3-8c0b2198abc6/2/2)](https://vsrm.dev.azure.com/NodeIT/_apis/public/Release/badge/f8696591-2871-44c4-97e3-8c0b2198abc6/2/2)
 
 A collection of tools that speed up my life
 

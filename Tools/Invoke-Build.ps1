@@ -1,9 +1,6 @@
 [cmdletbinding()]
 param ()
 
-# Set the global Error action preference to stop
-# $ErrorActionPreference = 'stop'
-
 $env:PSModulePath
 $env:PSModulePath = $env:PSModulePath + ";C:\Windows\ServiceProfiles\NetworkService\Documents\WindowsPowerShell\Modules\"
 $env:PSModulePath
