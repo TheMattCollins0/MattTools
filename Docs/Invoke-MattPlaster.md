@@ -13,8 +13,8 @@ Module creation function
 ## SYNTAX
 
 ```
-Invoke-MattPlaster [[-GitHubUserName] <String>] [[-GitHubPath] <String>] [-ModuleName] <String>
- [-ModuleDescription] <String> [<CommonParameters>]
+Invoke-MattPlaster [[-GitHubPath] <String>] [-ModuleName] <String> [-ModuleDescription] <String>
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,40 +46,15 @@ Invoke-MattPlaster -Name "NameHere" -Description "This is a module description"
 
 ### EXAMPLE 5
 ```
-Invoke-MattPlaster -GitHubUserName YourUserNameHere -GitHubPath "C:\GitHubScripts" -ModuleName "NameHere" -ModuleDescription "This is a module description"
+Invoke-MattPlaster -GitHubPath "C:\GitHubScripts" -ModuleName "NameHere" -ModuleDescription "This is a module description"
 ```
 
 ### EXAMPLE 6
 ```
-Invoke-MattPlaster -UserName YourUserNameHere -Path "C:\GitHubScripts" -Name "NameHere" -Description "This is a module description"
-```
-
-### EXAMPLE 7
-```
-Invoke-MattPlaster -GitHubUserName YourUserNameHere -GitHubPath "C:\GitHubScripts" -ModuleName "NameHere" -ModuleDescription "This is a module description"
-```
-
-### EXAMPLE 8
-```
-Invoke-MattPlaster -UserName YourUserNameHere -Path "C:\GitHubScripts" -Name "NameHere" -Description "This is a module description"
+Invoke-MattPlaster -Path "C:\GitHubScripts" -Name "NameHere" -Description "This is a module description"
 ```
 
 ## PARAMETERS
-
-### -GitHubUserName
-The -GitHubUserName parameter allows you to supply your GitHub username
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: UserName
-
-Required: False
-Position: 1
-Default value: TheMattCollins0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -GitHubPath
 The -GitHubPath parameter allows you to supply the path to your GitHub folder.
@@ -91,7 +66,7 @@ Parameter Sets: (All)
 Aliases: Path
 
 Required: False
-Position: 2
+Position: 1
 Default value: C:\GitHub
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -106,7 +81,7 @@ Parameter Sets: (All)
 Aliases: Name
 
 Required: True
-Position: 3
+Position: 2
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -121,7 +96,7 @@ Parameter Sets: (All)
 Aliases: Description
 
 Required: True
-Position: 4
+Position: 3
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
