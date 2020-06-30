@@ -6,7 +6,7 @@ function Invoke-MattPlaster {
     .DESCRIPTION
     Function to automate the creation of new PowerShell modules. The module relies on Git-Scm being installed. It also replies on the Plaster and PSGitHub modules being installed from the PSGallery
     .PARAMETER GitHubUserName
-    The -GitHubUserName parameter allows you to supply your GitHub username 
+    The -GitHubUserName parameter allows you to supply your GitHub username
     .PARAMETER GitHubPath
     The -GitHubPath parameter allows you to supply the path to your GitHub folder. If the folder does not exist, You will see an error
     .PARAMETER ModuleName
@@ -22,22 +22,13 @@ function Invoke-MattPlaster {
     .EXAMPLE
     Invoke-MattPlaster -Name "NameHere" -Description "This is a module description"
     .EXAMPLE
-    Invoke-MattPlaster -GitHubUserName YourUserNameHere -GitHubPath "C:\GitHubScripts" -ModuleName "NameHere" -ModuleDescription "This is a module description"
+    Invoke-MattPlaster -GitHubPath "C:\GitHubScripts" -ModuleName "NameHere" -ModuleDescription "This is a module description"
     .EXAMPLE
-    Invoke-MattPlaster -UserName YourUserNameHere -Path "C:\GitHubScripts" -Name "NameHere" -Description "This is a module description"
-    .EXAMPLE
-    Invoke-MattPlaster -GitHubUserName YourUserNameHere -GitHubPath "C:\GitHubScripts" -ModuleName "NameHere" -ModuleDescription "This is a module description"
-    .EXAMPLE
-    Invoke-MattPlaster -UserName YourUserNameHere -Path "C:\GitHubScripts" -Name "NameHere" -Description "This is a module description"
+    Invoke-MattPlaster -Path "C:\GitHubScripts" -Name "NameHere" -Description "This is a module description"
     #>
 
     [CmdletBinding()]
     param (
-        [Parameter(Mandatory = $false)]
-        [Alias('UserName')]
-        [string]
-        $GitHubUserName = "TheMattCollins0",
-
         [Parameter(Mandatory = $false)]
         [Alias('Path')]
         [string]
@@ -55,7 +46,7 @@ function Invoke-MattPlaster {
         [string]
         $ModuleDescription
     )
-    
+
     # Validation of the GitHubPath variable
     try {
         # Validate if the GitHubPath location is valid
@@ -90,11 +81,24 @@ function Invoke-MattPlaster {
         throw "Please ensure that both the PSGitHub and Plaster modules are installed and configured"
     }
 
+    # Prompt for the user to confirm if the GitHub repository is my own or Node's
+    $AccountSelectionCaption = "GitHub Account Selection"
+    $AccountSelectionMessage = "Does the GitHub repository need to be stored under TheMattCollins0 or NodeITSolutionsLtd?"
+    $TheMattCollins0 = New-Object System.Management.Automation.Host.ChoiceDescription "&TheMattCollins0", "TheMattCollins0"
+    $NodeITSolutionsLtd = New-Object System.Management.Automation.Host.ChoiceDescription "&NodeITSolutionsLtd", "NodeITSolutionsLtd"
+    $AccountSelectionChoices = [System.Management.Automation.Host.ChoiceDescription[]]($TheMattCollins0, $NodeITSolutionsLtd)
+    $AccountSelection = $host.ui.PromptForChoice( $AccountSelectionCaption, $AccountSelectionMessage, $AccountSelectionChoices, 0 )
+
+    switch ( $AccountSelection ) {
+        0 { Write-Information "You entered TheMattCollins0"; break }
+        1 { Write-Information "You entered NodeITSolutionsLtd"; break }
+    }
+
     # Prompt for the user to confirm if the GitHub repository will be public or private
     $RepositoryVisibilityCaption = "GitHub Repository Visibility"
     $RepositoryVisibilityMessage = "Does the GitHub repository need to be public or private?"
-    $Public = new-Object System.Management.Automation.Host.ChoiceDescription "&Public", "Public"
-    $Private = new-Object System.Management.Automation.Host.ChoiceDescription "p&Rivate", "Private"
+    $Public = New-Object System.Management.Automation.Host.ChoiceDescription "&Public", "Public"
+    $Private = New-Object System.Management.Automation.Host.ChoiceDescription "p&Rivate", "Private"
     $RepositoryVisibilityChoices = [System.Management.Automation.Host.ChoiceDescription[]]($Public, $Private)
     $RepositoryVisibility = $host.ui.PromptForChoice( $RepositoryVisibilityCaption, $RepositoryVisibilityMessage, $RepositoryVisibilityChoices, 1 )
 
@@ -106,8 +110,8 @@ function Invoke-MattPlaster {
     # Prompt for the user to confirm if they require a development branch creating on the GitHub repository
     $DevelopmentBranchCaption = "Development Branch Requirement"
     $DevelopmentBranchMessage = "Does the new GitHub repository require a development branch?"
-    $Yes = new-Object System.Management.Automation.Host.ChoiceDescription "&Yes", "Yes"
-    $No = new-Object System.Management.Automation.Host.ChoiceDescription "&No", "No"
+    $Yes = New-Object System.Management.Automation.Host.ChoiceDescription "&Yes", "Yes"
+    $No = New-Object System.Management.Automation.Host.ChoiceDescription "&No", "No"
     $DevelopmentBranchChoices = [System.Management.Automation.Host.ChoiceDescription[]]($Yes, $No)
     $DevelopmentBranch = $host.ui.PromptForChoice( $DevelopmentBranchCaption, $DevelopmentBranchMessage, $DevelopmentBranchChoices, 0 )
 
@@ -133,20 +137,47 @@ function Invoke-MattPlaster {
         CompanyName     = "Node IT Solutions Ltd."
     }
 
-    # If statement to check if a Public repository was requested
+    # If statement to check if the repository needs to be created as my personal account or as Node's account
     if ( $RepositoryVisibility -eq "0" ) {
-        # Create the new public repository on GitHub
-        New-GitHubRepository -Name $ModuleName -Description $ModuleDescription
-    }
 
-    # If statement to check if a Private repository was requested
-    if ( $RepositoryVisibility -eq "1" ) {
-        # Create a new private repository on GitHub
-        New-GitHubRepository -Name $ModuleName -Description $ModuleDescription -Private $True
-    }
+        $GitHubUsername = "TheMattCollins0"
 
-    # Creation of the GitHub repository URL variable
-    $GitHubRepository = "https://github.com/" + $GitHubUsername + "/" + $ModuleName + ".git"
+        # If statement to check if a Public repository was requested
+        if ( $RepositoryVisibility -eq "0" ) {
+            # Create the new public repository on GitHub
+            New-GitHubRepository -Name $ModuleName -Description $ModuleDescription
+        }
+
+        # If statement to check if a Private repository was requested
+        if ( $RepositoryVisibility -eq "1" ) {
+            # Create a new private repository on GitHub
+            New-GitHubRepository -Name $ModuleName -Description $ModuleDescription -Private $True
+        }
+
+        # Creation of the GitHub repository URL variable
+        $GitHubRepository = "https://github.com/" + $GitHubUsername + "/" + $ModuleName + ".git"
+
+    }
+    elseif ( $RepositoryVisibility -eq "1" ) {
+
+        $GitHubUsername = "NodeITSolutionsLtd"
+
+        # If statement to check if a Public repository was requested
+        if ( $RepositoryVisibility -eq "0" ) {
+            # Create the new public repository on GitHub
+            New-GitHubRepository -Name $ModuleName -Description $ModuleDescription -Organization "NodeITSolutionsLtd"
+        }
+
+        # If statement to check if a Private repository was requested
+        if ( $RepositoryVisibility -eq "1" ) {
+            # Create a new private repository on GitHub
+            New-GitHubRepository -Name $ModuleName -Description $ModuleDescription -Private $True -Organization "NodeITSolutionsLtd"
+        }
+
+        # Creation of the GitHub repository URL variable
+        $GitHubRepository = "https://github.com/" + $GitHubUsername + "/" + $ModuleName + ".git"
+
+    }
 
     # Clone the GitHub repository to the local computer to the GitHub directory
     git clone $GitHubRepository
@@ -173,7 +204,7 @@ function Invoke-MattPlaster {
     git push origin HEAD:master
 
     # If statement to check if a development branch of the repository was requested
-    if ( $DevelopmentBranch -eq "0" ) {    
+    if ( $DevelopmentBranch -eq "0" ) {
         # Create a development branch
         git branch development
 
