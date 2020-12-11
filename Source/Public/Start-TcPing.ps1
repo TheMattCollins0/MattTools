@@ -4,7 +4,7 @@ function Start-TcPing {
     .SYNOPSIS
     Run TcPing with -t specified as a default argument
     .DESCRIPTION
-    This function wraps around TcPing supplying the-t argument to always ping non-stop
+    This function wraps around TcPing supplying the-t argument to always ping non-stop and the -4 argument to always use IP V4
     .PARAMETER Address
     The -Address parameter is for supplying the IP address or hostname you wish to test
     .PARAMETER Port
@@ -27,7 +27,6 @@ function Start-TcPing {
     )
 
     tcping -4 -t $Address $Port
-
 
 }
 
