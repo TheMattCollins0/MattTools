@@ -26,7 +26,7 @@ function Start-TcPing {
 
     )
 
-    tcping -t $Address $Port
+    tcping -4 -t $Address $Port
 
 
 }
