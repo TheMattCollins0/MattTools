@@ -1919,7 +1919,7 @@
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>This function wraps around TcPing supplying the-t argument to always ping non-stop</maml:para>
+      <maml:para>This function wraps around TcPing supplying the-t argument to always ping non-stop and the -4 argument to always use IP V4</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>

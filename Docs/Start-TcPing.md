@@ -17,7 +17,7 @@ Start-TcPing [-Address] <String> [-Port] <Int32> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This function wraps around TcPing supplying the-t argument to always ping non-stop
+This function wraps around TcPing supplying the-t argument to always ping non-stop and the -4 argument to always use IP V4
 
 ## EXAMPLES
 
