@@ -4,7 +4,7 @@ function Start-Ping {
     .SYNOPSIS
     Run Ping with -t specified as a default argument
     .DESCRIPTION
-    This function wraps around Ping supplying the-t argument to always ping non-stop
+    This function wraps around Ping supplying the-t argument to always ping non-stop and the -4 argument to always use IP V4
     .PARAMETER Address
     The -Address parameter is for supplying the IP address or hostname you wish to ping
     .EXAMPLE
@@ -21,7 +21,7 @@ function Start-Ping {
         [string]$Address
     )
 
-    ping $Address -t
+    ping $Address -t -4
 
 }
 
