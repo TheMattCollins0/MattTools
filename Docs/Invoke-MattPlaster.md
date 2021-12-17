@@ -13,14 +13,14 @@ Module creation function
 ## SYNTAX
 
 ```
-Invoke-MattPlaster [[-GitHubPath] <String>] [-ModuleName] <String> [-ModuleDescription] <String>
- [<CommonParameters>]
+Invoke-MattPlaster [[-GitHubUserName] <String>] [[-GitHubPath] <String>] [-ModuleName] <String>
+ [-ModuleDescription] <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 Function to automate the creation of new PowerShell modules.
 The module relies on Git-Scm being installed.
-It also replies on the Plaster and PSGitHub modules being installed from the PSGallery
+It also replies on the Plaster and PowerShellForGitHub modules being installed from the PSGallery
 
 ## EXAMPLES
 
@@ -46,15 +46,40 @@ Invoke-MattPlaster -Name "NameHere" -Description "This is a module description"
 
 ### EXAMPLE 5
 ```
-Invoke-MattPlaster -GitHubPath "C:\GitHubScripts" -ModuleName "NameHere" -ModuleDescription "This is a module description"
+Invoke-MattPlaster -GitHubUserName YourUserNameHere -GitHubPath "C:\GitHubScripts" -ModuleName "NameHere" -ModuleDescription "This is a module description"
 ```
 
 ### EXAMPLE 6
 ```
-Invoke-MattPlaster -Path "C:\GitHubScripts" -Name "NameHere" -Description "This is a module description"
+Invoke-MattPlaster -UserName YourUserNameHere -Path "C:\GitHubScripts" -Name "NameHere" -Description "This is a module description"
+```
+
+### EXAMPLE 7
+```
+Invoke-MattPlaster -GitHubUserName YourUserNameHere -GitHubPath "C:\GitHubScripts" -ModuleName "NameHere" -ModuleDescription "This is a module description"
+```
+
+### EXAMPLE 8
+```
+Invoke-MattPlaster -UserName YourUserNameHere -Path "C:\GitHubScripts" -Name "NameHere" -Description "This is a module description"
 ```
 
 ## PARAMETERS
+
+### -GitHubUserName
+The -GitHubUserName parameter allows you to supply your GitHub username
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: UserName
+
+Required: False
+Position: 1
+Default value: TheMattCollins0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -GitHubPath
 The -GitHubPath parameter allows you to supply the path to your GitHub folder.
@@ -66,7 +91,7 @@ Parameter Sets: (All)
 Aliases: Path
 
 Required: False
-Position: 1
+Position: 2
 Default value: C:\GitHub
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -81,7 +106,7 @@ Parameter Sets: (All)
 Aliases: Name
 
 Required: True
-Position: 2
+Position: 3
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -96,7 +121,7 @@ Parameter Sets: (All)
 Aliases: Description
 
 Required: True
-Position: 3
+Position: 4
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
