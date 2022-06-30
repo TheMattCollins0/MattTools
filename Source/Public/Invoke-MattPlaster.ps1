@@ -119,14 +119,14 @@ function Invoke-MattPlaster {
     # Prompt for the user to confirm if the repository is personal or for Node
     $NodeOrPersonalCaption = 'Node or Personal Repository'
     $NodeOrPersonalMessage = 'Is the new GitHub repository a Node or Personal repository?'
-    $Yes = New-Object System.Management.Automation.Host.ChoiceDescription '&Yes', 'Yes'
-    $No = New-Object System.Management.Automation.Host.ChoiceDescription '&No', 'No'
-    $NodeOrPersonalChoices = [System.Management.Automation.Host.ChoiceDescription[]]($Yes, $No)
+    $Node = New-Object System.Management.Automation.Host.ChoiceDescription '&Node', 'Node'
+    $Personal = New-Object System.Management.Automation.Host.ChoiceDescription '&Personal', 'Personal'
+    $NodeOrPersonalChoices = [System.Management.Automation.Host.ChoiceDescription[]]($Node, $Personal)
     $NodeOrPersonal = $host.ui.PromptForChoice( $NodeOrPersonalCaption, $NodeOrPersonalMessage, $NodeOrPersonalChoices, 0 )
 
     switch ( $NodeOrPersonal ) {
-        0 { Write-Information 'This is a personal repository'; break }
-        1 { Write-Information 'This is a Node repository'; break }
+        0 { Write-Information 'This is a Node repository'; break }
+        1 { Write-Information 'This is a Personal repository'; break }
     }
 
     # Set current location to the path supplied in $GitHubPath
@@ -147,25 +147,25 @@ function Invoke-MattPlaster {
     }
 
     # If statement to check if a personal public repository was requested
-    if ( $RepositoryVisibility -eq '0' -and $NodeOrPersonal -eq '0' ) {
+    if ( $RepositoryVisibility -eq '0' -and $NodeOrPersonal -eq '1' ) {
         # Create the new personal public repository on GitHub
         New-GitHubRepository -RepositoryName $ModuleName -Description $ModuleDescription
     }
 
     # If statement to check if a Node Private repository was requested
-    if ( $RepositoryVisibility -eq '1' -and $NodeOrPersonal -eq '1' ) {
+    if ( $RepositoryVisibility -eq '1' -and $NodeOrPersonal -eq '0' ) {
         # Create a new private repository on GitHub
         New-GitHubRepository -RepositoryName $ModuleName -Description $ModuleDescription -Private $True -OrganizationName 'NodeITSolutionsLtd'
     }
 
     # If statement to check if a personal private repository was requested
-    if ( $RepositoryVisibility -eq '1' -and $NodeOrPersonal -eq '0' ) {
+    if ( $RepositoryVisibility -eq '1' -and $NodeOrPersonal -eq '1' ) {
         # Create the new personal private repository on GitHub
         New-GitHubRepository -RepositoryName $ModuleName -Description $ModuleDescription -Private $True
     }
 
     # If statement to check if a Node public repository was requested
-    if ( $RepositoryVisibility -eq '0' -and $NodeOrPersonal -eq '1' ) {
+    if ( $RepositoryVisibility -eq '0' -and $NodeOrPersonal -eq '0' ) {
         # Create the new Node public repository on GitHub
         New-GitHubRepository -RepositoryName $ModuleName -Description $ModuleDescription  -OrganizationName 'NodeITSolutionsLtd'
     }
